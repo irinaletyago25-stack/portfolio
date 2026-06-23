@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейс: AI как соавтор в педдизайне · Ирина Летяго</title>
+<meta name="description" content="Claude, Perplexity и Gemini на каждом этапе SAM — реальные промпты, разделение труда и четыре границы, где AI не заменяет методиста.">
+<meta property="og:title" content="Кейс: AI как соавтор в педдизайне · Ирина Летяго">
+<meta property="og:description" content="Claude, Perplexity и Gemini на каждом этапе SAM — реальные промпты, разделение труда и четыре границы, где AI не заменяет методиста.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,200;0,300;0,400;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --milk:#FAFAF6;--milk2:#F4F3EE;--milk3:#E8E6DF;
+  --ink:#0E0E0C;--ink2:#2A2A26;--ink3:#7A7A72;
+  --gold:#E8A000;--fire:#E03A2F;--iris:#6A4FC8;--jade:#1DB87A;
+  --claude:#E8A000;--perp:#6A4FC8;--gem:#1DB87A;
+  --gold-lt:#FFF7E0;--fire-lt:#FFF0EF;--iris-lt:#F0ECFF;--jade-lt:#E6FFF5;
+  --claude-lt:#FFF7E0;--perp-lt:#F0ECFF;--gem-lt:#E6FFF5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);overflow-x:hidden;line-height:1.6}
+
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--iris);width:0;z-index:200;transition:width .08s linear;pointer-events:none}
+
+/* NAV */
+.cs-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,250,246,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--milk3)}
+.cs-nav-back{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--ink3);transition:color .2s}
+.cs-nav-back:hover{color:var(--ink)}
+.cs-nav-label{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+
+/* HERO */
+.hero{padding:120px 48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;min-height:85vh;position:relative;overflow:hidden;border-bottom:1px solid var(--milk3)}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--ink3);display:block}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,6vw,84px);font-weight:700;letter-spacing:-.04em;line-height:.95;margin-bottom:32px}
+.hero-title .a-claude{color:var(--claude)}
+.hero-title .a-iris{color:var(--iris)}
+.hero-sub{font-size:16px;font-weight:300;line-height:1.8;color:var(--ink2);max-width:440px;margin-bottom:40px}
+.hero-note{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.7;padding:16px 20px;border-left:2px solid var(--iris);background:var(--iris-lt)}
+
+.hero-right{display:flex;flex-direction:column;gap:12px}
+.tool-pill{display:flex;align-items:center;gap:16px;padding:16px 20px;border:1px solid var(--milk3);background:var(--milk)}
+.tool-pill-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.tp-claude .tool-pill-icon{background:var(--claude-lt);color:var(--claude)}
+.tp-perp .tool-pill-icon{background:var(--perp-lt);color:var(--perp)}
+.tp-gem .tool-pill-icon{background:var(--gem-lt);color:var(--gem)}
+.tool-pill-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink)}
+.tool-pill-role{font-size:11px;color:var(--ink3);margin-top:1px}
+.tool-pill-tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border:1px solid}
+.tp-claude .tool-pill-tag{border-color:var(--claude);color:var(--claude);background:var(--claude-lt)}
+.tp-perp .tool-pill-tag{border-color:var(--perp);color:var(--perp);background:var(--perp-lt)}
+.tp-gem .tool-pill-tag{border-color:var(--gem);color:var(--gem);background:var(--gem-lt)}
+
+/* SECTIONS */
+.s{padding:88px 48px;position:relative}
+.s.bg2{background:var(--milk2)}
+.s.dark{background:var(--ink);color:var(--milk)}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';display:inline-block;width:14px;height:1px;background:currentColor}
+.s.dark .eyebrow{color:rgba(255,255,255,.35)}
+.s-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,4.8vw,58px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:40px}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* TOOL DEEP CARDS */
+.tool-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--milk3);border:1px solid var(--milk3);margin-top:40px}
+.tc{padding:32px;background:var(--milk)}
+.tc-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.tc-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tc-claude .tc-icon{background:var(--claude-lt);color:var(--claude)}
+.tc-perp .tc-icon{background:var(--perp-lt);color:var(--perp)}
+.tc-gem .tc-icon{background:var(--gem-lt);color:var(--gem)}
+.tc-name{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--ink)}
+.tc-role-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border:1px solid;margin-top:3px;display:inline-block}
+.tc-claude .tc-role-tag{border-color:var(--claude);color:var(--claude)}
+.tc-perp .tc-role-tag{border-color:var(--perp);color:var(--perp)}
+.tc-gem .tc-role-tag{border-color:var(--gem);color:var(--gem)}
+.tc-why{font-size:13px;font-weight:300;color:var(--ink3);line-height:1.65;margin-bottom:20px}
+.tc-uses{display:flex;flex-direction:column;gap:6px}
+.tc-use{display:flex;gap:10px;font-size:12px;font-weight:300;color:var(--ink2);line-height:1.5;padding:8px 10px;background:var(--milk2)}
+.tc-use::before{content:'→';font-size:11px;flex-shrink:0;margin-top:1px}
+.tc-claude .tc-use::before{color:var(--claude)}
+.tc-perp .tc-use::before{color:var(--perp)}
+.tc-gem .tc-use::before{color:var(--gem)}
+
+/* SAM STAGE SELECTOR */
+.sam-selector{margin-top:40px}
+.sam-tabs{display:flex;gap:0;border:1px solid var(--milk3);overflow:hidden}
+.sam-tab{flex:1;padding:14px 12px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--milk2);border:none;border-right:1px solid var(--milk3);cursor:pointer;transition:all .2s;color:var(--ink3);line-height:1.3}
+.sam-tab:last-child{border-right:none}
+.sam-tab.act{background:var(--ink);color:var(--milk)}
+.sam-panel{display:none;border:1px solid var(--milk3);border-top:none}
+.sam-panel.act{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--milk3)}
+.sp-col{background:var(--milk);padding:24px}
+.sp-tool{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border:1px solid;margin-bottom:14px}
+.sp-claude{border-color:var(--claude);color:var(--claude);background:var(--claude-lt)}
+.sp-perp{border-color:var(--perp);color:var(--perp);background:var(--perp-lt)}
+.sp-gem{border-color:var(--gem);color:var(--gem);background:var(--gem-lt)}
+.sp-task{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.sp-desc{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.65}
+
+/* GUARDRAILS */
+.guardrails{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--milk3);border:1px solid var(--milk3);margin-top:40px}
+.gr{padding:28px;background:var(--milk)}
+.gr-n{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
+.gr-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.gr-desc{font-size:13px;font-weight:300;color:var(--ink3);line-height:1.65}
+.gr-why{display:inline-block;margin-top:10px;font-size:11px;font-weight:500;color:var(--fire);border-bottom:1px solid currentColor}
+
+/* IMPACT */
+.impact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--milk3);border:1px solid var(--milk3);margin-top:40px}
+.ig{background:#fff;padding:28px}
+.ig-num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:8px}
+.ig-1 .ig-num{color:var(--iris)}
+.ig-2 .ig-num{color:var(--jade)}
+.ig-3 .ig-num{color:var(--gold)}
+.ig-label{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:5px}
+.ig-desc{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.6}
+
+/* FOOTER */
+.cs-footer{padding:48px;border-top:1px solid var(--milk3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.cs-footer-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink)}
+.cs-footer-back{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:12px 24px;background:var(--ink);color:var(--milk);border:2px solid var(--ink);transition:all .2s}
+.cs-footer-back:hover{background:var(--iris);border-color:var(--iris)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding:80px 20px 48px;gap:40px}
+  .s{padding:64px 20px}
+  .cs-nav{padding:0 20px}
+  .tool-cards,.guardrails,.impact-grid{grid-template-columns:1fr}
+  .sam-panel.act{grid-template-columns:1fr}
+  .cs-footer{padding:32px 20px}
+}
+
+/* ══ SOFT SYNC ══ */
+.tool-pill{border-radius:16px}
+.tool-cards,.guardrails,.impact-grid{border-radius:18px;overflow:hidden}
+.sam-tabs{border-radius:14px 14px 0 0;overflow:hidden}
+.sam-panel.act{border-radius:0 0 14px 14px;overflow:hidden}
+.tool-pill-tag,.tc-role-tag,.sp-tool,.df-tool{border-radius:999px}
+.hero-note{border-radius:0 12px 12px 0}
+.tc-use{border-radius:8px}
+.cs-footer-back{border-radius:14px}
+.gr{border-radius:0}
+
+/* value chain методика→метрика→деньги */
+.vchain{margin-top:28px;border-radius:18px;overflow:hidden;border:1px solid var(--milk3)}
+.vchain-hd{padding:14px 20px;background:var(--ink);color:var(--milk);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.vchain-row{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;background:var(--milk3);gap:1px}
+.vc-cell{background:#FFFEFB;padding:20px 18px;display:flex;flex-direction:column;gap:6px}
+.vc-k{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.vc-k.m{color:var(--iris)}.vc-k.r{color:var(--gold)}.vc-k.b{color:var(--jade)}
+.vc-t{font-size:13px;font-weight:500;color:var(--ink);line-height:1.4}
+.vc-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.55}
+.vc-arrow{background:#FFFEFB;display:flex;align-items:center;justify-content:center;padding:0 8px;font-size:18px;color:var(--ink3)}
+@media(max-width:760px){.vchain-row{grid-template-columns:1fr}.vc-arrow{padding:6px;transform:rotate(90deg)}}
+
+/* доступность: фокус с клавиатуры */
+a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focus-visible,input:focus-visible,.art-hd:focus-visible,.wf-step:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+*:focus:not(:focus-visible){outline:none}
+
+/* мягкие тени карточек — глубина как на главной */
+.insight,.dc2,.model,.res,.tc,.gr,.std-card,.cl-section,.mn,.vc-cell,.ab-arm,.ab-hyp,.task-card{box-shadow:0 1px 3px rgba(14,14,12,.04)}
+.insight:hover,.tc:hover,.model:hover,.mn:hover,.dc2:hover{box-shadow:0 8px 24px rgba(14,14,12,.08)}
+
+/* промпт-инжиниринг: разбор техник */
+.pe-intro{font-size:15px;font-weight:300;color:var(--ink3);line-height:1.8;max-width:580px;margin-bottom:32px}
+.pe-card{border:1px solid var(--milk3);border-radius:18px;overflow:hidden;margin-bottom:18px;background:#FFFEFB;box-shadow:0 1px 3px rgba(14,14,12,.04)}
+.pe-head{display:flex;align-items:center;gap:12px;padding:16px 22px;background:var(--milk2);border-bottom:1px solid var(--milk3)}
+.pe-goal{flex:1}
+.pe-goal-k{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.pe-goal-v{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--ink)}
+.pe-tool{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.04em;padding:5px 12px;border-radius:999px;flex-shrink:0}
+.pe-tool.claude{background:var(--gold-lt);color:#8a6200}
+.pe-tool.perp{background:var(--iris-lt);color:var(--iris)}
+.pe-tool.gem{background:var(--jade-lt);color:#0d6b3a}
+.pe-body{display:grid;grid-template-columns:1.4fr 1fr;gap:0}
+.pe-prompt{padding:20px 22px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;color:var(--ink2);border-right:1px solid var(--milk3);white-space:pre-wrap;overflow-x:auto}
+.pe-prompt .tag{color:var(--iris);font-weight:500}
+.pe-prompt .var{color:var(--fire)}
+.pe-prompt .cmt{color:var(--ink3);font-style:italic}
+.pe-prompt .hl{background:var(--gold-lt);padding:1px 4px;border-radius:3px}
+.pe-tech{padding:20px 22px;display:flex;flex-direction:column;gap:12px;background:#FCFCFA}
+.pe-tech-h{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}
+.pe-t{display:flex;gap:10px;align-items:flex-start}
+.pe-t-n{width:20px;height:20px;border-radius:6px;background:var(--iris);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:'Space Grotesk',sans-serif;flex-shrink:0}
+.pe-t-tx{font-size:12px;line-height:1.5;color:var(--ink2)}
+.pe-t-tx b{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--ink);display:block;font-size:11px}
+.pe-why{padding:14px 22px;background:var(--gold-lt);border-top:1px solid rgba(232,160,0,.2);font-size:12.5px;line-height:1.6;color:var(--ink2)}
+.pe-why b{font-weight:600;color:var(--ink)}
+@media(max-width:760px){.pe-body{grid-template-columns:1fr}.pe-prompt{border-right:none;border-bottom:1px solid var(--milk3)}}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<nav class="cs-nav">
+  <a class="cs-nav-back" href="index.html">← Портфолио</a>
+  <span class="cs-nav-label">Кейс · AI в процессе педдизайна</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <p class="hero-eyebrow">Рабочий процесс · AI Fluency · Anthropic 2026</p>
+    <h1 class="hero-title">AI как<br><span class="a-claude">соавтор</span>,<br>не <span class="a-iris">замена</span></h1>
+    <p class="hero-sub">Я использую три инструмента каждый день — но не для генерации контента. Для ускорения мышления, проверки слепых зон и работы с данными. Вот как это устроено на каждом этапе SAM.</p>
+    <div class="hero-note">Этот кейс не про «ChatGPT написал за меня курс». Он про то, как педагогическое мышление + правильные инструменты = в 3 раза больше итераций за то же время.</div>
+  </div>
+  <div class="hero-right">
+    <div class="tool-pill tp-claude">
+      <div class="tool-pill-icon">◆</div>
+      <div><div class="tool-pill-name">Claude</div><div class="tool-pill-role">Рефлексия и проверка логики</div></div>
+      <div class="tool-pill-tag">Думающий партнёр</div>
+    </div>
+    <div class="tool-pill tp-perp">
+      <div class="tool-pill-icon">◎</div>
+      <div><div class="tool-pill-name">Perplexity</div><div class="tool-pill-role">Аналоги и примеры с источниками</div></div>
+      <div class="tool-pill-tag">Исследователь</div>
+    </div>
+    <div class="tool-pill tp-gem">
+      <div class="tool-pill-icon">✦</div>
+      <div><div class="tool-pill-name">Gemini</div><div class="tool-pill-role">Документы, таблицы, адаптация</div></div>
+      <div class="tool-pill-tag">Аналитик</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL MAP -->
+<section class="s bg2">
+  <div class="eyebrow">01 · Принцип разделения труда</div>
+  <h2 class="s-title rv">Каждый инструмент<br>делает одно — хорошо</h2>
+  <p style="font-size:15px;font-weight:300;color:var(--ink3);max-width:560px;line-height:1.8" class="rv d1">Главная ошибка — использовать один инструмент для всего. У каждого своя «зона силы», и мой рабочий процесс построен вокруг этого разграничения.</p>
+
+  <div class="tool-cards rv d2">
+    <div class="tc tc-claude">
+      <div class="tc-head">
+        <div class="tc-icon">◆</div>
+        <div><div class="tc-name">Claude</div><div class="tc-role-tag">Думающий партнёр</div></div>
+      </div>
+      <div class="tc-why">Лучший инструмент для диалога, в котором важна педагогическая логика. Не даёт «правильный ответ» — задаёт неудобные вопросы, находит противоречия, играет роли скептичных стейкхолдеров.</div>
+      <div class="tc-uses">
+        <div class="tc-use">Проверить архитектуру курса: «что здесь логически слабо?»</div>
+        <div class="tc-use">Сыграть роль скептика, HR-директора, уставшего учителя</div>
+        <div class="tc-use">Помочь сформулировать учебные результаты по Блуму</div>
+        <div class="tc-use">Ранжировать гипотезы по данным обратной связи</div>
+      </div>
+    </div>
+    <div class="tc tc-perp">
+      <div class="tc-head">
+        <div class="tc-icon">◎</div>
+        <div><div class="tc-name">Perplexity</div><div class="tc-role-tag">Исследователь</div></div>
+      </div>
+      <div class="tc-why">Ищет с источниками — это критично для педдизайна, где нужно отличать практику от рекламы. Быстро находит аналоги в смежных областях и исследования, которые иначе ушли бы часы на поиск.</div>
+      <div class="tc-uses">
+        <div class="tc-use">Найти исследования по конкретной теме с DOI/ссылками</div>
+        <div class="tc-use">Найти аналоги решения в других отраслях (не EdTech)</div>
+        <div class="tc-use">Проверить актуальность метода: есть ли критика в академии?</div>
+        <div class="tc-use">Собрать бенчмарки: средняя доходимость, NPS по отрасли</div>
+      </div>
+    </div>
+    <div class="tc tc-gem">
+      <div class="tc-head">
+        <div class="tc-icon">✦</div>
+        <div><div class="tc-name">Gemini</div><div class="tc-role-tag">Аналитик документов</div></div>
+      </div>
+      <div class="tc-why">Лучший из трёх для работы с большими объёмами текста и данных. Загружаю таблицу с 50 комментариями — получаю тематическую группировку. Загружаю методичку — получаю адаптацию под другую аудиторию.</div>
+      <div class="tc-uses">
+        <div class="tc-use">Сгруппировать открытые ответы по темам (NPS, интервью)</div>
+        <div class="tc-use">Адаптировать текст под другой уровень/аудиторию</div>
+        <div class="tc-use">Работать с таблицами: сравнить, структурировать, найти паттерн</div>
+        <div class="tc-use">Сжать длинный методический текст без потери смысла</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAM × AI -->
+<section class="s">
+  <div class="eyebrow">02 · AI на каждом этапе SAM</div>
+  <h2 class="s-title rv">Где именно<br>входит каждый<br>инструмент</h2>
+
+  <div class="sam-selector rv d1">
+    <div class="sam-tabs">
+      <button class="sam-tab act" onclick="showSam(0,this)">1 · Подготовка</button>
+      <button class="sam-tab" onclick="showSam(1,this)">2 · Дизайн</button>
+      <button class="sam-tab" onclick="showSam(2,this)">3 · Разработка</button>
+      <button class="sam-tab" onclick="showSam(3,this)">4 · Запуск</button>
+      <button class="sam-tab" onclick="showSam(4,this)">5 · Оценка</button>
+    </div>
+
+    <div class="sam-panel act" id="sp-0">
+      <div class="sp-col"><span class="sp-tool sp-perp">◎ Perplexity</span><div class="sp-task">Исследование рынка и практик</div><div class="sp-desc">Ищу, как другие решали похожую задачу. Не в EdTech — везде: онбординг в ИТ-компаниях, корпоративный L&D, армейская подготовка. Источники, не «я так думаю».</div></div>
+      <div class="sp-col"><span class="sp-tool sp-claude">◆ Claude</span><div class="sp-task">Проверка допущений об аудитории</div><div class="sp-desc">«Вот мой портрет ЦА. Сыграй роль человека, который в него не попадает. Что я упустила?» — это быстрее, чем ждать интервью, и выявляет слепые зоны до начала дизайна.</div></div>
+      <div class="sp-col"><span class="sp-tool sp-gem">✦ Gemini</span><div class="sp-task">Анализ обратной связи</div><div class="sp-desc">Если есть данные прошлого цикла (опросы, NPS, отзывы) — загружаю в Gemini. Прошу сгруппировать по теме и выделить топ-3 боли. 40 комментариев → структура за 5 минут.</div></div>
+    </div>
+    <div class="sam-panel" id="sp-1">
+      <div class="sp-col"><span class="sp-tool sp-claude">◆ Claude</span><div class="sp-task">Дьявольский адвокат для структуры</div><div class="sp-desc">Показываю архитектуру модуля. Прошу найти логические разрывы, задать вопросы «почему именно так?». Задание: стать директором, который режет бюджет. Что он уберёт первым?</div></div>
+      <div class="sp-col"><span class="sp-tool sp-perp">◎ Perplexity</span><div class="sp-task">Теоретическое обоснование</div><div class="sp-desc">«Есть ли исследования о том, что spaced repetition работает для лексики у взрослых? Мне нужна конкретная цитата с источником для обоснования перед стейкхолдером».</div></div>
+      <div class="sp-col"><span class="sp-tool sp-gem">✦ Gemini</span><div class="sp-task">Генерация вариантов структуры</div><div class="sp-desc">«Вот цель модуля и аудитория. Предложи 3 разные логики подачи: от простого к сложному, от проблемы к решению, от кейса к теории». Сравниваю, выбираю лучшую или гибриджу.</div></div>
+    </div>
+    <div class="sam-panel" id="sp-2">
+      <div class="sp-col"><span class="sp-tool sp-claude">◆ Claude</span><div class="sp-task">Проверка фидбэка в заданиях</div><div class="sp-desc">«Вот задание и мой текст обратной связи. Оно обучает или только оценивает? Перепиши так, чтобы ученик понял, почему он ошибся, а не просто узнал, что ошибся».</div></div>
+      <div class="sp-col"><span class="sp-tool sp-gem">✦ Gemini</span><div class="sp-task">Адаптация контента под аудиторию</div><div class="sp-desc">«Это методичка для преподавателей вузов. Адаптируй для учителей начальной школы: упрости язык до B1, убери академические термины, добавь примеры из класса». Основа готова — я дорабатываю.</div></div>
+      <div class="sp-col"><span class="sp-tool sp-perp">◎ Perplexity</span><div class="sp-task">Примеры для иллюстрации теории</div><div class="sp-desc">«Найди 2-3 реальных кейса, где геймификация в корпоративном обучении снизила отток сотрудников. С цифрами». Даю авторам примеры, а не абстрактные принципы.</div></div>
+    </div>
+    <div class="sam-panel" id="sp-3">
+      <div class="sp-col"><span class="sp-tool sp-claude">◆ Claude</span><div class="sp-task">Симуляция сопротивляющегося участника</div><div class="sp-desc">«Сыграй роль педагога, которого отправили на этот онбординг без его согласия. Прочитай введение и скажи, на каком моменте ты потеряешь интерес». Пилот до пилота.</div></div>
+      <div class="sp-col"><span class="sp-tool sp-gem">✦ Gemini</span><div class="sp-task">Финальная структура документов</div><div class="sp-desc">Загружаю черновой гайд авторам или методическую карту. Прошу привести к единому стилю, проверить последовательность, убрать дубли. Экономит 2-3 часа ручной редактуры.</div></div>
+      <div class="sp-col"><span class="sp-tool sp-perp">◎ Perplexity</span><div class="sp-task">Бенчмарки для KPI</div><div class="sp-desc">«Какой процент прохождения первого модуля считается нормой для корпоративного онбординга? Есть ли исследования по удержанию новых сотрудников в зависимости от длины программы?»</div></div>
+    </div>
+    <div class="sam-panel" id="sp-4">
+      <div class="sp-col"><span class="sp-tool sp-claude">◆ Claude</span><div class="sp-task">Генерация гипотез по данным</div><div class="sp-desc">«Вот данные: доходимость упала с 68% до 44% после добавления видеоблока. Вот три моих гипотезы. Ранжируй по вероятности и скажи, какую проверить первой и как».</div></div>
+      <div class="sp-col"><span class="sp-tool sp-gem">✦ Gemini</span><div class="sp-task">Анализ качественной обратной связи</div><div class="sp-desc">После пилота — 60 открытых ответов. Gemini группирует по теме, выделяет тональность, находит паттерны. Я вижу картину за 20 минут, а не за 3 часа ручной обработки.</div></div>
+      <div class="sp-col"><span class="sp-tool sp-perp">◎ Perplexity</span><div class="sp-task">Валидация выводов</div><div class="sp-desc">«Я сделала вывод, что X. Есть ли исследования, которые это опровергают?» Намеренно ищу контраргументы — чтобы не строить следующую версию на ошибочной гипотезе.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REAL PROMPTS -->
+<section class="s bg2">
+  <div class="eyebrow">03 · Промпт-инжиниринг</div>
+  <h2 class="s-title rv">Промпт — это<br>тоже проектирование</h2>
+  <p class="pe-intro rv d1">Хороший промпт — не «вопрос к нейросети», а спроектированная конструкция: роль, контекст, формат вывода, защита от галлюцинаций. Ниже — реальные промпты из моей работы с разбором применённых техник.</p>
+
+  <!-- ПРОМПТ 1: role + adversarial + structured -->
+  <div class="pe-card rv d1">
+    <div class="pe-head">
+      <div class="pe-goal"><div class="pe-goal-k">Задача</div><div class="pe-goal-v">Стресс-тест программы онбординга</div></div>
+      <span class="pe-tool claude">◆ Claude</span>
+    </div>
+    <div class="pe-body">
+      <div class="pe-prompt"><span class="tag">&lt;role&gt;</span>
+Ты — скептичный директор частной школы
+с 15-летним стажем. Ты считаешь онбординг
+педагогов лишней тратой ресурсов.
+<span class="tag">&lt;/role&gt;</span>
+
+<span class="tag">&lt;context&gt;</span>
+Структура нашей 6-недельной программы:
+<span class="var">{{программа}}</span>
+<span class="tag">&lt;/context&gt;</span>
+
+<span class="tag">&lt;task&gt;</span>
+Найди 3 слабых места, которые <span class="hl">не выдержат
+критики на бюджетном комитете</span>. Для каждого:
+1. в чём уязвимость
+2. какой вопрос задаст скептик
+3. что я должна добавить в защиту
+<span class="tag">&lt;/task&gt;</span>
+
+<span class="cmt"># Отвечай в роли, дай вопросы прямой речью</span></div>
+      <div class="pe-tech">
+        <div class="pe-tech-h">Техники</div>
+        <div class="pe-t"><span class="pe-t-n">1</span><span class="pe-t-tx"><b>Role prompting</b>Назначаю конкретную персону с мотивацией — модель генерирует возражения из реальной позиции, а не абстрактные.</span></div>
+        <div class="pe-t"><span class="pe-t-n">2</span><span class="pe-t-tx"><b>Adversarial prompting</b>Прошу AI атаковать мою работу, а не хвалить. Красная команда против слепых зон.</span></div>
+        <div class="pe-t"><span class="pe-t-n">3</span><span class="pe-t-tx"><b>XML-теги</b>Структурирую вход тегами role/context/task — модель чётко разделяет инструкцию и данные.</span></div>
+        <div class="pe-t"><span class="pe-t-n">4</span><span class="pe-t-tx"><b>Нумерованный вывод</b>Задаю формат ответа списком — получаю готовую к работе структуру, а не эссе.</span></div>
+      </div>
+    </div>
+    <div class="pe-why"><b>Зачем так:</b> обычный «проверь мою программу» даёт вежливое одобрение. Роль скептика + запрос на атаку вскрывают то, что я сама не вижу, — и я готовлю защиту до реального комитета.</div>
+  </div>
+
+  <!-- ПРОМПТ 2: anti-hallucination + grounding -->
+  <div class="pe-card rv d1">
+    <div class="pe-head">
+      <div class="pe-goal"><div class="pe-goal-k">Задача</div><div class="pe-goal-v">Доказательная база с защитой от выдумок</div></div>
+      <span class="pe-tool perp">◆ Perplexity</span>
+    </div>
+    <div class="pe-body">
+      <div class="pe-prompt">Найди исследования: как длина программы
+онбординга влияет на удержание сотрудников
+в первые 90 дней. Контексты: педагогический
+(учителя) и корпоративный L&amp;D.
+
+<span class="hl">Требования к ответу:</span>
+— только источники с указанием выборки (n)
+— приводи год и название организации
+— <span class="hl">если данных нет — так и напиши,</span>
+  <span class="hl">не выдумывай цифры</span>
+— раздели: что доказано / что спорно
+
+<span class="cmt"># формат: тезис → источник → ограничение</span></div>
+      <div class="pe-tech">
+        <div class="pe-tech-h">Техники</div>
+        <div class="pe-t"><span class="pe-t-n">1</span><span class="pe-t-tx"><b>Anti-hallucination guard</b>Явно разрешаю ответ «данных нет» — снимаю у модели стимул выдумывать правдоподобное.</span></div>
+        <div class="pe-t"><span class="pe-t-n">2</span><span class="pe-t-tx"><b>Grounding-требования</b>Требую выборку, год, организацию — отсекаю неверифицируемые утверждения.</span></div>
+        <div class="pe-t"><span class="pe-t-n">3</span><span class="pe-t-tx"><b>Эпистемическое разделение</b>«Доказано / спорно» заставляет модель маркировать уверенность, а не подавать всё как факт.</span></div>
+        <div class="pe-t"><span class="pe-t-n">4</span><span class="pe-t-tx"><b>Output-схема</b>Тезис→источник→ограничение — каждый факт сразу с проверяемой опорой.</span></div>
+      </div>
+    </div>
+    <div class="pe-why"><b>Зачем так:</b> LLM охотно выдумывает убедительные цифры. Разрешение сказать «нет данных» + обязательная выборка превращают поиск в доказательную базу, которой можно доверять в работе.</div>
+  </div>
+
+  <!-- ПРОМПТ 3: few-shot + audience transfer -->
+  <div class="pe-card rv d1">
+    <div class="pe-head">
+      <div class="pe-goal"><div class="pe-goal-k">Задача</div><div class="pe-goal-v">Перенос текста под другую аудиторию</div></div>
+      <span class="pe-tool gem">◆ Gemini</span>
+    </div>
+    <div class="pe-body">
+      <div class="pe-prompt">Перепиши академический текст об оценивании
+для учителей начальной школы.
+
+<span class="hl">Стиль задаю примером (тон, длина):</span>
+<span class="tag">&lt;example&gt;</span>
+Вход: «Валидность оценочного инструмента
+определяется соответствием конструкту»
+Выход: «Проверяем то, чему учили? Если
+учили писать — оцениваем письмо, а не
+скорость.»
+<span class="tag">&lt;/example&gt;</span>
+
+Текст для переноса: <span class="var">{{документ}}</span>
+
+<span class="cmt"># Сохрани смысл, смени регистр на разговорный</span>
+<span class="cmt"># Каждый термин — через бытовой пример</span></div>
+      <div class="pe-tech">
+        <div class="pe-tech-h">Техники</div>
+        <div class="pe-t"><span class="pe-t-n">1</span><span class="pe-t-tx"><b>Few-shot (one-shot)</b>Даю пару вход→выход — модель улавливает тон точнее, чем из словесного описания «попроще».</span></div>
+        <div class="pe-t"><span class="pe-t-n">2</span><span class="pe-t-tx"><b>Style transfer by example</b>Образец задаёт регистр лучше прилагательных: показываю, а не описываю стиль.</span></div>
+        <div class="pe-t"><span class="pe-t-n">3</span><span class="pe-t-tx"><b>Constraint stacking</b>Складываю ограничения: сохрани смысл + смени регистр + термин через пример.</span></div>
+        <div class="pe-t"><span class="pe-t-n">4</span><span class="pe-t-tx"><b>Audience anchoring</b>Якорю на конкретной аудитории — вывод калибруется под её язык, не «средний».</span></div>
+      </div>
+    </div>
+    <div class="pe-why"><b>Зачем так:</b> «напиши проще» даёт непредсказуемый результат. Один точный пример вход→выход задаёт стиль надёжнее абзаца инструкций — это разница между «надеюсь, поймёт» и «попадёт с первого раза».</div>
+  </div>
+
+  <div class="insight rv d1" style="margin-top:28px">
+    <div class="insight-icon">⌘</div>
+    <div class="insight-text"><b>Системный приём:</b> я держу библиотеку промпт-шаблонов с переменными <span style="font-family:'JetBrains Mono',monospace;font-size:12px">{{...}}</span> — роль-скептик, доказательный поиск, перенос под аудиторию. Промпт переиспользуется как артефакт, а не пишется заново каждый раз. Это инженерия, а не везение.</div>
+  </div>
+</section>
+
+<!-- GUARDRAILS -->
+<section class="s dark">
+  <div class="eyebrow">04 · Границы</div>
+  <h2 class="s-title rv" style="color:var(--milk)">Что AI<br>не заменяет</h2>
+  <p style="font-size:15px;font-weight:300;color:rgba(255,255,255,.65);max-width:540px;line-height:1.8;margin-bottom:8px" class="rv d1">Это важнее, чем список инструментов. Понимание границ — признак профессионала, а не ограничение.</p>
+
+  <div class="guardrails rv d2">
+    <div class="gr">
+      <div class="gr-n">Граница 01</div>
+      <div class="gr-title">Живые интервью со стейкхолдерами</div>
+      <div class="gr-desc">AI может симулировать директора — но не заменит настоящий разговор, где человек оговаривается, меняет мнение, показывает, чего он на самом деле боится. Контекст организации — только живой контакт.</div>
+      <span class="gr-why">AI здесь: подготовка вопросов, анализ записей после</span>
+    </div>
+    <div class="gr">
+      <div class="gr-n">Граница 02</div>
+      <div class="gr-title">Этические решения в обучении</div>
+      <div class="gr-desc">Как оценивать ученика с ОВЗ. Насколько жёсткий фидбэк уместен для конкретной аудитории. Что делать, если педагог явно выгорел. Эти решения требуют человеческого суждения, контекста и ответственности.</div>
+      <span class="gr-why">AI здесь: собрать практики, не принимать решение</span>
+    </div>
+    <div class="gr">
+      <div class="gr-n">Граница 03</div>
+      <div class="gr-title">Оценка поведенческих изменений (L3)</div>
+      <div class="gr-desc">Применяет ли педагог новые методы в классе — это видно только через наблюдение и контакт. Kirkpatrick L3 невозможен дистанционно и без отношений доверия.</div>
+      <span class="gr-why">AI здесь: структурировать наблюдение, анализ данных после</span>
+    </div>
+    <div class="gr">
+      <div class="gr-n">Граница 04</div>
+      <div class="gr-title">Первоначальная педагогическая интуиция</div>
+      <div class="gr-desc">AI помогает проверить и улучшить идею — но сама идея «здесь нужен не тест, а живая дискуссия» приходит из опыта и понимания аудитории. AI-запрос без этой интуиции даст шаблонный результат.</div>
+      <span class="gr-why">AI здесь: развить и критиковать идею, не породить её</span>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="s">
+  <div class="eyebrow">05 · Что изменилось</div>
+  <h2 class="s-title rv">Измеримый эффект<br>в рабочем процессе</h2>
+
+  <div class="impact-grid rv d1">
+    <div class="ig ig-1">
+      <div class="ig-num">×3</div>
+      <div class="ig-label">Больше итераций дизайна</div>
+      <div class="ig-desc">Раньше «проверить логику» означало ждать ревью коллеги. Теперь — диалог с Claude за 15 минут. Число версий модуля до пилота выросло с 2 до 6–8.</div>
+    </div>
+    <div class="ig ig-2">
+      <div class="ig-num">−70%</div>
+      <div class="ig-label">Времени на сбор аналогов</div>
+      <div class="ig-desc">Perplexity с источниками заменил 2–4 часа поиска по Google Scholar и LinkedIn. Это время теперь уходит на принятие решений, а не поиск.</div>
+    </div>
+    <div class="ig ig-3">
+      <div class="ig-num">+AI</div>
+      <div class="ig-label">Certifcates · Anthropic 2026</div>
+      <div class="ig-desc">AI Fluency for Educators + Teaching with AI. Не как строчка в резюме — как осознанная часть рабочего процесса, задокументированная в этом кейсе.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;padding:24px 28px;border:1.5px solid var(--iris);background:var(--iris-lt)" class="rv d2">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px">Главный вывод</div>
+    <div style="font-size:14px;font-weight:300;color:var(--ink2);line-height:1.75">AI не делает педагогический дизайн за меня. Он делает мои петли обратной связи короче — и это меняет всё. Больше версий → больше проверок → лучший продукт за то же время. Секрет не в инструменте, а в том, чтобы знать, когда его использовать — и когда отложить.</div>
+  </div>
+</section>
+
+  <div class="vchain rv d2">
+    <div class="vchain-hd">Методика → Метрика → Бизнес</div>
+    <div class="vchain-row">
+      <div class="vc-cell"><span class="vc-k m">Методика</span><span class="vc-t">AI на каждом этапе SAM (Claude/Perplexity/Gemini)</span><span class="vc-d">Короткие петли обратной связи: проверка логики и аналогов за минуты</span></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-cell"><span class="vc-k r">Метрика</span><span class="vc-t">×3 итераций дизайна, −70% времени на research</span><span class="vc-d">Больше проверенных версий продукта за тот же бюджет времени</span></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-cell"><span class="vc-k b">Бизнес</span><span class="vc-t">Снижение стоимости разработки курса</span><span class="vc-d">Быстрее цикл = дешевле каждый курс и быстрее time-to-market образовательного продукта</span></div>
+    </div>
+  </div>
+
+<footer class="cs-footer">
+  <div class="cs-footer-name">Ирина Летяго · Learning &amp; Product Designer</div>
+  <a href="index.html" class="cs-footer-back">← Вернуться в портфолио</a>
+</footer>
+
+<script>
+const pr=document.getElementById('progress');
+window.addEventListener('scroll',()=>{pr.style.width=Math.min(scrollY/(document.body.scrollHeight-innerHeight)*100,100)+'%'},{passive:true});
+const rv=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+
+function showSam(i,btn){
+  document.querySelectorAll('.sam-tab').forEach(b=>b.classList.remove('act'));
+  document.querySelectorAll('.sam-panel').forEach(p=>p.classList.remove('act'));
+  btn.classList.add('act');
+  document.getElementById('sp-'+i).classList.add('act');
+}
+</script>
+
+<script>
+(function(){
+  if(matchMedia('(pointer:coarse)').matches)return;
+  document.querySelectorAll('.insight,.dc2,.model,.res,.mn,.tc,.guardrail,.gr,.steal').forEach(el=>{
+    el.style.transition='transform .25s cubic-bezier(.16,1,.3,1)';
+    el.addEventListener('mousemove',e=>{
+      const r=el.getBoundingClientRect();
+      const rx=((e.clientY-r.top)/r.height-.5)*-2.2;
+      const ry=((e.clientX-r.left)/r.width-.5)*2.2;
+      el.style.transform=`perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+    });
+    el.addEventListener('mouseleave',()=>{el.style.transform=''});
+  });
+})();
+</script>
+</body>
+</html>

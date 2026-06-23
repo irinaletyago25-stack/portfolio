@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейс: Онбординг 21 → 6 дней — школа «Азбука» · Ирина Летяго</title>
+<meta name="description" content="Перевод запросов стейкхолдеров в педагогические цели, двойная система онбординга, психометрика, наставничество без вертикали.">
+<meta property="og:title" content="Кейс «Азбука»: онбординг 21 → 6 дней · Ирина Летяго">
+<meta property="og:description" content="Перевод запросов стейкхолдеров в педагогические цели, двойная система онбординга, психометрика, наставничество без вертикали.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,200;0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --milk:#FAFAF6;--milk2:#F4F3EE;--milk3:#E8E6DF;
+  --ink:#0E0E0C;--ink2:#2A2A26;--ink3:#7A7A72;
+  --gold:#E8A000;--fire:#E03A2F;--iris:#6A4FC8;--jade:#1DB87A;
+  --gold-lt:#FFF7E0;--fire-lt:#FFF0EF;--iris-lt:#F0ECFF;--jade-lt:#E6FFF5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);overflow-x:hidden;line-height:1.6}
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--fire);width:0;z-index:200;transition:width .08s linear;pointer-events:none}
+.cs-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,250,246,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--milk3)}
+.cs-nav-back{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--ink3);transition:color .2s}
+.cs-nav-back:hover{color:var(--ink)}
+.cs-nav-label{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+
+/* HERO */
+.hero{min-height:92vh;display:grid;grid-template-columns:1.1fr .9fr;padding-top:52px;border-bottom:1px solid var(--milk3)}
+.hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:80px 48px}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--ink3)}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,6vw,84px);font-weight:700;letter-spacing:-.04em;line-height:.95;margin-bottom:28px}
+.hero-title .red{color:var(--fire)}
+.hero-title .strike{position:relative;display:inline-block}
+.hero-title .strike::after{content:'';position:absolute;left:-4%;right:-4%;top:52%;height:5px;background:var(--fire);transform:rotate(-3deg);border-radius:3px}
+.hero-sub{font-size:16px;font-weight:300;line-height:1.8;color:var(--ink2);max-width:460px;margin-bottom:44px}
+.hero-meta{display:flex;gap:36px;flex-wrap:wrap}
+.hm{border-left:2px solid var(--milk3);padding-left:16px}
+.hm-n{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.hm-n.red{color:var(--fire)}
+.hm-l{font-size:11px;color:var(--ink3);margin-top:4px}
+.hero-right{background:var(--fire-lt);display:flex;align-items:center;justify-content:center;padding:80px 40px;position:relative}
+.day-counter{text-align:center}
+.dc-old{font-family:'Space Grotesk',sans-serif;font-size:clamp(70px,9vw,130px);font-weight:700;color:var(--ink3);position:relative;line-height:1}
+.dc-old::after{content:'';position:absolute;left:-6%;right:-6%;top:50%;height:7px;background:var(--fire);transform:rotate(-4deg);border-radius:4px}
+.dc-arrow{font-size:34px;color:var(--fire);margin:8px 0}
+.dc-new{font-family:'Space Grotesk',sans-serif;font-size:clamp(100px,14vw,200px);font-weight:700;color:var(--fire);line-height:1;letter-spacing:-.05em}
+.dc-label{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin-top:10px}
+
+/* SECTIONS */
+.s{padding:96px 48px}
+.s.dark{background:var(--ink);color:var(--milk)}
+.s.tint{background:var(--milk2)}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';display:inline-block;width:14px;height:1px;background:currentColor}
+.s.dark .eyebrow{color:rgba(255,255,255,.35)}
+.s-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,4.8vw,58px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:44px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}
+
+.insight{border:1.5px solid var(--fire);background:var(--fire-lt);border-radius:18px;padding:24px 28px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+.insight-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.insight-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;margin-bottom:5px}
+.insight-text{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.7}
+
+/* TRANSLATION TABLE — политический → педагогический */
+.tr-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--milk3);overflow-x:auto}
+.tr-tbl{width:100%;border-collapse:collapse;min-width:680px}
+.tr-tbl th{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:12px 16px;text-align:left;border-bottom:1px solid var(--milk3)}
+.th-pol{background:var(--fire-lt);color:var(--fire);width:30%}
+.th-ped{background:var(--gold-lt);color:#8a6200;width:35%}
+.th-msr{background:var(--jade-lt);color:#0d6b3a;width:35%}
+.tr-tbl td{padding:14px 16px;border-bottom:1px solid var(--milk3);font-size:13px;font-weight:300;line-height:1.65;color:var(--ink2);vertical-align:top}
+.tr-tbl tr:last-child td{border-bottom:none}
+.td-pol{background:#fffafa;font-style:italic;color:var(--ink3)}
+.td-ped{background:#fffef7}
+.td-msr{background:#f7fdf9}
+.tr-arrow{color:var(--fire);font-weight:700}
+
+/* DUAL MODELS */
+.models{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.model{border-radius:20px;padding:32px;border:1px solid var(--milk3)}
+.m-summer{background:var(--gold-lt)}
+.m-fast{background:var(--fire-lt)}
+.m-badge{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+.m-summer .m-badge{background:rgba(232,160,0,.18);color:#8a6200}
+.m-fast .m-badge{background:rgba(224,58,47,.15);color:var(--fire)}
+.m-name{font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;margin-bottom:6px}
+.m-dur{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink3);margin-bottom:18px}
+.m-list{list-style:none}
+.m-list li{font-size:13px;font-weight:300;color:var(--ink2);padding:7px 0 7px 20px;position:relative;line-height:1.6;border-bottom:1px solid rgba(14,14,12,.06)}
+.m-list li:last-child{border-bottom:none}
+.m-list li::before{content:'→';position:absolute;left:0;font-size:11px;top:9px}
+.m-summer .m-list li::before{color:#8a6200}
+.m-fast .m-list li::before{color:var(--fire)}
+.m-for{margin-top:16px;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.6);font-size:12px;color:var(--ink2);line-height:1.6}
+.m-for strong{font-weight:600}
+
+/* JOURNEY MAP */
+.jmap{border-radius:14px;overflow:hidden;border:1px solid var(--milk3);overflow-x:auto}
+.jtbl{width:100%;border-collapse:collapse;min-width:740px}
+.jtbl th{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:11px 14px;background:var(--ink);color:var(--milk);text-align:left}
+.jtbl td{padding:12px 14px;border-bottom:1px solid var(--milk3);font-size:12px;font-weight:300;line-height:1.6;color:var(--ink2);vertical-align:top}
+.jtbl tr:nth-child(even) td{background:var(--milk2)}
+.jtbl tr:last-child td{border-bottom:none}
+.js{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:var(--ink)}
+.jsub{font-size:10px;color:var(--ink3);margin-top:2px}
+.jem{font-size:17px;display:block;line-height:1}
+.jemt{font-size:10px;color:var(--ink3)}
+
+/* DECISIONS */
+.decision-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.dc2{border-radius:18px;padding:28px;background:#161614;border:1px solid rgba(255,255,255,.08)}
+.dc2.chosen{background:var(--fire);border-color:var(--fire)}
+.dc2-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px}
+.dc2.chosen .dc2-label{color:rgba(255,255,255,.75)}
+.dc2-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--milk);margin-bottom:10px}
+.dc2-why{font-size:12px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.55)}
+.dc2.chosen .dc2-why{color:rgba(255,255,255,.85)}
+.dc2-verdict{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-top:14px;border:1px solid}
+.v-no{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.5)}
+.v-yes{border-color:var(--milk);color:var(--ink);background:var(--milk)}
+
+/* RESULTS */
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.res{border-radius:18px;padding:30px;background:#FFFEFB;border:1px solid var(--milk3);transition:transform .2s}
+.res:hover{transform:translateY(-3px)}
+.res-n{font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:8px}
+.r1 .res-n{color:var(--fire)}.r2 .res-n{color:var(--gold)}.r3 .res-n{color:var(--jade)}
+.res-l{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.res-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.65}
+
+.cs-footer{padding:44px 48px;border-top:1px solid var(--milk3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.cs-footer-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700}
+.cs-footer-back{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:14px 28px;background:var(--ink);color:var(--milk);border-radius:14px;transition:all .2s}
+.cs-footer-back:hover{background:var(--fire)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:70px 20px 36px}
+  .hero-right{padding:44px 20px;min-height:300px}
+  .s{padding:60px 20px}
+  .cs-nav{padding:0 20px}
+  .models,.decision-grid,.results{grid-template-columns:1fr}
+  .cs-footer{padding:30px 20px}
+}
+
+.core{margin-top:14px}
+.core-title{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.core-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.core-item{display:flex;gap:14px;padding:18px 20px;border-radius:16px;background:#FFFEFB;border:1px solid var(--milk3)}
+.core-item.ci-hl{border-color:var(--gold);background:var(--gold-lt);grid-column:1/-1}
+.ci-ic{font-size:20px;flex-shrink:0;line-height:1.3}
+.ci-t{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ci-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.65}
+.ci-hl .ci-d{color:var(--ink2)}
+@media(max-width:700px){.core-grid{grid-template-columns:1fr}}
+
+.mentor-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.mn{border-radius:20px;padding:28px;background:#FFFEFB;border:1px solid var(--milk3);border-top:4px solid}
+.mn-gold{border-top-color:var(--gold)}
+.mn-iris{border-top-color:var(--iris)}
+.mn-jade{border-top-color:var(--jade)}
+.mn-n{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--ink3);margin-bottom:10px}
+.mn-t{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.mn-s{font-size:11px;color:var(--ink3);margin-bottom:16px;font-style:italic}
+.mn-list{list-style:none}
+.mn-list li{font-size:13px;font-weight:300;color:var(--ink2);padding:7px 0 7px 18px;position:relative;line-height:1.55;border-bottom:1px solid rgba(14,14,12,.05)}
+.mn-list li:last-child{border-bottom:none}
+.mn-list li::before{content:'→';position:absolute;left:0;font-size:11px;top:9px}
+.mn-gold .mn-list li::before{color:var(--gold)}
+.mn-iris .mn-list li::before{color:var(--iris)}
+.mn-jade .mn-list li::before{color:var(--jade)}
+.mentor-value{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.mv-chip{font-size:12px;font-weight:400;color:var(--ink2);padding:10px 16px;border-radius:999px;background:#FFFEFB;border:1px solid var(--milk3);line-height:1.4}
+@media(max-width:900px){.mentor-grid{grid-template-columns:1fr}}
+
+/* value chain методика→метрика→деньги */
+.vchain{margin-top:28px;border-radius:18px;overflow:hidden;border:1px solid var(--milk3)}
+.vchain-hd{padding:14px 20px;background:var(--ink);color:var(--milk);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.vchain-row{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;background:var(--milk3);gap:1px}
+.vc-cell{background:#FFFEFB;padding:20px 18px;display:flex;flex-direction:column;gap:6px}
+.vc-k{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.vc-k.m{color:var(--iris)}.vc-k.r{color:var(--gold)}.vc-k.b{color:var(--jade)}
+.vc-t{font-size:13px;font-weight:500;color:var(--ink);line-height:1.4}
+.vc-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.55}
+.vc-arrow{background:#FFFEFB;display:flex;align-items:center;justify-content:center;padding:0 8px;font-size:18px;color:var(--ink3)}
+@media(max-width:760px){.vchain-row{grid-template-columns:1fr}.vc-arrow{padding:6px;transform:rotate(90deg)}}
+
+/* доступность: фокус с клавиатуры */
+a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focus-visible,input:focus-visible,.art-hd:focus-visible,.wf-step:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+*:focus:not(:focus-visible){outline:none}
+
+/* мягкие тени карточек — глубина как на главной */
+.insight,.dc2,.model,.res,.tc,.gr,.std-card,.cl-section,.mn,.vc-cell,.ab-arm,.ab-hyp,.task-card{box-shadow:0 1px 3px rgba(14,14,12,.04)}
+.insight:hover,.tc:hover,.model:hover,.mn:hover,.dc2:hover{box-shadow:0 8px 24px rgba(14,14,12,.08)}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<nav class="cs-nav">
+  <a class="cs-nav-back" href="index.html">← Портфолио</a>
+  <span class="cs-nav-label">Кейс 02 · Школа «Азбука»</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Кейс 02 · K-12 · Онбординг · Психометрика</p>
+    <h1 class="hero-title">Онбординг<br><span class="strike">три недели</span><br><span class="red">шесть дней</span></h1>
+    <p class="hero-sub">Как перевести язык учредителей в педагогические цели, построить систему онбординга с нуля — и сократить срок выхода педагога на уроки в 3,5 раза без потери качества.</p>
+    <div class="hero-meta">
+      <div class="hm"><div class="hm-n hm-n red">−65%</div><div class="hm-l">срок экстренного онбординга</div></div>
+      <div class="hm"><div class="hm-n">15+</div><div class="hm-l">педагогов онбордировано</div></div>
+      <div class="hm"><div class="hm-n">1–9</div><div class="hm-l">классы · онлайн + очно</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="day-counter">
+      <div class="dc-old">21 день</div>
+      <div class="dc-arrow">↓</div>
+      <div class="dc-new">6</div>
+      <div class="dc-label">дней до первого урока</div>
+    </div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="eyebrow">01 · Контекст</div>
+  <h2 class="s-title rv">Школа, где заказчики<br>говорят на другом языке</h2>
+  <div class="insight rv d1">
+    <div class="insight-icon">⚠</div>
+    <div>
+      <div class="insight-title">Ситуация на старте</div>
+      <div class="insight-text">Частная школа, 1–9 классы, онлайн- и очное отделения. Учредители — депутаты с чёткой ценностной рамкой, но запросы формулируются политическим языком: «воспитать патриотов», «вернуть классическое образование». Методической системы нет. Новый педагог выходил на уроки через 2–3 недели хаотичного «введения в курс дела» — а при срочной замене (педагог заболел, уволился среди года) система просто ломалась.</div>
+    </div>
+  </div>
+  <div class="rv d2">
+    <div class="eyebrow" style="margin-top:24px">Артефакт — Перевод запроса в цель</div>
+    <div class="tr-wrap">
+      <table class="tr-tbl">
+        <thead><tr><th class="th-pol">Запрос учредителя</th><th class="th-ped">Педагогическая цель</th><th class="th-msr">Как измеряем</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-pol">«Воспитать уважение к истории страны»</td>
+            <td class="td-ped">Ученик анализирует исторические события с опорой на источники, формулирует собственную аргументированную позицию</td>
+            <td class="td-msr">Рубрика оценки эссе: критерии «работа с источником» и «аргументация» · диагностика 2 раза в год</td>
+          </tr>
+          <tr>
+            <td class="td-pol">«Вернуть классическое качество образования»</td>
+            <td class="td-ped">Прозрачная система оценивания с психометрикой: каждый уровень описан поведенческими дескрипторами</td>
+            <td class="td-msr">Входные/итоговые диагностики · контрольные срезы · динамика по каждому ученику</td>
+          </tr>
+          <tr>
+            <td class="td-pol">«Дети должны уметь трудиться»</td>
+            <td class="td-ped">Проектная деятельность с фиксацией личного вклада, самооценкой и рефлексией по итогам</td>
+            <td class="td-msr">Лист самооценки проекта · карта вклада участника · презентация результата</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="insight rv" style="border-color:var(--gold);background:var(--gold-lt);margin-top:28px">
+    <div class="insight-icon">🔑</div>
+    <div>
+      <div class="insight-title">Ключевой навык кейса</div>
+      <div class="insight-text">Я не спорила с формулировками и не переубеждала заказчика. Я переводила: каждый ценностный запрос — в проверяемую педагогическую цель с измеримым результатом. Учредители видели уважение к их рамке, педагоги получали рабочие инструменты, ученики — внятные критерии. Это и есть стейкхолдер-менеджмент в образовании.</div>
+    </div>
+  </div>
+</section>
+
+<section class="s dark">
+  <div class="eyebrow">02 · Дизайн-решение</div>
+  <h2 class="s-title rv" style="color:var(--milk)">Почему две модели,<br>а не одна</h2>
+  <div class="decision-grid rv d1">
+    <div class="dc2">
+      <div class="dc2-label">Вариант А · Отклонён</div>
+      <div class="dc2-title">Нанимать только опытных</div>
+      <div class="dc2-why">«Берём готовых — онбординг не нужен». Не работает: рынок частных школ узкий, опытные дороги, а главное — даже опытному педагогу нужно освоить ценностную рамку и стандарты именно этой школы.</div>
+      <span class="dc2-verdict v-no">✗ Дорого и не решает</span>
+    </div>
+    <div class="dc2">
+      <div class="dc2-label">Вариант Б · Отклонён</div>
+      <div class="dc2-title">Один длинный онбординг</div>
+      <div class="dc2-why">Классические 3–4 недели погружения. Хорошо в августе — фатально в ноябре: когда педагог уходит среди года, класс не может ждать месяц. Система без экстренного режима — не система.</div>
+      <span class="dc2-verdict v-no">✗ Ломается при срочной замене</span>
+    </div>
+    <div class="dc2 chosen">
+      <div class="dc2-label">Вариант В · Выбран</div>
+      <div class="dc2-title">Двойная система: летняя + экстренная</div>
+      <div class="dc2-why">Два режима с общим ядром. Летний — глубокое погружение 4–6 недель. Экстренный — критический минимум за 5–7 дней + достройка фоновыми модулями уже в работе. Куратор и чек-поинты в обоих.</div>
+      <span class="dc2-verdict v-yes">✓ Работает в любом сценарии</span>
+    </div>
+  </div>
+</section>
+
+<section class="s tint">
+  <div class="eyebrow">03 · Артефакт — Две модели</div>
+  <h2 class="s-title rv">Общее ядро,<br>разные траектории</h2>
+  <div class="models rv d1">
+    <div class="model m-summer">
+      <span class="m-badge">Плановый набор</span>
+      <div class="m-name">Летний онбординг</div>
+      <div class="m-dur">4–6 недель · до начала учебного года</div>
+      <ul class="m-list">
+        <li>Полное погружение в методическую концепцию и ценности</li>
+        <li>Стандарты оценивания + психометрика с практикой на кейсах</li>
+        <li>Серия пробных уроков с разбором каждого</li>
+        <li>Знакомство с семьями и индивидуальными особенностями учеников</li>
+        <li>Вход в олимпиадное направление и проектную деятельность</li>
+      </ul>
+      <div class="m-for"><strong>Для кого:</strong> педагоги, нанятые весной–летом под новый учебный год</div>
+    </div>
+    <div class="model m-fast">
+      <span class="m-badge">Срочная замена</span>
+      <div class="m-name">Экстренный онбординг</div>
+      <div class="m-dur">5–7 дней · выход среди учебного года</div>
+      <ul class="m-list">
+        <li>День 1–2: критический минимум — расписание, стандарты, куратор</li>
+        <li>День 3–4: методминимум + наблюдение за уроком опытного коллеги</li>
+        <li>День 5: пробный урок под наблюдением + обратная связь</li>
+        <li>Выход на уроки с наставником на связи 30 дней</li>
+        <li>Фоновые модули достраивают полную картину за 4 недели работы</li>
+      </ul>
+      <div class="m-for"><strong>Для кого:</strong> замена заболевшего или ушедшего педагога — класс не ждёт</div>
+    </div>
+  </div>
+  <div class="core rv d2">
+    <div class="core-title">// Общее ядро обеих моделей</div>
+    <div class="core-grid">
+      <div class="core-item"><div class="ci-ic">🎯</div><div><div class="ci-t">Чёткие критерии завершения</div><div class="ci-d">Онбординг закончен не «по ощущениям», а по проверяемому порогу: пробный урок ≥3/4 по рубрике.</div></div></div>
+      <div class="core-item"><div class="ci-ic">📍</div><div><div class="ci-t">Check-in: 1-я неделя + 1-й месяц</div><div class="ci-d">Две контрольные точки после выхода — тревожность и пробелы ловятся до того, как станут проблемой.</div></div></div>
+      <div class="core-item"><div class="ci-ic">📋</div><div><div class="ci-t">Памятки и шаблоны</div><div class="ci-d">Каждый этап подкреплён материалом, к которому можно вернуться, — память не перегружается в первые дни.</div></div></div>
+      <div class="core-item ci-hl"><div class="ci-ic">🔁</div><div><div class="ci-t">Сбор ОС об самом онбординге</div><div class="ci-d">Онбординг — тоже продукт: после каждого прохождения я собирала обратную связь и итерировала процесс. Метрики → гипотезы → изменения — не только для курсов, но и для HR-процессов.</div></div></div>
+    </div>
+  </div>
+  <div class="insight rv d2" style="margin-top:28px">
+    <div class="insight-icon">💡</div>
+    <div>
+      <div class="insight-title">Педагогический принцип за решением</div>
+      <div class="insight-text">Экстренный режим — это не «урезанный» летний. Это другая архитектура: критический минимум сразу + достройка в работе (just-in-time learning). Взрослый учится лучше, когда знание нужно прямо сейчас — поэтому фоновые модули в первый месяц работы усваиваются быстрее, чем тот же материал «впрок» летом.</div>
+    </div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="eyebrow">04 · Артефакт — Journey Map экстренного режима</div>
+  <h2 class="s-title rv">Шесть дней<br>по часам и эмоциям</h2>
+  <div class="jmap rv d1">
+    <table class="jtbl">
+      <thead><tr><th>Этап</th><th>Задачи педагога</th><th>Инструменты</th><th>Поддержка</th><th>Эмоция</th><th>Контроль</th></tr></thead>
+      <tbody>
+        <tr><td><span class="js">До начала</span><div class="jsub">−2 дня</div></td><td>Welcome-пакет, концепция школы, доступы</td><td>Методгид, памятка</td><td>Назначен куратор</td><td><span class="jem">😟</span><span class="jemt">Тревога</span></td><td>—</td></tr>
+        <tr><td><span class="js">День 1–2</span><div class="jsub">Минимум</div></td><td>Расписание, стандарты, знакомство с командой</td><td>Чек-лист первых дней</td><td>Куратор рядом весь день</td><td><span class="jem">🤔</span><span class="jemt">Ориентация</span></td><td>Check-in вечером</td></tr>
+        <tr><td><span class="js">День 3–4</span><div class="jsub">Методминимум</div></td><td>Оценивание, рубрики, наблюдение за уроком коллеги</td><td>Онбординг-модуль, рубрики</td><td>Разбор наблюдений</td><td><span class="jem">📚</span><span class="jemt">Погружение</span></td><td>Тест базовых стандартов</td></tr>
+        <tr><td><span class="js">День 5</span><div class="jsub">Проба</div></td><td>Пробный урок под наблюдением методиста</td><td>Чек-лист наблюдения</td><td>ОС в тот же день</td><td><span class="jem">😬</span><span class="jemt">Стресс → рост</span></td><td><strong>Урок ≥3/4 по рубрике</strong></td></tr>
+        <tr><td><span class="js">День 6+</span><div class="jsub">Выход</div></td><td>Собственные уроки, фоновые модули</td><td>Асинхронные модули</td><td>Наставник 30 дней</td><td><span class="jem">🌱</span><span class="jemt">Уверенность</span></td><td>Check-in 7/30 дней</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="s tint">
+  <div class="eyebrow">05 · Наставничество</div>
+  <h2 class="s-title rv">Рост без вертикали:<br>три уровня наставничества</h2>
+  <div class="mentor-grid rv d1">
+    <div class="mn mn-gold">
+      <div class="mn-n">01</div>
+      <div class="mn-t">Формальное наставничество</div>
+      <div class="mn-s">ментор → менти</div>
+      <ul class="mn-list">
+        <li>Закреплённый куратор с первого дня</li>
+        <li>План 30/60/90 дней с критериями готовности</li>
+        <li>Регулярные check-in вместо «спроси, если что»</li>
+        <li>Наставник получает инструменты, не только обязанность</li>
+      </ul>
+    </div>
+    <div class="mn mn-iris">
+      <div class="mn-n">02</div>
+      <div class="mn-t">Peer-to-peer</div>
+      <div class="mn-s">равный → равному</div>
+      <ul class="mn-list">
+        <li>Взаимное наблюдение уроков с обратной связью</li>
+        <li>Совместный разбор сложных случаев</li>
+        <li>Мини-мастер-классы коллег для коллег</li>
+        <li>Горизонтальные рабочие группы по задачам</li>
+      </ul>
+    </div>
+    <div class="mn mn-jade">
+      <div class="mn-n">03</div>
+      <div class="mn-t">Горизонтальный рост</div>
+      <div class="mn-s">развитие без повышения</div>
+      <ul class="mn-list">
+        <li>Роли внутри команды: наставник, ментор, эксперт</li>
+        <li>Участие в разработке программ школы</li>
+        <li>ИПР с измеримыми метриками роста</li>
+        <li>Публичное признание вклада</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mentor-value rv d2">
+    <span class="mv-chip">⚙ Разгрузка руководителя — команда решает внутри себя</span>
+    <span class="mv-chip">🤝 Удержание — рост возможен без вертикали</span>
+    <span class="mv-chip">🧠 Сохранение знаний — экспертиза не уходит с людьми</span>
+    <span class="mv-chip">💬 Культура ОС — обратная связь становится нормой</span>
+  </div>
+</section>
+
+<section class="s dark">
+  <div class="eyebrow">06 · Результат</div>
+  <h2 class="s-title rv" style="color:var(--milk)">Что изменилось</h2>
+  <div class="results rv d1">
+    <div class="res r1"><div class="res-n">−65%</div><div class="res-l">Срок экстренного онбординга</div><div class="res-d">С 2–3 недель хаоса до 5–7 дней системы. Класс больше не остаётся без педагога на месяц.</div></div>
+    <div class="res r2"><div class="res-n">15+</div><div class="res-l">Педагогов через систему</div><div class="res-d">Тьюторы, учителя, психологи — у каждой роли свой трек внутри общего ядра.</div></div>
+    <div class="res r3"><div class="res-n">✓</div><div class="res-l">Готовность к лицензированию</div><div class="res-d">Программы и система оценивания приведены к требованиям лицензирования образовательной деятельности.</div></div>
+  </div>
+  <div class="insight rv d2" style="background:rgba(224,58,47,.1);border-color:rgba(224,58,47,.4);margin-top:32px">
+    <div class="insight-icon">🔑</div>
+    <div>
+      <div class="insight-title" style="color:var(--milk)">Главный вывод</div>
+      <div class="insight-text" style="color:rgba(255,255,255,.75)">Хороший онбординг — это не количество материала, а архитектура момента: что человеку нужно знать сейчас, что — через неделю, а что он усвоит только в реальной работе. Сократить срок в 3,5 раза удалось не урезанием — а правильной последовательностью.</div>
+    </div>
+  </div>
+</section>
+
+  <div class="vchain rv d2">
+    <div class="vchain-hd">Методика → Метрика → Бизнес</div>
+    <div class="vchain-row">
+      <div class="vc-cell"><span class="vc-k m">Методика</span><span class="vc-t">Двойная система онбординга (летний + экстренный)</span><span class="vc-d">Критический минимум за 5–7 дней + достройка в работе (just-in-time)</span></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-cell"><span class="vc-k r">Метрика</span><span class="vc-t">Срок выхода педагога −65%</span><span class="vc-d">Класс не простаивает без преподавателя 2–3 недели при срочной замене</span></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-cell"><span class="vc-k b">Бизнес</span><span class="vc-t">Сохранённая выручка и репутация</span><span class="vc-d">Простой класса = отток учеников и возвраты оплаты; быстрый онбординг закрывает этот риск напрямую</span></div>
+    </div>
+  </div>
+
+<footer class="cs-footer">
+  <div class="cs-footer-name">Ирина Летяго · Learning × Product Designer</div>
+  <a href="index.html" class="cs-footer-back">← Вернуться в портфолио</a>
+</footer>
+
+<script>
+const pr=document.getElementById('progress');
+window.addEventListener('scroll',()=>{pr.style.width=Math.min(scrollY/(document.body.scrollHeight-innerHeight)*100,100)+'%'},{passive:true});
+const rv=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+</script>
+
+<script>
+(function(){
+  if(matchMedia('(pointer:coarse)').matches)return;
+  document.querySelectorAll('.insight,.dc2,.model,.res,.mn,.tc,.guardrail,.gr,.steal').forEach(el=>{
+    el.style.transition='transform .25s cubic-bezier(.16,1,.3,1)';
+    el.addEventListener('mousemove',e=>{
+      const r=el.getBoundingClientRect();
+      const rx=((e.clientY-r.top)/r.height-.5)*-2.2;
+      const ry=((e.clientX-r.left)/r.width-.5)*2.2;
+      el.style.transform=`perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+    });
+    el.addEventListener('mouseleave',()=>{el.style.transform=''});
+  });
+})();
+</script>
+</body>
+</html>

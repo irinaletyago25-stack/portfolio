@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кухня методиста — рабочие артефакты · Ирина Летяго</title>
+<meta name="description" content="Реальные рабочие инструменты методиста: ТЗ эксперту, чеклист ревью, карточка метрики, гайд кастдева, воркфлоу. Как устроена работа изнутри.">
+<meta property="og:title" content="Кухня методиста · Ирина Летяго">
+<meta property="og:description" content="5 рабочих артефактов: ТЗ эксперту, чеклист ревью, карточка метрики, гайд кастдева, воркфлоу дня">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--milk:#FAFAF6;--milk2:#F4F3EE;--milk3:#E8E6DF;--ink:#0E0E0C;--ink2:#2A2A26;--ink3:#7A7A72;
+--gold:#E8A000;--fire:#E03A2F;--iris:#6A4FC8;--jade:#1DB87A;
+--gold-lt:#FFF7E0;--fire-lt:#FFF0EF;--iris-lt:#F0ECFF;--jade-lt:#E6FFF5}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);overflow-x:hidden;line-height:1.6}
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0;z-index:200;transition:width .08s linear;pointer-events:none}
+.cs-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,250,246,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--milk3)}
+.cs-nav-back{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--ink3);transition:color .2s}
+.cs-nav-back:hover{color:var(--ink)}
+.cs-nav-label{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+
+.hero{padding:120px 48px 56px;border-bottom:1px solid var(--milk3);position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:60% 40% 55% 45%/50% 60% 40% 50%;filter:blur(3px);opacity:.4;pointer-events:none;animation:bf 15s ease-in-out infinite}
+.b1{width:320px;height:300px;background:var(--gold-lt);top:-70px;right:6%}
+.b2{width:240px;height:220px;background:var(--iris-lt);bottom:-60px;left:10%;animation-delay:-7s}
+@keyframes bf{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(14px,-16px) rotate(3deg)}}
+.hero-in{position:relative;z-index:1;max-width:760px}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--ink3)}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,6vw,84px);font-weight:700;letter-spacing:-.04em;line-height:.96;margin-bottom:24px}
+.hero-title .gold{color:var(--gold)}
+.hero-sub{font-size:16px;font-weight:300;line-height:1.8;color:var(--ink2);max-width:540px}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.hm-pill{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;padding:8px 16px;border-radius:999px;background:#FFFEFB;border:1px solid var(--milk3);color:var(--ink2)}
+
+.tk{padding:64px 48px;max-width:1100px;margin:0 auto}
+.intro{font-size:15px;font-weight:300;color:var(--ink3);line-height:1.8;max-width:600px;margin-bottom:40px}
+
+.art{border:1px solid var(--milk3);border-radius:20px;margin-bottom:14px;overflow:hidden;background:#FFFEFB;transition:border-color .25s}
+.art.open{border-color:var(--ink2)}
+.art-hd{display:flex;align-items:center;gap:18px;padding:24px 28px;cursor:pointer;user-select:none}
+.art-num{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:.1em;flex-shrink:0}
+.art-ic{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.a1 .art-ic{background:var(--gold-lt)}.a2 .art-ic{background:var(--jade-lt)}.a3 .art-ic{background:var(--fire-lt)}.a4 .art-ic{background:var(--iris-lt)}.a5 .art-ic{background:var(--gold-lt)}
+.art-tt{flex:1}
+.art-name{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--ink);line-height:1.2}
+.art-desc{font-size:13px;font-weight:300;color:var(--ink3);margin-top:3px}
+.art-tog{width:30px;height:30px;border-radius:50%;border:1px solid var(--milk3);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--ink3);flex-shrink:0;transition:transform .3s,background .2s}
+.art.open .art-tog{transform:rotate(45deg);background:var(--ink);color:var(--milk);border-color:var(--ink)}
+.art-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
+.art.open .art-body{max-height:1600px}
+.art-inner{padding:4px 28px 30px}
+
+/* DOC шаблон */
+.doc{border-radius:14px;border:1px solid var(--milk3);overflow:hidden;font-family:'JetBrains Mono',monospace}
+.doc-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;background:var(--milk2);border-bottom:1px solid var(--milk3)}
+.doc-dot{width:10px;height:10px;border-radius:50%}
+.dd-r{background:#E8716A}.dd-y{background:#E8C04A}.dd-g{background:#6FCB8E}
+.doc-name{margin-left:8px;font-size:11px;color:var(--ink3)}
+.doc-body{padding:20px 22px;background:#FFFEFB;font-size:12.5px;line-height:1.8;color:var(--ink2)}
+.doc-body .k{color:var(--iris);font-weight:500}
+.doc-body .c{color:var(--ink3);font-style:italic}
+.doc-h{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ink);font-size:13px;margin:14px 0 6px;display:block}
+.doc-h:first-child{margin-top:0}
+
+/* чеклист */
+.cl{display:flex;flex-direction:column;gap:7px}
+.cl-grp{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0d6b3a;margin:12px 0 2px}
+.cl-grp:first-child{margin-top:0}
+.cl-i{display:flex;gap:11px;align-items:flex-start;padding:9px 14px;border-radius:10px;background:var(--milk2);cursor:pointer;transition:background .15s}
+.cl-i:hover{background:var(--jade-lt)}
+.cl-box{width:18px;height:18px;border-radius:5px;border:2px solid var(--ink3);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;transition:all .15s}
+.cl-i.done .cl-box{background:var(--jade);border-color:var(--jade)}
+.cl-t{font-size:13px;color:var(--ink2);line-height:1.5}
+.cl-i.done .cl-t{color:var(--ink3);text-decoration:line-through}
+.cl-prog{margin-top:14px;display:flex;align-items:center;gap:12px}
+.cl-track{flex:1;height:8px;border-radius:99px;background:var(--milk3);overflow:hidden}
+.cl-fill{height:100%;background:var(--jade);width:0;transition:width .3s;border-radius:99px}
+.cl-pct{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--jade);min-width:38px}
+
+/* метрика */
+.mt-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mt-card{border-radius:14px;border:1px solid var(--milk3);padding:18px;background:#FFFEFB}
+.mt-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;margin-bottom:3px}
+.mt-def{font-size:11px;color:var(--ink3);margin-bottom:14px;line-height:1.5}
+.mt-zones{display:flex;flex-direction:column;gap:5px}
+.mt-z{display:flex;align-items:center;gap:9px;font-size:12px;padding:6px 10px;border-radius:8px}
+.mt-z.g{background:var(--jade-lt)}.mt-z.y{background:var(--gold-lt)}.mt-z.r{background:var(--fire-lt)}
+.mt-zd{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.mt-z.g .mt-zd{background:var(--jade)}.mt-z.y .mt-zd{background:var(--gold)}.mt-z.r .mt-zd{background:var(--fire)}
+.mt-zt{color:var(--ink2)}.mt-zt b{font-weight:600}
+
+/* воркфлоу */
+.wf{display:flex;flex-direction:column;gap:0}
+.wf-step{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--milk2);position:relative}
+.wf-step:last-child{border-bottom:none}
+.wf-time{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:#8a6200}
+.wf-act{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.wf-tool{font-size:11.5px;color:var(--ink3);line-height:1.5}
+.wf-tool b{color:var(--iris);font-weight:500}
+
+.note{margin-top:14px;font-size:11px;font-style:italic;color:var(--ink3);line-height:1.6}
+
+.cta{padding:56px 48px;border-top:1px solid var(--milk3);text-align:center}
+.cta-t{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:700;margin-bottom:18px;letter-spacing:-.02em}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-btn{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:15px 30px;border-radius:999px;text-decoration:none;transition:transform .2s}
+.cta-btn:hover{transform:translateY(-2px)}
+.cb-d{background:var(--ink);color:var(--milk)}
+.cb-l{background:var(--gold);color:var(--ink)}
+
+.foot{padding:40px 48px;border-top:1px solid var(--milk3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--ink3)}
+
+@media(max-width:760px){
+  .hero{padding:90px 20px 40px}.tk{padding:48px 20px}.cs-nav{padding:0 20px}
+  .cta{padding:44px 20px}.foot{padding:28px 20px}
+  .art-hd{padding:18px 18px;gap:12px}.art-inner{padding:4px 18px 24px}
+  .mt-grid{grid-template-columns:1fr}
+  .wf-step{grid-template-columns:1fr;gap:4px}
+}
+
+.mt-ns{display:flex;flex-direction:column;gap:5px;padding:18px 20px;border-radius:14px;background:var(--ink);margin-bottom:10px}
+.mt-ns-k{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.mt-ns-v{font-size:14px;font-weight:500;color:var(--milk);line-height:1.4}
+.mt-tag{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--iris-lt);color:var(--iris);vertical-align:middle;margin-left:6px}
+.mt-tag.gd{background:var(--fire-lt);color:var(--fire)}
+.mt-guard{border-style:dashed}
+
+/* связь с кейсом + теория */
+.art-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center}
+.art-case{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--ink);color:var(--milk);text-decoration:none;transition:background .2s}
+.art-case:hover{background:var(--gold);color:var(--ink)}
+.art-theory{font-size:11px;color:var(--ink3)}
+.art-theory summary{cursor:pointer;font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:.04em;list-style:none;display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:999px;border:1px solid var(--milk3);transition:border-color .2s}
+.art-theory summary::-webkit-details-marker{display:none}
+.art-theory summary::before{content:'📚';font-size:12px}
+.art-theory[open] summary{border-color:var(--ink2)}
+.art-theory-body{margin-top:10px;padding:14px 16px;background:var(--milk2);border-radius:12px;font-size:12px;line-height:1.7;color:var(--ink2)}
+.art-theory-body b{font-family:'Space Grotesk',sans-serif;color:var(--ink)}
+
+/* слайдер было/стало */
+.tz-slider{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--milk3);user-select:none;--pos:50%;margin-bottom:4px}
+.tz-side{padding:22px}
+.tz-before{background:var(--fire-lt)}
+.tz-after{position:absolute;inset:0;background:var(--jade-lt);clip-path:inset(0 0 0 var(--pos));padding:22px}
+.tz-tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:12px}
+.tz-before .tz-tag{background:rgba(224,58,47,.15);color:var(--fire)}
+.tz-after .tz-tag{background:rgba(29,184,122,.18);color:#0d6b3a}
+.tz-txt{font-size:12.5px;line-height:1.6;color:var(--ink2)}
+.tz-txt b{font-weight:600;color:var(--ink)}
+.tz-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:var(--ink);cursor:ew-resize;z-index:5;transform:translateX(-50%)}
+.tz-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--milk);display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 10px rgba(14,14,12,.3)}
+
+/* кликабельный воркфлоу */
+.wf-step{cursor:pointer}
+.wf-step.wf-open{background:var(--milk2);border-radius:12px;padding-left:14px;padding-right:14px}
+.wf-detail{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1);grid-column:1/-1}
+.wf-step.wf-open .wf-detail{max-height:400px}
+.wf-detail-in{padding:14px 0 6px;display:grid;gap:8px}
+.wf-d-row{display:grid;grid-template-columns:90px 1fr;gap:12px;font-size:12px;line-height:1.5}
+.wf-d-k{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);padding-top:2px}
+.wf-d-v{color:var(--ink2)}
+.wf-d-v.err{color:var(--fire)}
+.wf-hint{font-size:10px;color:var(--ink3);font-style:italic;margin-top:2px}
+
+/* матрица компетенций (артефакт 6) */
+.cm-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--milk3);overflow-x:auto}
+.cm{width:100%;border-collapse:collapse;min-width:560px}
+.cm th{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:12px 14px;text-align:left;background:var(--ink);color:var(--milk)}
+.cm th:first-child{background:var(--ink2)}
+.cm td{padding:11px 14px;border-bottom:1px solid var(--milk3);font-size:12px;color:var(--ink2);line-height:1.4;vertical-align:top}
+.cm td:first-child{font-weight:600;color:var(--ink);background:var(--milk2);font-family:'Space Grotesk',sans-serif;font-size:11px}
+.cm tr:last-child td{border-bottom:none}
+.cm-lvl{display:inline-block;width:100%;height:5px;border-radius:99px;background:var(--milk3);position:relative;margin-top:5px}
+.cm-lvl::after{content:'';position:absolute;left:0;top:0;bottom:0;border-radius:99px;width:var(--l);background:var(--jade)}
+.profile-box{border-radius:14px;border:1px solid var(--milk3);overflow:hidden;margin-bottom:14px}
+.pb-hd{padding:14px 18px;background:var(--iris);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700}
+.pb-body{padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pb-item{font-size:12px;line-height:1.5}
+.pb-k{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--iris);display:block;margin-bottom:3px}
+.pb-v{color:var(--ink2)}
+@media(max-width:760px){.pb-body{grid-template-columns:1fr}}
+
+/* связка с кейсом + теория */
+.art-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center}
+.art-case{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--jade-lt);color:#0d6b3a;text-decoration:none;transition:transform .2s}
+.art-case:hover{transform:translateY(-2px)}
+.art-theory{flex:1;min-width:200px}
+.theory-tog{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--ink3);cursor:pointer;user-select:none;display:inline-flex;align-items:center;gap:6px;padding:7px 0}
+.theory-tog:hover{color:var(--ink)}
+.theory-tog .tt-ar{transition:transform .25s}
+.theory-tog.open .tt-ar{transform:rotate(90deg)}
+.theory-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.theory-body.open{max-height:300px}
+.theory-in{padding:12px 16px;margin-top:8px;border-radius:12px;background:var(--milk2);font-size:12px;line-height:1.7;color:var(--ink2)}
+.theory-in b{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--ink)}
+.theory-in .src{color:var(--iris);font-weight:500}
+
+/* слайдер было/стало */
+.tz{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--milk3);user-select:none;--p:50%;margin-bottom:4px}
+.tz-side{padding:22px 24px;min-height:240px}
+.tz-raw{background:var(--fire-lt)}
+.tz-done{position:absolute;inset:0;background:var(--jade-lt);clip-path:inset(0 0 0 var(--p));padding:22px 24px}
+.tz-tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:999px;margin-bottom:12px}
+.tz-raw .tz-tag{background:rgba(224,58,47,.15);color:var(--fire)}
+.tz-done .tz-tag{background:rgba(29,184,122,.18);color:#0d6b3a}
+.tz-txt{font-size:13px;line-height:1.65;color:var(--ink2)}
+.tz-txt b{font-weight:600;color:var(--ink)}
+.tz-q{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink3);font-style:italic;line-height:1.7}
+.tz-h{position:absolute;top:0;bottom:0;left:var(--p);width:3px;background:var(--ink);cursor:ew-resize;z-index:5;transform:translateX(-50%)}
+.tz-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--milk);display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 10px rgba(14,14,12,.3)}
+.tz-hint{font-size:11px;color:#8a6200;font-weight:700;text-align:center;margin-bottom:10px;font-family:'Space Grotesk',sans-serif}
+
+/* кликабельный воркфлоу */
+.wf-step{cursor:pointer;transition:background .2s;border-radius:10px;padding-left:10px;padding-right:10px}
+.wf-step:hover{background:var(--milk2)}
+.wf-detail{max-height:0;overflow:hidden;transition:max-height .35s ease;grid-column:1/-1}
+.wf-step.open .wf-detail{max-height:400px}
+.wf-detail-in{padding:14px 0 6px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wf-d{padding:11px 14px;border-radius:10px;background:var(--milk2);font-size:12px;line-height:1.5}
+.wf-d-k{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--iris);display:block;margin-bottom:3px}
+.wf-d.err{background:var(--fire-lt)}
+.wf-d.err .wf-d-k{color:var(--fire)}
+.wf-d-v{color:var(--ink2)}
+@media(max-width:600px){.wf-detail-in{grid-template-columns:1fr}}
+
+/* матрица компетенций */
+.cm-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--milk3);overflow-x:auto}
+.cm{width:100%;border-collapse:collapse;min-width:560px}
+.cm th{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:11px 13px;background:var(--ink);color:var(--milk);text-align:left}
+.cm th:first-child{position:sticky;left:0}
+.cm td{padding:11px 13px;border-bottom:1px solid var(--milk3);font-size:12px;color:var(--ink2);vertical-align:top}
+.cm tr:last-child td{border-bottom:none}
+.cm .cm-comp{font-weight:600;color:var(--ink);background:var(--milk2)}
+.cm-lvl{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700}
+.cm-l1{background:var(--fire-lt);color:var(--fire)}
+.cm-l2{background:var(--gold-lt);color:#8a6200}
+.cm-l3{background:var(--iris-lt);color:var(--iris)}
+.cm-l4{background:var(--jade-lt);color:#0d6b3a}
+.cm-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;font-size:11px;color:var(--ink3)}
+.cm-legend span{display:inline-flex;align-items:center;gap:6px}
+.prof{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.prof-c{padding:16px 18px;border-radius:12px;background:var(--milk2)}
+.prof-k{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.prof-v{font-size:13px;color:var(--ink);line-height:1.5}
+@media(max-width:600px){.prof{grid-template-columns:1fr}}
+
+/* микро-итог сверху */
+.art-takeaway{display:flex;gap:10px;align-items:flex-start;padding:13px 16px;border-radius:12px;background:var(--gold-lt);border-left:3px solid var(--gold);margin-bottom:18px}
+.at-ic{font-size:15px;flex-shrink:0;line-height:1.4}
+.at-t{font-size:13px;font-weight:500;color:var(--ink);line-height:1.5}
+.at-t b{font-weight:700}
+
+/* симулятор метрики */
+.sim{border-radius:14px;border:1px solid var(--milk3);padding:22px;background:#FFFEFB;margin-bottom:14px}
+.sim-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.sim-label{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--ink2)}
+.sim-val{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;letter-spacing:-.02em;transition:color .2s}
+.sim-range{width:100%;-webkit-appearance:none;appearance:none;height:8px;border-radius:99px;background:linear-gradient(90deg,var(--fire) 0%,var(--gold) 50%,var(--jade) 100%);outline:none;margin:12px 0 18px}
+.sim-range::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--ink);cursor:pointer;border:3px solid #fff;box-shadow:0 2px 8px rgba(14,14,12,.3)}
+.sim-range::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--ink);cursor:pointer;border:3px solid #fff}
+.sim-verdict{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:12px;transition:background .25s}
+.sim-v-zone{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:999px;flex-shrink:0}
+.sim-v-action{font-size:13px;line-height:1.55;color:var(--ink2)}
+.sim-v-action b{font-weight:600;color:var(--ink)}
+
+/* модель-бейдж в воркфлоу */
+.wf-model{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--iris-lt);color:var(--iris);margin-left:8px;vertical-align:middle}
+
+/* доступность: фокус с клавиатуры */
+a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focus-visible,input:focus-visible,.art-hd:focus-visible,.wf-step:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+*:focus:not(:focus-visible){outline:none}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<nav class="cs-nav">
+  <a class="cs-nav-back" href="index.html">← Портфолио</a>
+  <span class="cs-nav-label">Кухня методиста</span>
+</nav>
+
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="hero-in">
+    <p class="hero-eyebrow">Закулисье · рабочие инструменты</p>
+    <h1 class="hero-title">Кухня<br><span class="gold">методиста</span></h1>
+    <p class="hero-sub">Кейсы показывают результат. Эта страница — про процесс: реальные инструменты, которыми я работаю каждую неделю. То, что обычно не показывают, но именно это отличает систему от импровизации.</p>
+    <div class="hero-meta">
+      <span class="hm-pill">7 артефактов</span>
+      <span class="hm-pill">переиспользуемые</span>
+      <span class="hm-pill">из реальной практики</span>
+    </div>
+  </div>
+</section>
+
+<div class="tk">
+  <p class="intro">Каждый артефакт кликабельный. Это не витринные шаблоны, а рабочие инструменты с методическим основанием: elicitation-протокол, критериальная рубрика приёмки, метрический фреймворк, discovery по Mom Test. Детали обезличены — структура и терминология настоящие.</p>
+
+  <!-- 1. ТЗ эксперту -->
+  <div class="art a1" id="art1">
+    <div class="art-hd" onclick="toggleArt('art1')">
+      <span class="art-num">01</span>
+      <div class="art-ic">📋</div>
+      <div class="art-tt"><div class="art-name">Бриф на извлечение экспертизы (SME)</div><div class="art-desc">Структурированный elicitation-протокол: снимаю tacit knowledge эксперта, минимизируя число итераций</div></div>
+      <div class="art-tog">+</div>
+    </div>
+    <div class="art-body"><div class="art-inner">
+      <div class="art-takeaway"><span class="at-ic">◆</span><span class="at-t"><b>Принцип:</b> эксперт даёт сырьё (опыт), методист — структуру. Бриф снимает у SME барьер «я не методист».</span></div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-dot dd-r"></span><span class="doc-dot dd-y"></span><span class="doc-dot dd-g"></span><span class="doc-name">sme_elicitation_brief.md</span></div>
+        <div class="doc-body">
+          <span class="doc-h">Контекст модуля</span>Терминальная цель: менеджер отрабатывает ценовое возражение по структуре «присоединение → аргумент → проверка» · аудитория: junior sales
+          <span class="doc-h">Запрос на экспертизу <span class="c"># critical incident technique</span></span>
+          <span class="k">1.</span> 5–7 возражений с наибольшей частотностью в вашей практике<br>
+          <span class="k">2.</span> Вербатим вашей реакции — дословно, без пост-рационализации<br>
+          <span class="k">3.</span> 1–2 failure cases <span class="c"># антипаттерны нужны для дизайна дистракторов</span>
+          <span class="doc-h">Канал сдачи</span>Аудио / текст — снимаю cognitive load с SME, транскрибирую и структурирую сама<br><span class="c"># эксперт не несёт методическую нагрузку — только domain knowledge</span>
+          <span class="doc-h">Вне скоупа</span>Теоретическая рамка и таксономия — моя зона. От вас — только tacit knowledge из поля.
+          <span class="doc-h">SLA</span>сбор → пт · ревью первого драфта → пн · 1 итерация уточнений заложена в план
+        </div>
+      </div>
+      <div class="tz-hint">⇔ потяните: сырьё эксперта → готовый фрагмент</div>
+      <div class="tz" id="tz1">
+        <div class="tz-side tz-raw">
+          <span class="tz-tag">✗ Сырьё от SME</span>
+          <div class="tz-q">«Ну смотри, когда клиент говорит дорого, я обычно… ну типа спрашиваю а с чем сравниваете. Иногда работает. Главное не сразу скидку давать, а то они чувствуют слабину…»</div>
+        </div>
+        <div class="tz-side tz-done">
+          <span class="tz-tag">✓ После методиста</span>
+          <div class="tz-txt"><b>Микро-сценарий.</b> Клиент: «Это дорого». <b>Шаг 1 — присоединение:</b> «Понимаю, цена важна». <b>Шаг 2 — вопрос:</b> «С чем сравниваете?». <b>Дистрактор-ловушка:</b> сразу дать скидку → сигнал слабости. <b>Проверка:</b> выбери верный первый ход из 3.</div>
+        </div>
+        <div class="tz-h" id="tz1h"><div class="tz-grip">⇔</div></div>
+      </div>
+      <p class="note">В основе — critical incident technique и разделение ролей: SME отвечает за валидность предметного содержания, методист — за инструктивную целостность. Видно ценность методиста: из неструктурированного tacit knowledge собирается задание с присоединением, дистрактором и проверкой.</p>
+      <div class="art-links">
+        <a href="lingo-magic-case.html" class="art-case">🔗 в действии: Lingo Magic</a>
+        <div class="art-theory">
+          <span class="theory-tog" onclick="toggleTheory(this)"><span class="tt-ar">▸</span> откуда это</span>
+          <div class="theory-body"><div class="theory-in"><b>Cognitive Task Analysis</b> и <span class="src">critical incident technique (Flanagan, 1954)</span> — методы извлечения экспертного знания, которое сам эксперт не осознаёт. Принцип first principles из <span class="src">Merrill, First Principles of Instruction (2002)</span>: обучение строится вокруг реальных задач.</div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- 2. Чеклист ревью -->
+  <div class="art a2" id="art2">
+    <div class="art-hd" onclick="toggleArt('art2')">
+      <span class="art-num">02</span>
+      <div class="art-ic">✅</div>
+      <div class="art-tt"><div class="art-name">QA-чеклист инструктивного дизайна</div><div class="art-desc">Критериальная рубрика приёмки контента: alignment, валидность заданий, нагрузка, измеримость</div></div>
+      <div class="art-tog">+</div>
+    </div>
+    <div class="art-body"><div class="art-inner">
+      <div class="art-takeaway"><span class="at-ic">◆</span><span class="at-t"><b>Принцип:</b> приёмка по критериям, а не по вкусу. Рубрика даёт inter-rater reliability на 60+ авторов.</span></div>
+      <div class="cl" id="checklist">
+        <div class="cl-grp">Constructive alignment</div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Учебный результат сформулирован через наблюдаемый глагол по Блуму (не «знать/понимать»)</div></div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Активности и оценивание выровнены с результатом — constructive alignment соблюдён</div></div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Соотношение practice / exposition в пользу retrieval practice, а не пассивного контента</div></div>
+        <div class="cl-grp">Валидность оценивания</div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Дистракторы диагностичны — отражают типовые misconceptions, не случайный шум</div></div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Задание обладает authentic-контекстом (situated learning), а не абстрактной формулировкой</div></div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Обратная связь elaborated — объясняет причину ошибки, работает как formative assessment</div></div>
+        <div class="cl-grp">Cognitive load</div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Extraneous load снижен: нет split-attention, лишнего декора, жаргона без глоссария</div></div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Germane load дозирован — chunking соблюдён, один шаг несёт один смысловой элемент</div></div>
+        <div class="cl-grp">Измеримость</div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Определена leading-метрика успеха модуля и её целевой порог</div></div>
+      </div>
+      <div class="cl-prog"><div class="cl-track"><div class="cl-fill" id="clfill"></div></div><span class="cl-pct" id="clpct">0%</span></div>
+      <p class="note">Рубрика операционализирует приёмку контента: ревью идёт по критериям (constructive alignment, валидность дистракторов, cognitive load theory), а не по вкусу. Единый стандарт для 60+ авторов обеспечивает inter-rater reliability — разные ревьюеры приходят к одной оценке.</p>
+      <div class="art-links">
+        <a href="lingo-magic-case.html" class="art-case">🔗 в действии: Lingo Magic</a>
+        <div class="art-theory">
+          <span class="theory-tog" onclick="toggleTheory(this)"><span class="tt-ar">▸</span> откуда это</span>
+          <div class="theory-body"><div class="theory-in"><b>Constructive alignment</b> — <span class="src">Biggs (1996)</span>: цели, активности и оценивание должны быть согласованы. <b>Cognitive load theory</b> — <span class="src">Sweller (1988)</span>: extraneous / germane нагрузка. Уровни результатов — <span class="src">таксономия Блума (1956, ред. Anderson & Krathwohl, 2001)</span>.</div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- 3. Карточка метрики -->
+  <div class="art a3" id="art3">
+    <div class="art-hd" onclick="toggleArt('art3')">
+      <span class="art-num">03</span>
+      <div class="art-ic">📊</div>
+      <div class="art-tt"><div class="art-name">Метрический фреймворк модуля</div><div class="art-desc">North star, leading / lagging, guardrail-метрики с порогами и протоколом реакции</div></div>
+      <div class="art-tog">+</div>
+    </div>
+    <div class="art-body"><div class="art-inner">
+      <div class="art-takeaway"><span class="at-ic">◆</span><span class="at-t"><b>Принцип:</b> метрика без порога и контрметрики — просто число. Решение закладывается до запуска.</span></div>
+      <div class="sim">
+        <div class="sim-top">
+          <span class="sim-label">Доходимость модуля — подвигайте ползунок</span>
+          <span class="sim-val" id="simVal">75%</span>
+        </div>
+        <input type="range" class="sim-range" id="simRange" min="40" max="95" value="75" oninput="simUpdate(this.value)">
+        <div class="sim-verdict" id="simVerdict">
+          <span class="sim-v-zone" id="simZone"></span>
+          <span class="sim-v-action" id="simAction"></span>
+        </div>
+      </div>
+      <div class="mt-ns">
+        <span class="mt-ns-k">North star модуля</span>
+        <span class="mt-ns-v">Доля учеников, применивших навык в реальной задаче после прохождения</span>
+      </div>
+      <div class="mt-grid">
+        <div class="mt-card">
+          <div class="mt-name">Доходимость <span class="mt-tag">leading</span></div>
+          <div class="mt-def">% дошедших до финального экрана · ранний сигнал, реагирует быстро</div>
+          <div class="mt-zones">
+            <div class="mt-z g"><span class="mt-zd"></span><span class="mt-zt"><b>&gt;75%</b> — в пределах нормы, мониторинг</span></div>
+            <div class="mt-z y"><span class="mt-zd"></span><span class="mt-zt"><b>60–75%</b> — drop-off анализ по экранам</span></div>
+            <div class="mt-z r"><span class="mt-zd"></span><span class="mt-zt"><b>&lt;60%</b> — гипотеза + A/B на проблемном шаге</span></div>
+          </div>
+        </div>
+        <div class="mt-card">
+          <div class="mt-name">D7 retention <span class="mt-tag">lagging</span></div>
+          <div class="mt-def">% вернувшихся на 7-й день · подтверждает ценность с задержкой</div>
+          <div class="mt-zones">
+            <div class="mt-z g"><span class="mt-zd"></span><span class="mt-zt">растёт cohort-over-cohort — ок</span></div>
+            <div class="mt-z y"><span class="mt-zd"></span><span class="mt-zt">плато — гипотезы по engagement loop</span></div>
+            <div class="mt-z r"><span class="mt-zd"></span><span class="mt-zt">падение когорты — P0, разбор воронки</span></div>
+          </div>
+        </div>
+        <div class="mt-card mt-guard">
+          <div class="mt-name">Точность ответов <span class="mt-tag gd">guardrail</span></div>
+          <div class="mt-def">Контрметрика: страхует от роста доходимости за счёт «проскакивания»</div>
+          <div class="mt-zones">
+            <div class="mt-z g"><span class="mt-zd"></span><span class="mt-zt">стабильна при росте доходимости — здоровый рост</span></div>
+            <div class="mt-z r"><span class="mt-zd"></span><span class="mt-zt">падает — доходимость растёт ложно, откат</span></div>
+          </div>
+        </div>
+        <div class="mt-card mt-guard">
+          <div class="mt-name">Сегментация <span class="mt-tag gd">cut</span></div>
+          <div class="mt-def">Любую метрику читаю в разрезе: язык, платформа, новые / вернувшиеся</div>
+          <div class="mt-zones">
+            <div class="mt-z y"><span class="mt-zd"></span><span class="mt-zt">среднее скрывает провал сегмента — смотрю по когортам</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="note">Различаю leading и lagging метрики (быстрый сигнал vs подтверждение ценности) и всегда задаю guardrail — контрметрику, которая ловит «улучшение ценой деградации». Порог + протокол реакции фиксирую заранее: это переводит аналитику из созерцания дашборда в принятие решений. Перед раскаткой проверяю статзначимость, а не реагирую на шум.</p>
+      <div class="art-links">
+        <a href="lingo-magic-case.html#ab" class="art-case">🔗 в действии: A/B в Lingo Magic</a>
+        <div class="art-theory">
+          <span class="theory-tog" onclick="toggleTheory(this)"><span class="tt-ar">▸</span> откуда это</span>
+          <div class="theory-body"><div class="theory-in"><b>North star + guardrail</b> — продуктовая практика (<span class="src">Amplitude, Sean Ellis</span>). <b>Оценка обучения</b> — <span class="src">модель Киркпатрика (1959)</span>: реакция → усвоение → поведение → результат. Leading/lagging — из управления по метрикам (<span class="src">Doerr, Measure What Matters</span>).</div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- 4. Гайд кастдева -->
+  <div class="art a4" id="art4">
+    <div class="art-hd" onclick="toggleArt('art4')">
+      <span class="art-num">04</span>
+      <div class="art-ic">🎤</div>
+      <div class="art-tt"><div class="art-name">Discovery-гайд (JTBD)</div><div class="art-desc">Протокол проблемного интервью по Mom Test: поведение и jobs-to-be-done, не мнения</div></div>
+      <div class="art-tog">+</div>
+    </div>
+    <div class="art-body"><div class="art-inner">
+      <div class="art-takeaway"><span class="at-ic">◆</span><span class="at-t"><b>Принцип:</b> спрашиваю про прошлое поведение, не про будущие намерения. Behavioral data вместо мнений.</span></div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-dot dd-r"></span><span class="doc-dot dd-y"></span><span class="doc-dot dd-g"></span><span class="doc-name">discovery_jtbd.md</span></div>
+        <div class="doc-body">
+          <span class="doc-h">Принцип <span class="c"># The Mom Test</span></span>Прошлое поведение вместо будущих намерений и комплиментов. Гипотетика и оценки продукта — невалидны.
+          <span class="doc-h">Job-to-be-done</span>«Вспомните последний раз, когда пытались освоить [навык]. Что вас на это толкнуло?»<br><span class="c"># вытаскиваю триггер и job, а не «как обычно учитесь»</span>
+          <span class="doc-h">Боль + laddering</span><span class="k">→</span> Где застряли? Что сделали в этот момент?<br><span class="k">→</span> А почему это было важно? <span class="c"># laddering до глубинного мотива</span>
+          <span class="doc-h">Текущее решение</span><span class="k">→</span> Чем пользуетесь сейчас? Что обходите вручную?<br><span class="c"># existing alternatives = реальные конкуренты</span>
+          <span class="doc-h">Контекст применения</span><span class="k">→</span> Среда, устройство, триггеры отвлечения <span class="c"># situational context для дизайна</span>
+          <span class="doc-h">Стоп-вопрос</span>«О чём мне стоило спросить, но я не спросила?» <span class="c"># снимает рамку интервьюера</span>
+          <span class="doc-h">Анти-вопросы</span>«Вам бы понравилось…», «Стали бы вы…» — leading и гипотетика, выкидываю.
+        </div>
+      </div>
+      <p class="note">Протокол построен на jobs-to-be-done и Mom Test: фиксирую behavioral data (что человек реально делал), а не attitudinal (что думает). Laddering вскрывает глубинный мотив за поверхностной болью. Применяла в исследовании для дерева метрик Uchi.ru — интервью со школьниками с переносом продуктовой discovery-практики в образовательный контекст.</p>
+      <div class="art-links">
+        <a href="index.html#cases" class="art-case">🔗 в действии: дерево метрик Uchi.ru</a>
+        <div class="art-theory">
+          <span class="theory-tog" onclick="toggleTheory(this)"><span class="tt-ar">▸</span> откуда это</span>
+          <div class="theory-body"><div class="theory-in"><b>The Mom Test</b> — <span class="src">Rob Fitzpatrick (2013)</span>: спрашивай о прошлом поведении, не о будущих намерениях. <b>Jobs-to-be-Done</b> — <span class="src">Clayton Christensen</span>: люди «нанимают» продукт на job. <b>Laddering</b> — техника из means-end теории (<span class="src">Reynolds & Gutman</span>).</div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- 5. Воркфлоу -->
+  <div class="art a5" id="art5">
+    <div class="art-hd" onclick="toggleArt('art5')">
+      <span class="art-num">05</span>
+      <div class="art-ic">🗓</div>
+      <div class="art-tt"><div class="art-name">Процесс разработки (SAM + backward design)</div><div class="art-desc">Итеративный workflow от бизнес-запроса до запуска — каждый этап опирается на свой артефакт</div></div>
+      <div class="art-tog">+</div>
+    </div>
+    <div class="art-body"><div class="art-inner">
+      <div class="art-takeaway"><span class="at-ic">◆</span><span class="at-t"><b>Принцип:</b> backward design от результата + короткие итерации. Каждый этап опирается на свой артефакт.</span></div>
+      <div class="wf">
+        <div class="wf-step" onclick="toggleWf(this)"><div class="wf-time">01 · Analysis</div><div><div class="wf-act">Needs analysis: задача за запросом<span class="wf-model">ADDIE · Analysis</span></div><div class="wf-tool">Проблемное интервью стейкхолдера и ЦА · <b>Discovery-гайд</b></div></div>
+          <div class="wf-detail"><div class="wf-detail-in">
+            <div class="wf-d"><span class="wf-d-k">Вход</span><span class="wf-d-v">Запрос «нужен курс по X»</span></div>
+            <div class="wf-d"><span class="wf-d-k">Что делаю</span><span class="wf-d-v">Отделяю симптом от причины: точно ли проблема в обучении, а не в процессе или мотивации</span></div>
+            <div class="wf-d"><span class="wf-d-k">Выход</span><span class="wf-d-v">Подтверждённая потребность + портрет ЦА</span></div>
+            <div class="wf-d"><span class="wf-d-k">Артефакт</span><span class="wf-d-v">Discovery-гайд (JTBD)</span></div>
+            <div class="wf-d err" style="grid-column:1/-1"><span class="wf-d-k">Типичная ошибка</span><span class="wf-d-v">Принять запрос буквально и сделать курс там, где performance gap не равен knowledge gap</span></div>
+          </div></div>
+        </div>
+        <div class="wf-step" onclick="toggleWf(this)"><div class="wf-time">02 · Design</div><div><div class="wf-act">Backward design от результата<span class="wf-model">Wiggins &amp; McTighe</span></div><div class="wf-tool">Терминальная и enabling-цели по Блуму · <b>шаблон цели</b></div></div>
+          <div class="wf-detail"><div class="wf-detail-in">
+            <div class="wf-d"><span class="wf-d-k">Вход</span><span class="wf-d-v">Бизнес-потребность</span></div>
+            <div class="wf-d"><span class="wf-d-k">Что делаю</span><span class="wf-d-v">Формулирую измеримый результат, потом проектирую назад: оценивание → активности → контент</span></div>
+            <div class="wf-d"><span class="wf-d-k">Выход</span><span class="wf-d-v">Карта целей с constructive alignment</span></div>
+            <div class="wf-d"><span class="wf-d-k">Артефакт</span><span class="wf-d-v">Шаблон learning objective</span></div>
+            <div class="wf-d err" style="grid-column:1/-1"><span class="wf-d-k">Типичная ошибка</span><span class="wf-d-v">Начать с контента «что рассказать», а не с результата «что человек сможет делать»</span></div>
+          </div></div>
+        </div>
+        <div class="wf-step" onclick="toggleWf(this)"><div class="wf-time">03 · Elicitation</div><div><div class="wf-act">Снятие экспертизы SME<span class="wf-model">Cognitive Task Analysis</span></div><div class="wf-tool">Critical incident technique, транскрипция · <b>бриф SME, AI</b></div></div>
+          <div class="wf-detail"><div class="wf-detail-in">
+            <div class="wf-d"><span class="wf-d-k">Вход</span><span class="wf-d-v">Доступ к эксперту</span></div>
+            <div class="wf-d"><span class="wf-d-k">Что делаю</span><span class="wf-d-v">Снимаю tacit knowledge через реальные случаи и failure cases, структурирую сама</span></div>
+            <div class="wf-d"><span class="wf-d-k">Выход</span><span class="wf-d-v">Сырьё: кейсы, антипримеры, вербатим</span></div>
+            <div class="wf-d"><span class="wf-d-k">Артефакт</span><span class="wf-d-v">Бриф на извлечение экспертизы</span></div>
+            <div class="wf-d err" style="grid-column:1/-1"><span class="wf-d-k">Типичная ошибка</span><span class="wf-d-v">Просить эксперта «написать теорию» — он выдаст пересказ учебника без своего опыта</span></div>
+          </div></div>
+        </div>
+        <div class="wf-step" onclick="toggleWf(this)"><div class="wf-time">04 · Prototype</div><div><div class="wf-act">Rapid prototyping + проверка логики<span class="wf-model">SAM</span></div><div class="wf-tool">Low-fidelity черновик, devil's advocate · <b>Claude, Miro</b></div></div>
+          <div class="wf-detail"><div class="wf-detail-in">
+            <div class="wf-d"><span class="wf-d-k">Вход</span><span class="wf-d-v">Структурированное сырьё</span></div>
+            <div class="wf-d"><span class="wf-d-k">Что делаю</span><span class="wf-d-v">Собираю черновой модуль, прогоняю логику через критику до вложений в продакшн</span></div>
+            <div class="wf-d"><span class="wf-d-k">Выход</span><span class="wf-d-v">Прототип для теста на малой группе</span></div>
+            <div class="wf-d"><span class="wf-d-k">Артефакт</span><span class="wf-d-v">Claude, Miro</span></div>
+            <div class="wf-d err" style="grid-column:1/-1"><span class="wf-d-k">Типичная ошибка</span><span class="wf-d-v">Полировать дизайн и графику до того, как проверена сама логика обучения</span></div>
+          </div></div>
+        </div>
+        <div class="wf-step" onclick="toggleWf(this)"><div class="wf-time">05 · QA</div><div><div class="wf-act">Приёмка по критериальной рубрике<span class="wf-model">Quality Assurance</span></div><div class="wf-tool">Alignment, дистракторы, cognitive load · <b>QA-чеклист</b></div></div>
+          <div class="wf-detail"><div class="wf-detail-in">
+            <div class="wf-d"><span class="wf-d-k">Вход</span><span class="wf-d-v">Готовый черновик</span></div>
+            <div class="wf-d"><span class="wf-d-k">Что делаю</span><span class="wf-d-v">Прогоняю по рубрике: каждый критерий — gate, а не пожелание</span></div>
+            <div class="wf-d"><span class="wf-d-k">Выход</span><span class="wf-d-v">Контент, прошедший приёмку</span></div>
+            <div class="wf-d"><span class="wf-d-k">Артефакт</span><span class="wf-d-v">QA-чеклист инструктивного дизайна</span></div>
+            <div class="wf-d err" style="grid-column:1/-1"><span class="wf-d-k">Типичная ошибка</span><span class="wf-d-v">Ревью «на глаз» — без критериев оценки ревьюеров расходятся, теряется консистентность</span></div>
+          </div></div>
+        </div>
+        <div class="wf-step" onclick="toggleWf(this)"><div class="wf-time">06 · Evaluate</div><div><div class="wf-act">Пилот → formative evaluation → итерация<span class="wf-model">Киркпатрик L1–L4</span></div><div class="wf-tool">Когорта, leading/lagging, A/B · <b>метрический фреймворк</b></div></div>
+          <div class="wf-detail"><div class="wf-detail-in">
+            <div class="wf-d"><span class="wf-d-k">Вход</span><span class="wf-d-v">Опубликованный модуль</span></div>
+            <div class="wf-d"><span class="wf-d-k">Что делаю</span><span class="wf-d-v">Запускаю на когорте, читаю метрики с порогами, итерирую или раскатываю</span></div>
+            <div class="wf-d"><span class="wf-d-k">Выход</span><span class="wf-d-v">Решение: scale / fix / kill + выводы</span></div>
+            <div class="wf-d"><span class="wf-d-k">Артефакт</span><span class="wf-d-v">Метрический фреймворк</span></div>
+            <div class="wf-d err" style="grid-column:1/-1"><span class="wf-d-k">Типичная ошибка</span><span class="wf-d-v">Смотреть только на доходимость без guardrail — рост может быть «проскакиванием» без обучения</span></div>
+          </div></div>
+        </div>
+      </div>
+      <p class="note">Процесс построен на SAM (Successive Approximation Model) с backward design в основе: проектирую от измеримого результата назад к контенту, итерирую короткими циклами с formative evaluation вместо «водопада». Каждый этап опирается на свой артефакт — это обеспечивает воспроизводимость и масштабирование на распределённую команду без потери качества.</p>
+    </div></div>
+  </div>
+
+  <!-- 6. Профиль должности + матрица -->
+  <div class="art a1" id="art6" style="border-top:3px solid var(--iris)">
+    <div class="art-hd" onclick="toggleArt('art6')">
+      <span class="art-num">06</span>
+      <div class="art-ic" style="background:var(--iris-lt)">🎯</div>
+      <div class="art-tt"><div class="art-name">Профиль должности + матрица компетенций</div><div class="art-desc">Как я связываю роль, грейды и критерии найма — основа для обучения и оценки</div></div>
+      <div class="art-tog">+</div>
+    </div>
+    <div class="art-body"><div class="art-inner">
+      <div class="art-takeaway"><span class="at-ic">◆</span><span class="at-t"><b>Принцип:</b> матрица — мост «бизнес → разрыв → программа». Связывает найм, развитие и оценку.</span></div>
+      <div class="prof">
+        <div class="prof-c"><div class="prof-k">Роль</div><div class="prof-v">Менеджер по продажам · junior → middle</div></div>
+        <div class="prof-c"><div class="prof-k">Зона ответственности</div><div class="prof-v">Работа с входящими лидами, закрытие сделок, удержание</div></div>
+        <div class="prof-c"><div class="prof-k">Критерий найма (вход)</div><div class="prof-v">Компетенции уровня ≥2 по «Коммуникация» и «Продукт»</div></div>
+        <div class="prof-c"><div class="prof-k">Критерий перехода в middle</div><div class="prof-v">Все ключевые компетенции ≥3, минимум одна на уровне 4</div></div>
+      </div>
+      <div class="cm-wrap">
+        <table class="cm">
+          <thead><tr><th>Компетенция</th><th>L1 · знает</th><th>L2 · делает с поддержкой</th><th>L3 · делает сам</th><th>L4 · учит других</th></tr></thead>
+          <tbody>
+            <tr><td class="cm-comp">Квалификация лида</td><td><span class="cm-lvl cm-l1">○</span></td><td><span class="cm-lvl cm-l2">◐</span></td><td><span class="cm-lvl cm-l3">●</span></td><td><span class="cm-lvl cm-l4">★</span></td></tr>
+            <tr><td class="cm-comp">Работа с возражениями</td><td><span class="cm-lvl cm-l1">○</span></td><td><span class="cm-lvl cm-l2">◐</span></td><td><span class="cm-lvl cm-l3">●</span></td><td><span class="cm-lvl cm-l4">★</span></td></tr>
+            <tr><td class="cm-comp">Знание продукта</td><td><span class="cm-lvl cm-l1">○</span></td><td><span class="cm-lvl cm-l2">◐</span></td><td><span class="cm-lvl cm-l3">●</span></td><td><span class="cm-lvl cm-l4">★</span></td></tr>
+            <tr><td class="cm-comp">Ведение CRM</td><td><span class="cm-lvl cm-l1">○</span></td><td><span class="cm-lvl cm-l2">◐</span></td><td><span class="cm-lvl cm-l3">●</span></td><td><span class="cm-lvl cm-l4">★</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cm-legend">
+        <span><span class="cm-lvl cm-l1">○</span> L1 — знает теорию</span>
+        <span><span class="cm-lvl cm-l2">◐</span> L2 — делает с наставником</span>
+        <span><span class="cm-lvl cm-l3">●</span> L3 — делает самостоятельно</span>
+        <span><span class="cm-lvl cm-l4">★</span> L4 — обучает коллег</span>
+      </div>
+      <p class="note">Матрица компетенций — мост между бизнесом и обучением: профиль должности задаёт целевые уровни, текущая оценка показывает разрыв, а разрыв превращается в учебную программу. Та же логика связывает найм (входной порог), развитие (карта роста) и оценку (L4 = горизонтальный рост без вертикали). Эту структуру я строила для онбординга в «Азбуке» и применима к любой роли — от педагога до sales.</p>
+      <div class="art-links">
+        <a href="azbuka-case.html" class="art-case">🔗 в действии: онбординг «Азбуки»</a>
+        <div class="art-theory">
+          <span class="theory-tog" onclick="toggleTheory(this)"><span class="tt-ar">▸</span> откуда это</span>
+          <div class="theory-body"><div class="theory-in"><b>Competency-based education</b> и модель уровней <span class="src">Dreyfus (novice → expert, 1980)</span>. Связка «профиль → разрыв → программа» — из <span class="src">training needs analysis (TNA)</span>, основы корпоративного L&D и HR-аналитики.</div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- 7. Дизайн A/B-эксперимента -->
+  <div class="art a3" id="art7" style="border-top:3px solid var(--fire)">
+    <div class="art-hd" onclick="toggleArt('art7')">
+      <span class="art-num">07</span>
+      <div class="art-ic" style="background:var(--fire-lt)">🧪</div>
+      <div class="art-tt"><div class="art-name">Дизайн A/B-эксперимента</div><div class="art-desc">Шаблон проверки гипотезы: если→то→потому что, метрика + контрметрика, критерий решения</div></div>
+      <div class="art-tog">+</div>
+    </div>
+    <div class="art-body"><div class="art-inner">
+      <div class="art-takeaway"><span class="at-ic">◆</span><span class="at-t"><b>Принцип:</b> гипотеза проверяется до раскатки на всех. Контрметрика страхует от «улучшения ценой деградации».</span></div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-dot dd-r"></span><span class="doc-dot dd-y"></span><span class="doc-dot dd-g"></span><span class="doc-name">ab_experiment_design.md</span></div>
+        <div class="doc-body">
+          <span class="doc-h">Гипотеза <span class="c"># если → то → потому что</span></span>
+          <b>Если</b> заменить список слов на ситуацию-сцену в начале модуля,<br>
+          <b>то</b> доходимость вырастет на 10+ п.п.,<br>
+          <b>потому что</b> у пользователя появляется мотив «зачем» до контента <span class="c"># механизм, а не просто «станет лучше»</span>
+          <span class="doc-h">Метрика решения</span>Доходимость модуля (primary) <span class="c"># по ней принимаем go/no-go</span>
+          <span class="doc-h">Контрметрика <span class="c"># guardrail</span></span>Точность ответов — чтобы доходимость не выросла за счёт «проскакивания»
+          <span class="doc-h">Дизайн</span><span class="k">→</span> Сплит 50/50, рандомизация по новым пользователям<br><span class="k">→</span> Изолируем одну переменную: меняется только начало модуля<br><span class="k">→</span> Равные когорты по языку и платформе
+          <span class="doc-h">Критерий решения <span class="c"># задан заранее</span></span><span class="k">✓</span> B выигрывает по primary + контрметрика не просела → раскатка<br><span class="k">✗</span> разница в пределах шума или точность упала → откат, новая гипотеза
+          <span class="doc-h">Стоп-правило</span>Достаточный размер выборки + стабильность эффекта <span class="c"># не подглядываем и не останавливаем раньше — peeking искажает значимость</span>
+        </div>
+      </div>
+      <p class="note">Шаблон превращает «мне кажется, так лучше» в проверяемое решение. Ключевое — гипотеза с механизмом (потому что), guardrail-контрметрика и критерий go/no-go, зафиксированный до старта. Так методическое решение проходит ту же планку, что продуктовое.</p>
+      <div class="art-links">
+        <a href="lingo-magic-case.html#ab" class="art-case">🔗 в действии: A/B в Lingo Magic</a>
+        <div class="art-theory">
+          <span class="theory-tog" onclick="toggleTheory(this)"><span class="tt-ar">▸</span> откуда это</span>
+          <div class="theory-body"><div class="theory-in"><b>Controlled experiments</b> — <span class="src">Kohavi, Trustworthy Online Controlled Experiments (2020)</span>: guardrail-метрики, опасность peeking. Структура гипотезы «если→то→потому что» — из научного метода и продуктовой discovery.</div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<section class="cta">
+  <div class="cta-t">Так выглядит работа изнутри</div>
+  <div class="cta-btns">
+    <a href="index.html#cases" class="cta-btn cb-d">Смотреть кейсы →</a>
+    <a href="index.html#contact" class="cta-btn cb-l">Связаться</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <span>Ирина Летяго · Learning × Product Designer · Москва</span>
+  <span>Система вместо импровизации</span>
+</footer>
+
+<script>
+const pr=document.getElementById('progress');
+addEventListener('scroll',()=>{pr.style.width=Math.min(scrollY/(document.body.scrollHeight-innerHeight)*100,100)+'%'},{passive:true});
+
+
+function simUpdate(v){
+  v=+v;
+  const val=document.getElementById('simVal');
+  const vd=document.getElementById('simVerdict');
+  const zone=document.getElementById('simZone');
+  const act=document.getElementById('simAction');
+  val.textContent=v+'%';
+  let bg,zc,zt,zbg,at;
+  if(v>=75){
+    val.style.color='var(--jade)';
+    bg='var(--jade-lt)';zbg='var(--jade)';zt='норма';
+    at='<b>Мониторинг.</b> Модуль в здоровой зоне — не трогаем, наблюдаем cohort-over-cohort.';
+  }else if(v>=60){
+    val.style.color='var(--gold)';
+    bg='var(--gold-lt)';zbg='var(--gold)';zt='внимание';
+    at='<b>Drop-off анализ.</b> Смотрю, на каком экране отваливаются: длинный текст? непонятное задание? Формулирую гипотезу.';
+  }else{
+    val.style.color='var(--fire)';
+    bg='var(--fire-lt)';zbg='var(--fire)';zt='тревога';
+    at='<b>Приоритет P0.</b> Запускаю A/B на проблемном шаге, проверяю guardrail (точность), не раскатываю до фикса.';
+  }
+  vd.style.background=bg;
+  zone.style.background=zbg;zone.style.color='#fff';zone.textContent=zt;
+  act.innerHTML=at;
+}
+document.addEventListener('DOMContentLoaded',()=>{if(document.getElementById('simRange'))simUpdate(75)});
+function toggleArt(id){
+  document.getElementById(id).classList.toggle('open');
+}
+function toggleTheory(el){
+  el.classList.toggle('open');
+  el.parentElement.querySelector('.theory-body').classList.toggle('open');
+  event.stopPropagation();
+}
+function toggleWf(el){
+  el.classList.toggle('open');
+}
+// слайдер было/стало
+(function(){
+  const tz=document.getElementById('tz1');
+  if(!tz)return;
+  const set=x=>{
+    const r=tz.getBoundingClientRect();
+    let p=(x-r.left)/r.width*100;
+    p=Math.max(5,Math.min(95,p));
+    tz.style.setProperty('--p',p+'%');
+  };
+  let drag=false;
+  tz.addEventListener('pointerdown',e=>{drag=true;tz.setPointerCapture(e.pointerId);set(e.clientX)});
+  tz.addEventListener('pointermove',e=>{if(drag)set(e.clientX)});
+  tz.addEventListener('pointerup',()=>drag=false);
+  tz.addEventListener('pointercancel',()=>drag=false);
+})();
+function toggleCheck(el){
+  el.classList.toggle('done');
+  const items=document.querySelectorAll('#checklist .cl-i');
+  const done=document.querySelectorAll('#checklist .cl-i.done').length;
+  const pct=Math.round(done/items.length*100);
+  document.getElementById('clfill').style.width=pct+'%';
+  document.getElementById('clpct').textContent=pct+'%';
+}
+</script>
+</body>
+</html>

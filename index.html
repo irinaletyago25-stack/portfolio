@@ -1,0 +1,2535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ирина Летяго — Learning × Product Designer</title>
+<meta name="description" content="Нарративно-психологическая система вовлечения · 3 000+ DAU · 60+ авторов · SEA 2025 Shortlist. Интерактивное портфолио с демо-уроком: попробуйте методику сами.">
+<meta property="og:title" content="Ирина Летяго · Learning × Product Designer">
+<meta property="og:description" content="Нарративно-психологическая система вовлечения · 3 000+ DAU · 60+ авторов · SEA 2025 Shortlist. Интерактивное портфолио с демо-уроком: попробуйте методику сами.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,200;0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --milk:#FAFAF6;--milk2:#F4F3EE;--milk3:#E8E6DF;
+  --ink:#0E0E0C;--ink2:#2A2A26;--ink3:#7A7A72;
+  --gold:#E8A000;--fire:#E03A2F;--iris:#6A4FC8;--jade:#1DB87A;--amber:#E8A000;
+  --gold-lt:#FFF7E0;--fire-lt:#FFF0EF;--iris-lt:#F0ECFF;--jade-lt:#E6FFF5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cur{position:fixed;width:10px;height:10px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .18s,height .18s,background .18s;mix-blend-mode:multiply}
+#cur.big{width:44px;height:44px}
+#cur.gold{background:var(--gold)}
+#cur.fire{background:var(--fire)}
+#cur.iris{background:var(--iris)}
+#cur.jade{background:var(--jade)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:52px;background:rgba(250,250,246,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--milk3)}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink3);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+
+/* MARQUEE */
+.mq-wrap{overflow:hidden;background:var(--ink);padding:10px 0;margin-top:52px}
+.mq-track{display:flex;animation:mq 24s linear infinite;white-space:nowrap}
+.mq-item{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--milk);padding:0 28px;display:inline-flex;align-items:center;gap:28px}
+.mq-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:96px 48px 72px;position:relative;overflow:hidden}
+.hero-grid svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-grid line{stroke:var(--milk3);stroke-width:1}
+
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--ink3)}
+
+.hero-display{font-family:'Space Grotesk',sans-serif;font-size:clamp(58px,9.5vw,124px);font-weight:700;line-height:.92;letter-spacing:-.04em;position:relative;z-index:1}
+.hw-gold{color:var(--gold)}
+.hw-fire{color:var(--fire)}
+.hw-stroke{-webkit-text-stroke:2px var(--ink);color:transparent}
+.hw-italic{font-family:'DM Sans',sans-serif;font-style:italic;font-weight:200;font-size:.7em;letter-spacing:0;padding-left:14px}
+
+
+/* Hero persona */
+.hero-persona{display:flex;align-items:center;gap:16px;margin-bottom:36px;animation:slideUp .6s cubic-bezier(.16,1,.3,1) 0s both}
+.hero-avatar{width:56px;height:56px;border-radius:50%;border:2px dashed var(--milk3);background:var(--milk2);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--ink3);flex-shrink:0;position:relative;overflow:hidden;transition:border-color .2s}
+.hero-avatar:hover{border-color:var(--gold)}
+.hero-avatar-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.hero-avatar-hint{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);opacity:0;transition:opacity .2s,bottom .2s}
+.hero-avatar:hover .hero-avatar-hint{opacity:1;bottom:4px}
+.hero-fullname{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
+.hero-tagline{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-top:4px}
+/* XP BAR */
+.xp-bar-wrap{display:flex;align-items:center;gap:16px;margin-top:40px;max-width:560px}
+.xp-label{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
+.xp-track{flex:1;height:6px;background:var(--milk3);position:relative}
+.xp-fill{height:100%;background:var(--gold);width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+.xp-val{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--ink3);white-space:nowrap}
+
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;margin-top:40px;flex-wrap:wrap;gap:32px;position:relative;z-index:1;row-gap:28px}
+.hero-desc{font-size:16px;font-weight:300;line-height:1.8;color:var(--ink2);max-width:420px}
+
+/* STAT CARD */
+.stat-card{display:flex;flex-direction:column;gap:10px;min-width:220px}
+.stat-row{display:flex;align-items:center;gap:12px}
+.stat-key{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);width:52px;flex-shrink:0}
+.stat-bar-wrap{flex:1;height:4px;background:var(--milk3)}
+.stat-bar-fill{height:100%;transition:width 1.6s cubic-bezier(.16,1,.3,1)}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;width:28px;text-align:right}
+
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px;position:relative;z-index:1}
+.btn-s{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:14px 30px;background:var(--ink);color:var(--milk);border:2px solid var(--ink);transition:all .22s;cursor:none;display:inline-block}
+.btn-s:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.btn-g{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:14px 30px;background:transparent;color:var(--ink);border:2px solid var(--ink);transition:all .22s;cursor:none;display:inline-block}
+.btn-g:hover{background:var(--ink);color:var(--milk)}
+
+.hero-bg-text{position:absolute;bottom:-30px;right:-10px;font-family:'Space Grotesk',sans-serif;font-size:clamp(120px,20vw,260px);font-weight:700;-webkit-text-stroke:1.5px var(--milk3);color:transparent;line-height:1;pointer-events:none;user-select:none;letter-spacing:-.06em;z-index:0}
+
+
+/* ── BENTO HERO ── */
+#hero{min-height:100vh;padding:84px 48px 48px;display:flex;align-items:center}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(120px,auto);gap:10px;width:100%;max-width:1280px;margin:0 auto}
+.b-cell{border:1.5px solid var(--milk3);background:#FFFEFB;padding:24px;position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .25s}
+.b-cell:hover{transform:translateY(-3px);border-color:var(--ink2)}
+
+.b-main{grid-column:1/3;grid-row:1/4;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.b-main-top{display:flex;align-items:center;gap:14px}
+.b-avatar{width:52px;height:52px;border-radius:50%;border:2px dashed var(--milk3);background:var(--milk2);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--ink3);flex-shrink:0;transition:border-color .2s}
+.b-avatar:hover{border-color:var(--gold)}
+.b-name{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.b-loc{font-size:11px;color:var(--ink3);margin-top:2px}
+.b-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,5.5vw,68px);font-weight:700;line-height:.94;letter-spacing:-.04em;margin:8px 0}
+.bt-gold{color:var(--gold)}
+.bt-fire{color:var(--fire)}
+.bt-stroke{-webkit-text-stroke:2px var(--ink);color:transparent}
+.bt-thin{font-family:'DM Sans',sans-serif;font-style:italic;font-weight:200;font-size:.68em}
+.b-sub{font-size:14px;font-weight:300;line-height:1.7;color:var(--ink2);max-width:380px}
+.b-ctas{display:flex;gap:10px;flex-wrap:wrap}
+
+.b-stat{display:flex;flex-direction:column;justify-content:space-between;gap:12px;cursor:none}
+.b-num,.b-award{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,3.4vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.b-lab{font-size:11px;font-weight:400;color:var(--ink3);line-height:1.5}
+.bs-gold .b-num{color:var(--gold)}
+.bs-jade .b-num{color:var(--jade)}
+.bs-iris .b-award{color:var(--iris)}
+.bs-fire .b-num{color:var(--fire)}
+.bs-gold::after,.bs-jade::after,.bs-iris::after,.bs-fire::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.bs-gold::after{background:var(--gold)}
+.bs-jade::after{background:var(--jade)}
+.bs-iris::after{background:var(--iris)}
+.bs-fire::after{background:var(--fire)}
+.b-stat:hover::after{transform:scaleX(1)}
+
+.b-system{grid-column:3/5;display:flex;flex-direction:column;gap:8px;background:var(--ink);border-color:var(--ink)}
+.b-system:hover{border-color:var(--gold)}
+.b-sys-label{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.b-sys-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,1.6vw,21px);font-weight:700;letter-spacing:-.01em;line-height:1.2;color:var(--milk)}
+.b-sys-desc{font-size:12px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.65}
+
+.b-level{display:flex;flex-direction:column;justify-content:center;gap:10px}
+.b-lvl-row{display:flex;align-items:baseline;gap:8px}
+.b-lvl-badge{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.b-lvl-name{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--ink3)}
+.b-lvl-track{height:6px;background:var(--milk3);position:relative}
+.b-lvl-fill{height:100%;background:var(--gold);width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+.b-lvl-dot{position:absolute;right:-13px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity .4s 1.4s}
+.b-lvl-sub{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--ink3)}
+
+.bf{opacity:0;transform:translateY(16px) scale(.98);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.bf.in{opacity:1;transform:none}
+.bf.d1{transition-delay:.08s}.bf.d2{transition-delay:.16s}.bf.d3{transition-delay:.24s}.bf.d4{transition-delay:.32s}
+
+@media(max-width:960px){
+  #hero{padding:72px 16px 32px}
+  .bento{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+  .b-main{grid-column:1/3;grid-row:auto}
+  .b-system{grid-column:1/3}
+  .b-title{font-size:clamp(36px,11vw,52px)}
+}
+@media(max-width:520px){
+  .bento{grid-template-columns:1fr}
+  .b-main,.b-system{grid-column:1/2}
+}
+
+
+/* ── PLAYGROUND HERO ── */
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:84px 24px 48px}
+.blob{position:absolute;border-radius:60% 40% 55% 45%/50% 60% 40% 50%;filter:blur(2px);opacity:.5;pointer-events:none;animation:blobFloat 14s ease-in-out infinite}
+.blob-1{width:340px;height:300px;background:var(--gold-lt);top:-60px;left:-80px;animation-delay:0s}
+.blob-2{width:280px;height:260px;background:var(--iris-lt);bottom:-40px;right:-60px;animation-delay:-5s;border-radius:45% 55% 40% 60%/55% 45% 60% 40%}
+.blob-3{width:200px;height:190px;background:var(--jade-lt);top:50%;left:48%;animation-delay:-9s;border-radius:55% 45% 60% 40%/45% 55% 40% 60%}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(14px,-18px) rotate(3deg)}66%{transform:translate(-10px,12px) rotate(-2deg)}}
+
+.hero-center{position:relative;z-index:2;text-align:center;max-width:640px;pointer-events:none}
+.hp-persona{display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;text-align:left}
+.hp-avatar{width:52px;height:52px;border-radius:50%;border:2px solid var(--milk3);background:#FFFEFB;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--ink3);flex-shrink:0;transition:border-color .2s,transform .3s}
+.hp-avatar-img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.hp-avatar:hover{border-color:var(--gold);transform:rotate(-8deg) scale(1.06)}
+.hp-name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--ink)}
+.hp-loc{font-size:11px;color:var(--ink3)}
+.hp-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(52px,9vw,108px);font-weight:700;line-height:.93;letter-spacing:-.04em;margin-bottom:24px}
+.hpt-gold{color:var(--gold)}
+.hpt-fire{color:var(--fire)}
+.hpt-stroke{-webkit-text-stroke:2px var(--ink);color:transparent}
+.hpt-thin{font-family:'DM Sans',sans-serif;font-style:italic;font-weight:200;font-size:.66em}
+.hp-sub{font-size:15px;font-weight:300;line-height:1.7;color:var(--ink2);max-width:420px;margin:0 auto 32px}
+.hp-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hp-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);opacity:.6;animation:hintPulse 2.5s ease-in-out infinite}
+@keyframes hintPulse{0%,100%{opacity:.35}50%{opacity:.75}}
+
+/* STICKERS */
+.sticker{position:absolute;z-index:3;max-width:200px;padding:18px 22px;border:1.5px solid var(--ink);background:#FFFEFB;border-radius:22px;cursor:grab;user-select:none;touch-action:none;box-shadow:3px 4px 0 rgba(14,14,12,.12);transition:box-shadow .2s;will-change:transform}
+.sticker:active{cursor:grabbing;box-shadow:1px 2px 0 rgba(14,14,12,.18)}
+.sticker.dragging{z-index:50;transition:none}
+.st-round{border-radius:50%;width:108px;height:108px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px}
+.st-num{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.st-lab{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;color:var(--ink3);margin-top:5px;letter-spacing:.02em}
+.st-gold{background:var(--gold-lt)}.st-gold .st-num{color:var(--gold)}
+.st-jade{background:var(--jade-lt)}.st-jade .st-num{color:var(--jade)}
+.st-iris{background:var(--iris-lt)}.st-iris .st-num{color:var(--iris)}
+.st-fire{background:var(--fire-lt)}.st-fire .st-num{color:var(--fire)}
+.st-ink{background:var(--ink);border-color:var(--ink);max-width:240px}
+.st-sys{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--gold);line-height:1.4}
+.st-lvl{background:#FFFEFB}
+.st-lvl .st-num{color:var(--ink)}
+
+/* MAGNETIC */
+.magnetic{transition:transform .25s cubic-bezier(.16,1,.3,1)}
+
+/* TILT on case headers */
+.case-hd{transform-style:preserve-3d;perspective:800px}
+
+@media(max-width:960px){
+  #hero{padding:72px 16px 90px;min-height:auto}
+  .hp-title{font-size:clamp(44px,12vw,64px)}
+  .sticker{position:relative;display:inline-flex;flex-direction:column;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;margin:6px;cursor:default;box-shadow:2px 3px 0 rgba(14,14,12,.1)}
+  .st-round{width:auto;height:auto;border-radius:22px;padding:14px 18px}
+  .hero-center{order:-1}
+  #hero{flex-direction:column;gap:8px}
+  .hp-hint{display:none}
+  .stickers-mobile-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;position:relative;z-index:2}
+}
+
+/* RULE */
+.rule-wrap{padding:0 48px;overflow:hidden}
+.rule-line{height:1px;background:var(--ink3);transform-origin:left;transform:scaleX(0);transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.rule-line.drawn{transform:scaleX(1)}
+
+/* SECTION */
+.s{padding:88px 48px;position:relative}
+.s-ey{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.s-ey::before{content:'';display:inline-block;width:18px;height:1px;background:currentColor}
+.s-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,4.8vw,58px);font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:48px;opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.s-title.in{opacity:1;transform:none}
+
+/* FADE UP */
+.fu{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.fu.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+/* ABOUT */
+.about-layout{display:grid;grid-template-columns:5fr 4fr;gap:72px;align-items:start}
+.about-lead{font-size:20px;font-weight:300;line-height:1.68;color:var(--ink2);margin-bottom:28px}
+.about-lead strong{font-weight:500;color:var(--ink)}
+.about-body{font-size:15px;font-weight:300;line-height:1.82;color:var(--ink3);margin-bottom:32px}
+
+/* ACHIEVEMENTS */
+.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:36px}
+.ach{padding:16px;border:1px solid var(--milk3);background:var(--milk2);display:flex;gap:14px;align-items:flex-start;transition:border-color .2s,transform .2s;cursor:none}
+.ach:hover{border-color:var(--ink2);transform:translateY(-2px)}
+.ach-icon{font-size:22px;flex-shrink:0;line-height:1}
+.ach-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.ach-desc{font-size:11px;font-weight:300;color:var(--ink3);line-height:1.5}
+.ach.locked{opacity:.4;filter:grayscale(1)}
+.ach.gold-a .ach-icon::after,.ach.fire-a .ach-icon::after{content:''}
+.ach-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border:1px solid;margin-top:4px}
+.ach.g .ach-badge{border-color:var(--gold);color:var(--gold)}
+.ach.r .ach-badge{border-color:var(--fire);color:var(--fire)}
+.ach.v .ach-badge{border-color:var(--iris);color:var(--iris)}
+.ach.m .ach-badge{border-color:var(--jade);color:var(--jade)}
+
+/* TAGS */
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tag{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;padding:6px 13px;border:1.5px solid var(--ink3);transition:all .18s;cursor:none;color:var(--ink2)}
+.tag:hover{border-color:var(--ink);background:var(--ink);color:var(--milk)}
+.tag.g{border-color:var(--gold);color:var(--gold)}.tag.g:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.tag.r{border-color:var(--fire);color:var(--fire)}.tag.r:hover{background:var(--fire);color:#fff}
+.tag.v{border-color:var(--iris);color:var(--iris)}.tag.v:hover{background:var(--iris);color:#fff}
+.tag.m{border-color:var(--jade);color:var(--jade)}.tag.m:hover{background:var(--jade);color:var(--ink)}
+
+/* VALUE LIST */
+.vlist{display:flex;flex-direction:column}
+.vitem{padding:22px 0;border-bottom:1px solid var(--milk3);display:grid;grid-template-columns:28px 1fr;gap:18px;align-items:start}
+.vn{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--ink3);padding-top:3px}
+.vt{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;margin-bottom:5px}
+.vd{font-size:13px;font-weight:300;color:var(--ink3);line-height:1.65}
+
+/* CASES */
+.cases-intro{font-size:15px;font-weight:300;color:var(--ink3);max-width:500px;line-height:1.82;margin-bottom:52px}
+.case{border-top:1px solid var(--milk3);overflow:hidden}
+.case-hd{display:grid;grid-template-columns:76px 1fr 40px;gap:0;align-items:center;padding:24px 0;cursor:none;position:relative;overflow:hidden}
+.case-fill{position:absolute;inset:0;transform:scaleY(0);transform-origin:bottom;transition:transform .38s cubic-bezier(.16,1,.3,1);z-index:0;pointer-events:none}
+.c1 .case-fill{background:var(--gold-lt)}.c2 .case-fill{background:var(--fire-lt)}.c3 .case-fill{background:var(--iris-lt)}
+.c4 .case-fill{background:var(--jade-lt)}
+.case.open .case-fill{transform:scaleY(1)}
+.case-hd:hover .case-fill{transform:scaleY(.12)}
+.case.open .case-hd:hover .case-fill{transform:scaleY(1)}
+.case-hd>:not(.case-fill){position:relative;z-index:1}
+.case-idx{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,5vw,62px);font-weight:700;letter-spacing:-.04em;line-height:1;-webkit-text-stroke:1.5px var(--milk3);color:transparent;transition:color .28s,-webkit-text-stroke-color .28s}
+.c1.open .case-idx{color:var(--gold);-webkit-text-stroke-color:var(--gold)}
+.c2.open .case-idx{color:var(--fire);-webkit-text-stroke-color:var(--fire)}
+.c3.open .case-idx{color:var(--iris);-webkit-text-stroke-color:var(--iris)}
+.c4.open .case-idx{color:var(--jade);-webkit-text-stroke-color:var(--jade)}
+.ct{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;margin-bottom:7px;border:1px solid}
+.ctg{border-color:var(--gold);color:var(--gold);background:var(--gold-lt)}
+.ctr{border-color:var(--fire);color:var(--fire);background:var(--fire-lt)}
+.ctv{border-color:var(--iris);color:var(--iris);background:var(--iris-lt)}
+.ctm{border-color:var(--jade);color:var(--jade);background:var(--jade-lt)}
+.case-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,2vw,24px);font-weight:700;letter-spacing:-.01em;line-height:1.15}
+.case-sub{font-size:12px;color:var(--ink3);margin-top:4px;font-weight:300}
+
+/* QUEST BADGE */
+.quest-badge{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 10px;border:1px solid var(--jade);color:var(--jade);background:var(--jade-lt);margin-left:10px}
+.quest-badge::before{content:'⚔';font-size:10px}
+
+.case-tog{font-size:24px;font-weight:300;color:var(--ink3);transition:transform .32s;line-height:1;text-align:center}
+.case.open .case-tog{transform:rotate(45deg);color:var(--ink)}
+.case-body{max-height:0;overflow:hidden;opacity:0;padding-bottom:0;transition:max-height .6s cubic-bezier(.16,1,.3,1),opacity .32s ease,padding-bottom .4s ease}
+.case.open .case-body{max-height:5000px;opacity:1;padding-bottom:36px}
+.case-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--milk3);border:1px solid var(--milk3);margin-bottom:28px}
+.case-col{background:var(--milk);padding:22px}
+.ccl{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
+.case-col p{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.7}
+.case-col ul{list-style:none;padding:0}
+.case-col ul li{font-size:13px;font-weight:300;color:var(--ink2);padding:4px 0 4px 17px;position:relative;line-height:1.55}
+.case-col ul li::before{content:'→';position:absolute;left:0;font-size:11px;top:5px}
+.c1 .case-col ul li::before{color:var(--gold)}
+.c2 .case-col ul li::before{color:var(--fire)}
+.c3 .case-col ul li::before{color:var(--iris)}
+.c4 .case-col ul li::before{color:var(--jade)}
+
+/* REWARD BOX */
+.reward{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;border:1px solid;margin-bottom:1px}
+.c1 .reward{border-color:rgba(232,160,0,.3);background:var(--gold-lt)}
+.c2 .reward{border-color:rgba(224,58,47,.3);background:var(--fire-lt)}
+.c3 .reward{border-color:rgba(106,79,200,.3);background:var(--iris-lt)}
+.c4 .reward{border-color:rgba(29,184,122,.3);background:var(--jade-lt)}
+.reward-icon{font-size:20px;flex-shrink:0}
+.reward-label{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px}
+.reward-items{display:flex;flex-wrap:wrap;gap:6px}
+.ri{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;padding:4px 12px;border:1.5px solid}
+.c1 .ri{border-color:var(--gold);color:var(--gold)}
+.c2 .ri{border-color:var(--fire);color:var(--fire)}
+.c3 .ri{border-color:var(--iris);color:var(--iris)}
+
+/* ARTIFACT */
+.artifact{border:1.5px dashed var(--milk3);padding:24px;background:var(--milk)}
+.art-hd{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);margin-bottom:20px}
+.art-hd::before{content:'';display:block;width:10px;height:10px;border-radius:50%}
+.c1 .art-hd::before{background:var(--gold)}
+.c2 .art-hd::before{background:var(--fire)}
+.c3 .art-hd::before{background:var(--iris)}
+
+/* METRICS TREE */
+.mt{font-family:'Space Grotesk',sans-serif}
+.mt-root{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--milk);font-size:12px;font-weight:700;letter-spacing:.06em;padding:9px 18px;margin-bottom:20px}
+.mt-group{margin-bottom:14px;padding-left:22px;border-left:2px solid var(--milk3)}
+.mt-parent{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.mt-parent::before{content:'';display:block;width:12px;height:1px;background:var(--milk3);flex-shrink:0}
+.mt-pl{font-size:11px;font-weight:700;letter-spacing:.08em;padding:5px 12px;border:1.5px solid}
+.mg-g .mt-pl{border-color:var(--gold);color:var(--gold);background:var(--gold-lt)}
+.mg-r .mt-pl{border-color:var(--fire);color:var(--fire);background:var(--fire-lt)}
+.mg-v .mt-pl{border-color:var(--iris);color:var(--iris);background:var(--iris-lt)}
+.mg-m .mt-pl{border-color:var(--jade);color:var(--jade);background:var(--jade-lt)}
+.mt-ch{display:flex;flex-wrap:wrap;gap:7px;padding-left:24px}
+.mt-lf{font-size:11px;font-weight:500;padding:4px 10px;border:1px solid var(--milk3);color:var(--ink2);background:var(--milk)}
+
+/* JOURNEY MAP */
+.jmap{overflow-x:auto}
+.jtbl{width:100%;border-collapse:collapse;min-width:620px}
+.jtbl th{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:10px 13px;background:var(--ink);color:var(--milk);text-align:left;border:1px solid var(--ink)}
+.jtbl td{padding:10px 13px;border:1px solid var(--milk3);font-size:12px;font-weight:300;line-height:1.6;color:var(--ink2);vertical-align:top}
+.jtbl tr:nth-child(odd) td{background:var(--milk)}
+.jtbl tr:nth-child(even) td{background:var(--milk2)}
+.js{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:var(--ink)}
+.jsub{font-size:10px;color:var(--ink3);margin-top:2px}
+.jem{font-size:16px;display:block;line-height:1;margin-bottom:2px}
+.jemt{font-size:10px;color:var(--ink3)}
+
+/* KIRKPATRICK */
+.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpc{padding:18px 15px 20px;position:relative;border:1px solid var(--milk3);background:var(--milk);transition:transform .18s;overflow:hidden;cursor:none}
+.kpc:hover{transform:translateY(-3px)}
+.kpc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.kp1::after{background:var(--gold)}.kp2::after{background:var(--fire)}.kp3::after{background:var(--iris)}.kp4::after{background:var(--jade)}
+.kplvl{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;margin-bottom:7px}
+.kp1 .kplvl{color:var(--gold)}.kp2 .kplvl{color:var(--fire)}.kp3 .kplvl{color:var(--iris)}.kp4 .kplvl{color:var(--jade)}
+.kpname{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.kpq{font-size:11px;color:var(--ink3);font-style:italic;margin-bottom:12px}
+.kpt{list-style:none;padding:0}
+.kpt li{font-size:11px;font-weight:300;color:var(--ink2);padding:3px 0 3px 13px;position:relative;line-height:1.45}
+.kpt li::before{content:'—';position:absolute;left:0;color:var(--ink3);font-size:10px}
+.kpeg{margin-top:10px;padding:7px 9px;border-left:2px solid;font-size:10px;font-style:italic;color:var(--ink3);line-height:1.5;background:var(--milk2)}
+.kp1 .kpeg{border-color:var(--gold)}.kp2 .kpeg{border-color:var(--fire)}.kp3 .kpeg{border-color:var(--iris)}.kp4 .kpeg{border-color:var(--jade)}
+
+/* SKILL TREE */
+.skill-tree-wrap{margin-top:8px}
+.st-intro{font-size:14px;font-weight:300;color:var(--ink3);margin-bottom:32px;line-height:1.7}
+.st-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--milk3);border:1px solid var(--milk3)}
+.st-branch{background:var(--milk);padding:24px 20px}
+.st-branch-title{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding-bottom:14px;margin-bottom:16px;border-bottom:2px solid}
+.stb-g .st-branch-title{border-color:var(--gold);color:var(--gold)}
+.stb-r .st-branch-title{border-color:var(--fire);color:var(--fire)}
+.stb-v .st-branch-title{border-color:var(--iris);color:var(--iris)}
+.stb-m .st-branch-title{border-color:var(--jade);color:var(--jade)}
+.st-node{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--milk3)}
+.st-node:last-child{border-bottom:none}
+.st-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.stb-g .st-dot{background:var(--gold)}
+.stb-r .st-dot{background:var(--fire)}
+.stb-v .st-dot{background:var(--iris)}
+.stb-m .st-dot{background:var(--jade)}
+.st-node-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.st-node-sub{font-size:11px;font-weight:300;color:var(--ink3);line-height:1.5}
+
+/* LANG XP */
+.lang-xp{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+.lxp-row{display:flex;align-items:center;gap:14px}
+.lxp-flag{font-size:18px;flex-shrink:0}
+.lxp-info{flex:1}
+.lxp-top{display:flex;justify-content:space-between;margin-bottom:5px}
+.lxp-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--ink)}
+.lxp-level{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.lxp-track{height:5px;background:var(--milk3)}
+.lxp-fill{height:100%;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+
+
+.ss{flex:1;padding:20px 16px;border-right:1px solid var(--milk3);cursor:none;transition:background .22s;position:relative}
+.ss:last-child{border-right:none}
+.ss:hover,.ss.act{background:var(--ink)}
+.ss:hover .ssn,.ss.act .ssn{color:var(--gold)}
+.ss:hover .sst,.ss.act .sst{color:var(--milk)}
+.ss:hover .sss,.ss.act .sss{color:rgba(255,255,255,.5)}
+.ssn{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--milk3);margin-bottom:8px;transition:color .22s}
+.sst{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;margin-bottom:4px;transition:color .22s}
+.sss{font-size:11px;font-weight:300;color:var(--ink3);line-height:1.5;transition:color .22s}
+
+.sam-detail.vis{display:block}
+.sdt{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:12px}
+.sdl{list-style:none;padding:0}
+.sdl li{font-size:13px;font-weight:300;color:var(--ink2);padding:4px 0 4px 18px;position:relative}
+.sdl li::before{content:'●';position:absolute;left:0;color:var(--gold);font-size:8px;top:7px}
+
+/* FW GRID */
+.fw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--milk3);border:1px solid var(--milk3);margin-top:48px}
+.fw{background:var(--milk);padding:26px;transition:background .22s;cursor:none}
+.fw:hover{background:var(--ink)}
+.fw:hover .fwn,.fw:hover .fww{color:var(--milk)}
+.fw:hover .fwd{color:rgba(255,255,255,.6)}
+.fwn{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px;transition:color .22s}
+.fww{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:9px;transition:color .22s}
+.fwd{font-size:13px;font-weight:300;color:var(--ink3);line-height:1.65;transition:color .22s}
+
+/* TIMELINE */
+.tl{border-left:1px solid var(--milk3);padding-left:32px}
+.tl-item{position:relative;padding-bottom:32px}
+.tl-item::before{content:'';position:absolute;left:-36px;top:5px;width:8px;height:8px;border-radius:50%;background:var(--milk);border:1.5px solid var(--ink3)}
+.tl-item.now::before{background:var(--gold);border-color:var(--gold)}
+.tlyr{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--ink3);margin-bottom:4px}
+.tlname{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.tlplace{font-size:13px;font-weight:300;color:var(--ink3)}
+
+.quals{display:flex;flex-direction:column;gap:5px}
+.qual{display:flex;align-items:flex-start;gap:12px;padding:10px 13px;border:1px solid var(--milk3);background:var(--milk);transition:border-color .18s}
+.qual:hover{border-color:var(--ink2)}
+.qyr{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;min-width:32px;color:var(--gold)}
+.qyr.old{color:var(--ink3)}
+.qname{font-size:12px;font-weight:400;color:var(--ink)}
+.qby{font-size:11px;font-weight:300;color:var(--ink3)}
+
+/* CONTACT */
+#contact{background:var(--ink);color:var(--milk);padding:88px 48px}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.cdesc{font-size:16px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.82;margin-bottom:36px}
+.clinks{display:flex;flex-direction:column;gap:10px}
+.clink{display:flex;align-items:center;gap:16px;padding:15px 18px;border:1px solid rgba(255,255,255,.15);text-decoration:none;color:var(--milk);transition:border-color .18s,background .18s;cursor:none}
+.clink:hover{border-color:var(--gold);background:rgba(232,160,0,.08)}
+.cli{font-size:18px;opacity:.5;width:30px;text-align:center}
+.cltype{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2px}
+.clval{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500}
+.caside{border:1px solid rgba(255,255,255,.15);padding:28px}
+.cat{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;margin-bottom:7px}
+.cad{font-size:13px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:22px}
+.otags{display:flex;flex-wrap:wrap;gap:8px}
+.otag{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;padding:5px 12px;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.75)}
+.otag.hi{border-color:var(--gold);color:var(--gold);background:rgba(232,160,0,.1)}
+
+footer{background:var(--ink);color:rgba(255,255,255,.2);border-top:1px solid rgba(255,255,255,.07);padding:18px 48px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.07em}
+
+@media(max-width:960px){
+  nav{padding:0 20px}.nav-links{display:none}.nav-ham{display:flex}
+  #hero{padding:0 20px 56px}.s{padding:64px 20px}.rule-wrap{padding:0 20px}
+  .about-layout{grid-template-columns:1fr;gap:36px}
+  .ach-grid{grid-template-columns:1fr 1fr}
+  .case-cols{grid-template-columns:1fr}
+  .kp{grid-template-columns:1fr 1fr}
+  .st-grid{grid-template-columns:1fr 1fr}
+  .fw-grid{grid-template-columns:1fr}
+  .cg{grid-template-columns:1fr;gap:40px}
+  .hero-bg-text{display:none}
+  
+  footer{padding:18px 20px}
+}
+/* Gamification map */
+.gmap-wrap{overflow-x:auto}
+.gmap-table{width:100%;border-collapse:collapse;min-width:580px}
+.gmap-table th{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:10px 12px;background:var(--ink);color:var(--milk);text-align:left;border:1px solid var(--ink)}
+.gmap-table td{padding:12px;border:1px solid var(--milk3);font-size:12px;font-weight:300;color:var(--ink2);vertical-align:top;line-height:1.6}
+.gmap-table tr:nth-child(odd) td{background:var(--milk)}
+.gmap-table tr:nth-child(even) td{background:var(--milk2)}
+.gmap-mech-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--ink)}
+.gmap-icon{font-size:15px;margin-right:6px}
+.gmap-theory-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border:1px solid}
+.gt-sdt{border-color:var(--gold);color:var(--gold);background:var(--gold-lt)}
+.gt-arcs{border-color:var(--fire);color:var(--fire);background:var(--fire-lt)}
+.gt-bd{border-color:var(--iris);color:var(--iris);background:var(--iris-lt)}
+.gmap-metric{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--ink)}
+
+/* Rubric */
+.rubric-wrap{overflow-x:auto}
+.rubric-table{width:100%;border-collapse:collapse;min-width:640px}
+.rubric-table th{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;text-align:left;border:1px solid}
+.rth-crit{background:var(--ink);color:var(--milk);border-color:var(--ink) !important;width:16%}
+.rth-1{background:#fff0f0;color:#b02020;border-color:rgba(224,58,47,.35) !important}
+.rth-2{background:#fffce0;color:#7a5800;border-color:rgba(232,160,0,.45) !important}
+.rth-3{background:#e8fdf2;color:#0d6b3a;border-color:rgba(29,184,122,.4) !important}
+.rth-4{background:#eef3ff;color:#3040a0;border-color:rgba(106,79,200,.35) !important}
+.rubric-table td{padding:11px 12px;border:1px solid var(--milk3);font-size:12px;font-weight:300;color:var(--ink2);vertical-align:top;line-height:1.65}
+.rc{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:var(--ink);background:var(--milk2) !important}
+.r1{background:#fffafa}
+.r2{background:#fffef5}
+.r3{background:#f5fdf9}
+.r4{background:#f2f5ff}
+
+/* Persona card */
+.persona-wrap{display:grid;grid-template-columns:220px 1fr;gap:12px}
+.persona-left{border:1px solid var(--milk3);padding:20px;background:var(--milk)}
+.persona-avatar{width:48px;height:48px;border-radius:50%;background:var(--iris-lt);border:2px solid var(--iris);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--iris);margin-bottom:12px}
+.persona-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.persona-role{font-size:11px;font-weight:300;color:var(--ink3);margin-bottom:14px;line-height:1.6}
+.persona-quote{font-size:11px;font-style:italic;color:var(--ink2);border-left:2px solid var(--iris);padding-left:10px;line-height:1.7}
+.persona-right{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pg{border:1px solid var(--milk3);padding:14px 15px;background:var(--milk)}
+.pg-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;display:flex;align-items:center;gap:5px}
+.pg-items{list-style:none;padding:0}
+.pg-items li{font-size:12px;font-weight:300;color:var(--ink2);padding:3px 0 3px 14px;position:relative;line-height:1.5}
+.pg-items li::before{content:'→';position:absolute;left:0;font-size:10px;top:4px;color:var(--iris)}
+@media(max-width:960px){.persona-wrap{grid-template-columns:1fr}.persona-right{grid-template-columns:1fr}}
+
+
+
+/* Mobile nav */
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:none}
+.nav-ham span{display:block;width:20px;height:2px;background:var(--ink);transition:transform .25s,opacity .25s}
+.nav-ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{position:fixed;top:52px;left:0;right:0;background:var(--milk);border-bottom:1px solid var(--milk3);max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.16,1,.3,1);z-index:499;backdrop-filter:blur(14px)}
+.mobile-nav.open{max-height:320px}
+.mobile-nav a{display:block;padding:15px 20px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--milk3);transition:background .18s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{background:var(--milk2)}
+/* Scroll progress */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0;z-index:600;transition:width .08s linear;pointer-events:none}
+
+/* edu-grid */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+
+/* Hero entrance */
+@keyframes slideUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero-eyebrow{animation:slideUp .6s cubic-bezier(.16,1,.3,1) .12s both}
+.hero-display .hw-gold{animation:slideUp .75s cubic-bezier(.16,1,.3,1) .18s both}
+.hero-display .hw-stroke{animation:slideUp .75s cubic-bezier(.16,1,.3,1) .28s both}
+.hero-display .hw-fire{animation:slideUp .75s cubic-bezier(.16,1,.3,1) .38s both}
+.hero-display .hw-italic{animation:slideUp .75s cubic-bezier(.16,1,.3,1) .46s both}
+.xp-bar-wrap{animation:slideUp .6s cubic-bezier(.16,1,.3,1) .62s both}
+.hero-desc{animation:slideUp .6s cubic-bezier(.16,1,.3,1) .72s both}
+#stat-card{animation:slideUp .6s cubic-bezier(.16,1,.3,1) .82s both}
+.hero-ctas{animation:slideUp .55s cubic-bezier(.16,1,.3,1) .94s both}
+
+
+@keyframes sdFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sam-detail.vis{animation:sdFade .28s ease}
+
+/* Active nav link */
+.nav-links a.active{color:var(--ink)}
+
+/* Touch / mobile cursor */
+@media(pointer:coarse){body{cursor:auto}#cur{display:none}}
+
+/* edu-grid mobile */
+@media(max-width:960px){.edu-grid{grid-template-columns:1fr;gap:36px}}
+
+@media(max-width:640px){
+  .ach-grid{grid-template-columns:1fr}
+  .kp{grid-template-columns:1fr 1fr}
+  .case-cols{grid-template-columns:1fr}
+  .about-layout{grid-template-columns:1fr}
+  .hero-display{font-size:clamp(44px,12vw,58px)}
+  .case-idx{font-size:clamp(32px,8vw,44px)}
+  .persona-right{grid-template-columns:1fr}
+  .s{padding:52px 16px}
+  .rule-wrap{padding:0 16px}
+  #hero{padding:0 16px 48px}
+  #contact{padding:64px 16px}
+  footer{padding:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .fu{opacity:1;transform:none;transition:none}
+  .mq-track{animation:none}
+  .rule-line{transform:scaleX(1)}
+  .bf{opacity:1;transform:none;transition:none}
+  .s-title{opacity:1;transform:none}
+}
+
+/* Artifact counter badge */
+.art-count{display:inline-flex;align-items:center;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 9px;border:1px solid var(--milk3);color:var(--ink3);margin-left:8px;vertical-align:middle;transition:border-color .2s}
+.case.open .art-count{border-color:var(--ink3);color:var(--ink)}
+
+/* Copy button */
+.copy-btn{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.6);background:none;cursor:pointer;transition:all .2s;flex-shrink:0;margin-left:12px}
+.copy-btn:hover{border-color:var(--gold);color:var(--gold)}
+.copy-btn.copied{border-color:var(--jade);color:var(--jade)}
+
+/* Back to top */
+#btt{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--ink);color:var(--milk);border:none;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;z-index:400;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s,background .2s;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#btt.vis{opacity:1;transform:translateY(0)}
+#btt:hover{background:var(--gold);color:var(--ink)}
+@media(pointer:coarse){#btt{width:48px;height:48px}}
+@keyframes xp-pulse{0%,100%{transform:translateY(-50%) scale(1)}50%{transform:translateY(-50%) scale(1.8)}}
+.cmap-wrap{overflow-x:auto}
+.cmap{width:100%;border-collapse:collapse;min-width:660px;table-layout:fixed}
+.cmap th{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;text-align:left;border:1px solid}
+.cmap-h0{background:var(--ink);color:var(--milk);border-color:var(--ink);width:18%}
+.cmap-h1{background:#fffce0;color:#7a5200;border-color:rgba(232,160,0,.4);width:20.5%}
+.cmap-h2{background:#fff5e0;color:#7a3c00;border-color:rgba(224,100,0,.4);width:20.5%}
+.cmap-h3{background:#e8fdf4;color:#0b5e35;border-color:rgba(29,184,122,.4);width:20.5%}
+.cmap-h4{background:#edf4ff;color:#0c3a7a;border-color:rgba(55,138,221,.4);width:20.5%}
+.cmap td{padding:9px 12px;border:1px solid var(--milk3);font-size:11px;font-weight:300;color:var(--ink2);vertical-align:top;line-height:1.65}
+.cmap .ck{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:var(--ink);background:var(--milk2)}
+.cmap .c1{background:#fffef7}.cmap .c2{background:#fffbf5}.cmap .c3{background:#f5fdf9}.cmap .c4{background:#f0f6ff}
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--milk3);border:1px solid var(--milk3)}
+.tool-group{background:var(--milk);padding:18px 16px}
+.tool-group-title{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding-bottom:11px;margin-bottom:12px;border-bottom:2px solid}
+.tg-lms .tool-group-title{border-color:var(--jade);color:var(--jade)}
+.tg-proc .tool-group-title{border-color:var(--amber);color:var(--amber)}
+.tg-ai .tool-group-title{border-color:var(--iris);color:var(--iris)}
+.tg-des .tool-group-title{border-color:var(--fire);color:var(--fire)}
+.tool-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--milk3)}
+.tool-item:last-child{border-bottom:none}
+.tool-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--ink)}
+.tool-ctx{font-size:10px;font-weight:300;color:var(--ink3);line-height:1.5}
+.tool-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.tg-lms .tool-dot{background:var(--jade)}.tg-proc .tool-dot{background:var(--amber)}.tg-ai .tool-dot{background:var(--iris)}.tg-des .tool-dot{background:var(--fire)}
+@media(max-width:960px){.tools-grid{grid-template-columns:1fr 1fr}}
+
+/* ══ SOFT THEME ══ */
+.btn-s,.btn-g{border-radius:14px}
+.case{border:1px solid var(--milk3);border-radius:24px;margin-bottom:14px;padding:0 26px;background:#FFFEFB}
+.case-fill{border-radius:22px}
+.case-hd{padding:24px 0}
+.case-cols{border:none;border-radius:16px;overflow:hidden;gap:1px}
+.case-col{background:var(--milk)}
+.artifact{border:1px solid var(--milk3);border-radius:18px}
+.reward{border-radius:14px;border-width:1px}
+.ri{border-radius:999px;border-width:1px}
+.ct{border-radius:999px}
+.quest-badge{border-radius:999px}
+.art-count{border-radius:999px}
+.kpc{border-radius:14px}
+.kpeg{border-radius:0 8px 8px 0}
+.jmap,.gmap-wrap,.rubric-wrap,.cmap-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--milk3)}
+.jtbl,.gmap-table,.rubric-table,.cmap{min-width:620px}
+.jtbl th:first-child{border-top-left-radius:0}
+
+
+.fw-grid{border-radius:16px;overflow:hidden}
+.st-grid{border-radius:16px;overflow:hidden}
+.tools-grid{border-radius:16px;overflow:hidden}
+.qual{border-radius:12px}
+.clink{border-radius:14px}
+.c-aside{border-radius:18px}
+.ach{border-radius:16px}
+.tag,.sk-tag{border:none;border-radius:999px;background:var(--milk2);padding:7px 15px}
+.tag.g{background:var(--gold-lt)}.tag.r{background:var(--fire-lt)}.tag.v{background:var(--iris-lt)}.tag.m{background:var(--jade-lt)}
+.sk-g{background:var(--gold-lt)!important}.sk-r{background:var(--fire-lt)!important}.sk-v{background:var(--iris-lt)!important}.sk-m{background:var(--jade-lt)!important}
+.tag:hover,.sk-tag:hover{background:var(--ink);color:var(--milk)}
+.otag{border-radius:999px}
+.mt-root{border-radius:10px}
+.mt-pl{border-radius:999px;border-width:1px}
+.mt-lf{border-radius:999px}
+.copy-btn{border-radius:999px}
+#btt{border-radius:50%}
+.mobile-nav{border-radius:0 0 18px 18px}
+.persona-left,.pg{border-radius:14px}
+.persona-avatar{border-width:1.5px}
+.sp-tool,.gmap-theory-tag{border-radius:999px}
+.df-tool{border-radius:999px}
+.tc-role-tag{border-radius:999px}
+.tool-group{border:none}
+.st-branch{border:none}
+.fw{border:none}
+.value-item{border-bottom-color:var(--milk2)}
+.tl{border-left-color:var(--milk2)}
+.b-lvl-track,.lxp-track,.xp-track{border-radius:99px;overflow:hidden}
+.lxp-fill,.xp-fill,.b-lvl-fill{border-radius:99px}
+.stat-bar-wrap,.stat-bar-fill{border-radius:99px}
+nav{border-bottom-color:var(--milk2)}
+.rule-line{opacity:.4}
+
+/* ══ MEGA FOOTER ══ */
+.mf{background:var(--ink);position:relative;overflow:hidden}
+.mf-marquee{overflow:hidden;border-bottom:1px solid rgba(255,255,255,.08);padding:14px 0}
+.mf-mq-track{display:flex;white-space:nowrap;animation:mfmq 28s linear infinite}
+.mf-mq-item{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);padding-right:8px}
+@keyframes mfmq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mf-stage{position:relative;min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;padding:80px 24px}
+.mf-blob{position:absolute;border-radius:60% 40% 55% 45%/50% 60% 40% 50%;filter:blur(4px);opacity:.16;pointer-events:none;animation:blobFloat 16s ease-in-out infinite}
+.mf-b1{width:380px;height:340px;background:var(--gold);top:-80px;right:-100px}
+.mf-b2{width:300px;height:280px;background:var(--iris);bottom:-70px;left:-80px;animation-delay:-7s}
+.mf-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(64px,13vw,170px);font-weight:700;letter-spacing:-.05em;line-height:1;color:var(--milk);user-select:none;display:flex;pointer-events:none}
+.mf-title .ml{display:inline-block;transition:transform .3s cubic-bezier(.16,1,.3,1),color .3s;cursor:default}
+.mf-title .ml:hover{transform:translateY(-14px) rotate(-6deg);color:var(--gold)}
+.mf-title .ml.q{color:var(--gold);-webkit-text-stroke:0}
+.mf-btn{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:24px 56px;background:var(--gold);color:var(--ink);border-radius:999px;transition:transform .25s cubic-bezier(.16,1,.3,1),background .2s,box-shadow .25s;box-shadow:0 0 0 0 rgba(232,160,0,.4);position:relative;z-index:4}
+.mf-btn:hover{background:var(--milk);box-shadow:0 0 0 14px rgba(232,160,0,.12)}
+.mf-hint{position:absolute;bottom:20px;right:28px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);animation:hintPulse 2.5s ease-in-out infinite}
+.fsticker{position:absolute;z-index:3;padding:18px 24px;border-radius:20px;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);backdrop-filter:blur(6px);cursor:pointer;user-select:none;touch-action:none;will-change:transform;transition:border-color .2s,background .2s}
+.fsticker:hover{border-color:var(--gold);background:rgba(232,160,0,.12)}
+.fsticker:active{cursor:grabbing}
+.fsticker.dragging{z-index:60;transition:none}
+.fs-icon{font-size:24px;margin-bottom:8px}
+.fs-name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.fs-sub{font-size:12px;color:rgba(255,255,255,.65);margin-top:3px}
+.fs-mail{cursor:pointer}
+.mf-bottom{display:flex;justify-content:space-between;padding:18px 48px;border-top:1px solid rgba(255,255,255,.07);font-size:11px;letter-spacing:.07em;color:rgba(255,255,255,.25)}
+@media(max-width:960px){
+  .mf-stage{min-height:auto;padding:56px 16px 70px;gap:28px}
+  .fsticker{position:relative;display:inline-block;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;margin:5px;cursor:default}
+  .mf-hint{display:none}
+  .mf-bottom{padding:16px 20px;flex-direction:column;gap:4px;text-align:center}
+  .fstickers-mobile{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;position:relative;z-index:3}
+}
+
+/* ══ TYPE SYSTEM ══ */
+:root{
+  --fs-display:clamp(52px,9vw,108px);   /* hero/footer гиганты */
+  --fs-h2:clamp(34px,4.8vw,56px);       /* заголовки секций */
+  --fs-h3:clamp(17px,1.8vw,22px);       /* названия кейсов/карточек */
+  --fs-num:clamp(30px,3vw,42px);        /* крупные числа */
+  --fs-body:15px;                        /* основной текст */
+  --fs-small:13px;                       /* текст внутри карточек */
+  --fs-caption:12px;                     /* подписи, сабы */
+  --fs-label:11px;                       /* uppercase-метки, eyebrow */
+  --fs-micro:10px;                       /* пилюли, бейджи */
+  --lh-tight:1.05;--lh-snug:1.4;--lh-body:1.7;
+}
+/* Заголовки */
+.hp-title{font-size:var(--fs-display)}
+.mf-title{font-size:var(--fs-display)}
+.s-title{font-size:var(--fs-h2);line-height:var(--lh-tight)}
+.case-name{font-size:var(--fs-h3)}
+.b-sys-title,.cat{font-size:var(--fs-h3)}
+/* Числа */
+.st-num{font-size:var(--fs-num)}
+.result-n,.ig-num{font-size:var(--fs-num)}
+/* Основной текст */
+.hp-sub,.about-lead{font-size:18px;line-height:var(--lh-body)}
+.about-body,.cases-intro,.st-intro,.cdesc{font-size:var(--fs-body);line-height:var(--lh-body)}
+.hero-desc{font-size:var(--fs-body)}
+/* Карточки */
+.case-col p,.case-col ul li,.vd,.fwd,.dc-why,.tc-why{font-size:var(--fs-small);line-height:1.65}
+.ach-desc,.st-node-sub,.tool-ctx,.qby{font-size:var(--fs-caption)}
+.case-sub,.fs-sub,.b-lab,.st-lab,.hp-loc,.tlplace{font-size:var(--fs-caption)}
+.ach-name,.st-node-name,.tool-name,.vt,.fwn,.qname,.fs-name{font-size:var(--fs-body)}
+/* Метки и пилюли */
+.s-ey,.eyebrow,.ccl,.art-hd,.reward-label,.hero-eyebrow{font-size:var(--fs-label);letter-spacing:.16em}
+.ct,.quest-badge,.art-count,.ri,.mt-pl,.mt-lf,.otag,.df-tool{font-size:var(--fs-micro)}
+.tag,.sk-tag{font-size:var(--fs-caption)}
+.nav-links a,.nav-logo{font-size:var(--fs-label)}
+.mq-item,.mf-mq-item{font-size:var(--fs-label)}
+/* Таблицы */
+.jtbl th,.gmap-table th,.rubric-table th,.cmap th{font-size:var(--fs-micro)}
+.jtbl td,.gmap-table td,.rubric-table td,.cmap td{font-size:var(--fs-caption);line-height:1.6}
+/* Кнопки */
+.btn-s,.btn-g{font-size:var(--fs-caption);letter-spacing:.1em}
+.mf-btn{font-size:clamp(16px,1.6vw,19px)}
+
+/* ══ BEFORE/AFTER SLIDER ══ */
+.ba-hint{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--gold);margin-left:auto;animation:hintPulse 2.5s ease-in-out infinite}
+.ba-slider{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--milk3);user-select:none;--pos:50%}
+.ba-side{padding:28px;min-height:300px}
+.ba-before{background:var(--fire-lt);min-height:320px}
+.ba-after{position:absolute;inset:0;background:var(--jade-lt);clip-path:inset(0 0 0 var(--pos));padding:28px}
+.ba-tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+.ba-tag-bad{background:rgba(224,58,47,.15);color:var(--fire)}
+.ba-tag-good{background:rgba(29,184,122,.18);color:#0d6b3a}
+.ba-card{background:#fff;border-radius:12px;padding:20px;max-width:420px;box-shadow:0 2px 8px rgba(14,14,12,.05)}
+.ba-ctx{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.ba-q{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:14px;line-height:1.5}
+.ba-opts{display:flex;flex-direction:column;gap:6px}
+.ba-opt{padding:8px 12px;border:1px solid var(--milk3);border-radius:8px;font-size:12px;background:var(--milk)}
+.ba-opt.ba-ok{border-color:var(--jade);background:var(--jade-lt);font-weight:600}
+.ba-fb{margin-top:12px;padding:9px 12px;background:var(--milk2);border-left:2px solid var(--jade);border-radius:0 8px 8px 0;font-size:11px;font-style:italic;color:var(--ink2);line-height:1.55}
+.ba-fb-none{border-color:var(--fire);opacity:.55}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:var(--ink);cursor:ew-resize;z-index:5;transform:translateX(-50%)}
+.ba-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--milk);display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 10px rgba(14,14,12,.3);transition:transform .2s}
+.ba-handle:hover .ba-grip{transform:translate(-50%,-50%) scale(1.12)}
+@media(max-width:700px){.ba-side{padding:16px;min-height:340px}.ba-card{padding:14px}}
+
+/* ══ ZOOM ARTIFACTS ══ */
+.zoom-btn{margin-left:auto;width:28px;height:28px;border-radius:50%;border:1px solid var(--milk3);background:var(--milk);color:var(--ink3);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.zoom-btn:hover{border-color:var(--ink);color:var(--ink);transform:scale(1.1)}
+.art-hd{display:flex;align-items:center}
+.zoom-overlay{position:fixed;inset:0;background:rgba(14,14,12,.86);z-index:900;display:none;align-items:center;justify-content:center;padding:32px;backdrop-filter:blur(4px)}
+.zoom-overlay.open{display:flex;animation:zoomFade .25s ease}
+@keyframes zoomFade{from{opacity:0}to{opacity:1}}
+.zoom-box{background:var(--milk);border-radius:20px;max-width:min(1280px,94vw);max-height:90vh;overflow:auto;padding:36px;position:relative;animation:zoomIn .3s cubic-bezier(.16,1,.3,1)}
+@keyframes zoomIn{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.zoom-close{position:sticky;top:0;float:right;width:38px;height:38px;border-radius:50%;border:none;background:var(--ink);color:var(--milk);font-size:16px;cursor:pointer;z-index:5;transition:background .2s}
+.zoom-close:hover{background:var(--fire)}
+.zoom-box .artifact{border:none;padding:0}
+@media(max-width:700px){.zoom-overlay{padding:12px}.zoom-box{padding:20px}}
+
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--jade);margin-right:6px;vertical-align:middle;animation:statusPulse 2s ease-in-out infinite;box-shadow:0 0 0 0 rgba(29,184,122,.5)}
+@keyframes statusPulse{0%{box-shadow:0 0 0 0 rgba(29,184,122,.45)}70%{box-shadow:0 0 0 7px rgba(29,184,122,0)}100%{box-shadow:0 0 0 0 rgba(29,184,122,0)}}
+
+/* ══ DEMO ══ */
+.demo-wrap{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:36px;align-items:start}
+.demo-phone{border:1.5px solid var(--ink);border-radius:28px;background:#FFFEFB;overflow:hidden;box-shadow:4px 6px 0 rgba(14,14,12,.1)}
+
+
+
+.demo-xp-track{flex:1;height:8px;background:var(--milk3);border-radius:99px;overflow:hidden}
+.demo-xp-fill{height:100%;background:var(--jade);border-radius:99px;width:0;transition:width .6s cubic-bezier(.16,1,.3,1)}
+
+.demo-body{padding:24px 20px 20px}
+.demo-scene{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.65;padding:12px 14px;background:var(--iris-lt);border-radius:12px;margin-bottom:16px}
+.demo-q{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--ink);line-height:1.45;margin-bottom:16px}
+.demo-opts{display:flex;flex-direction:column;gap:8px}
+.demo-opt{padding:13px 16px;border:1.5px solid var(--milk3);border-radius:12px;font-size:14px;background:var(--milk);cursor:pointer;transition:all .18s;text-align:left;font-family:'DM Sans',sans-serif}
+.demo-opt:hover{border-color:var(--ink);transform:translateX(3px)}
+.demo-opt.correct{border-color:var(--jade);background:var(--jade-lt);font-weight:600}
+.demo-opt.wrong{border-color:var(--fire);background:var(--fire-lt);opacity:.75}
+.demo-opt:disabled{cursor:default}
+.demo-opt:disabled:hover{transform:none}
+.demo-fb{display:none;margin-top:14px;padding:12px 16px;border-radius:12px;font-size:13px;line-height:1.65;font-weight:300}
+.demo-fb.show{display:block;animation:fbIn .3s ease}
+.demo-fb.ok{background:var(--jade-lt);border-left:3px solid var(--jade);color:var(--ink2)}
+.demo-fb.no{background:var(--fire-lt);border-left:3px solid var(--fire);color:var(--ink2)}
+@keyframes fbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.demo-next{display:none;margin-top:14px;width:100%;padding:14px;border:none;border-radius:12px;background:var(--ink);color:var(--milk);font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;cursor:pointer;transition:background .2s}
+.demo-next:hover{background:var(--jade)}
+.demo-next.show{display:block}
+.demo-done{text-align:center;padding:20px 0}
+.demo-badge{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;background:var(--gold-lt);border:1.5px solid var(--gold);font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin:14px 0;animation:badgePop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes badgePop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+
+.demo-mech{display:flex;gap:14px;padding:14px 16px;border-radius:14px;margin-bottom:8px;transition:background .3s,transform .3s;opacity:.45}
+.demo-mech.lit{background:var(--gold-lt);opacity:1;transform:translateX(4px)}
+.dm-n{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--gold);flex-shrink:0}
+.dm-t{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.dm-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.6}
+@media(max-width:900px){.demo-wrap{grid-template-columns:1fr}}
+
+/* demo v2 */
+.demo-journey{display:flex;align-items:center;gap:6px;justify-content:center;margin-bottom:12px}
+.dj-stage{font-size:18px;opacity:.3;transition:opacity .3s,transform .3s;line-height:1}
+.dj-stage.on{opacity:1;transform:scale(1.25)}
+.dj-stage.done{opacity:.85}
+.dj-line{flex:1;max-width:34px;height:2px;background:var(--milk3);border-radius:2px}
+
+.demo-assemble{display:none;flex-direction:column;gap:12px;margin-bottom:4px}
+.demo-assemble.show{display:flex}
+.asm-line{min-height:52px;border:1.5px dashed var(--milk3);border-radius:12px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.asm-line.filled{border-style:solid;border-color:var(--ink2)}
+.asm-bank{display:flex;flex-wrap:wrap;gap:6px}
+.asm-tile{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;padding:9px 14px;border:1.5px solid var(--milk3);border-radius:10px;background:#fff;cursor:pointer;transition:all .15s;user-select:none}
+.asm-tile:hover{border-color:var(--ink);transform:translateY(-2px)}
+.asm-tile.used{opacity:.25;pointer-events:none}
+.asm-line .asm-tile{background:var(--iris-lt);border-color:var(--iris)}
+.asm-check{margin-top:2px;padding:12px;border:none;border-radius:12px;background:var(--iris);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s}
+.asm-check:hover{background:var(--ink)}
+.asm-check:disabled{background:var(--milk3);color:var(--ink3);cursor:default}
+.asm-hint{font-size:11px;color:var(--ink3);font-style:italic}
+
+.dict-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.dict-empty{font-size:11px;color:var(--ink3);font-style:italic}
+.dict-chip{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--jade-lt);color:#0d6b3a;animation:badgePop .4s cubic-bezier(.34,1.56,.64,1)}
+.dict-chip i{font-style:normal;opacity:.6;font-weight:400}
+.demo-words-final{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:14px 0}
+
+.demo-note{margin-top:10px;padding:11px 14px;background:var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;font-size:12px;line-height:1.65;color:var(--ink2);animation:fbIn .35s ease .15s both}
+.demo-note b{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a6200;display:block;margin-bottom:4px}
+.demo-choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.demo-country{padding:22px 16px;border:1.5px solid var(--milk3);border-radius:16px;background:var(--milk);cursor:pointer;text-align:center;transition:all .2s;font-family:'DM Sans',sans-serif}
+.demo-country:hover{border-color:var(--ink);transform:translateY(-3px)}
+.dc-flag{font-size:34px;line-height:1;margin-bottom:8px}
+.dc-city{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--ink)}
+.dc-lang{font-size:11px;color:var(--ink3);margin-top:3px}
+@media(max-width:520px){.demo-choice{grid-template-columns:1fr}}
+
+/* ══ METRO MAP ══ */
+.metro-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.ml-chip{display:inline-flex;align-items:center;gap:7px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--ink2);padding:6px 14px;border-radius:999px;background:#FFFEFB;border:1px solid var(--milk3)}
+.ml-chip i{width:18px;height:4px;border-radius:3px;display:inline-block}
+.ml-ring{width:12px!important;height:12px!important;border-radius:50%!important;background:#fff!important;border:3px solid var(--ink)}
+.metro-wrap{position:relative;border:1px solid var(--milk3);border-radius:22px;background:#FFFEFB;padding:10px;overflow-x:auto;overflow-y:hidden}
+#metro-svg{width:100%;min-width:880px;height:auto;display:block}
+.mline{fill:none;stroke-width:7;stroke-linejoin:round;stroke-linecap:round;opacity:.85}
+.mst{cursor:pointer}
+.msc{fill:#fff;stroke-width:5;transition:r .2s,stroke-width .2s}
+.mst:hover .msc{stroke-width:8}
+.msc-int{fill:#fff;stroke:var(--ink);stroke-width:4}
+.msc-int-core{fill:var(--ink)}
+.mst:hover .msc-int{stroke-width:6}
+.mst text{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:var(--ink2)}
+.mst .mt-bold{font-weight:700;fill:var(--ink)}
+.mst:hover text{fill:var(--ink)}
+.metro-tip{position:absolute;display:none;max-width:280px;padding:12px 16px;background:var(--ink);color:var(--milk);border-radius:14px;font-size:12px;line-height:1.6;z-index:10;pointer-events:none;box-shadow:0 6px 24px rgba(14,14,12,.25)}
+.metro-tip b{font-family:'Space Grotesk',sans-serif;font-size:13px;display:block;margin-bottom:4px;color:var(--gold)}
+.metro-tip.show{display:block;animation:fbIn .2s ease}
+.metro-mobile{display:none}
+@media(max-width:900px){
+  .metro-wrap,.metro-legend{display:none}
+  .metro-mobile{display:grid;gap:18px}
+  .mm-line{border:1px solid var(--milk3);border-radius:18px;background:#FFFEFB;padding:18px;position:relative}
+  .mm-title{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding-bottom:10px;border-bottom:3px solid var(--lc);margin-bottom:6px}
+  .mm-st{display:flex;gap:12px;padding:10px 0;position:relative}
+  .mm-st::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:3px;background:var(--lc);opacity:.35}
+  .mm-st:first-of-type::before{top:50%}
+  .mm-st:last-of-type::before{bottom:50%}
+  .mm-st i{width:17px;height:17px;border-radius:50%;background:#fff;border:4px solid var(--lc);flex-shrink:0;margin-top:2px;position:relative;z-index:1}
+  .mm-st.mm-int i{border-color:var(--ink)}
+  .mm-st b{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--ink);display:block}
+  .mm-st span{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.55}
+}
+
+.ml-cov{background:var(--jade-lt);border-color:transparent;color:#0d6b3a;font-weight:700}
+.metro-foot{margin-top:14px;font-size:12px;font-weight:300;color:var(--ink3);line-height:1.7;max-width:760px;font-style:italic}
+@media(max-width:900px){.metro-mobile .metro-foot{display:block}}
+
+.bring-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.bg-card{border:1px solid var(--milk3);border-radius:20px;padding:26px 22px;background:#FFFEFB;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .25s}
+.bg-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.bg-star{font-size:18px;color:var(--gold);margin-bottom:12px}
+.bg-t{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.3}
+.bg-d{font-size:13px;font-weight:300;color:var(--ink3);line-height:1.65}
+@media(max-width:960px){.bring-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.bring-grid{grid-template-columns:1fr}}
+.hero-center .hp-ctas,.hero-center a,.hero-center button,.hero-center .hp-avatar{pointer-events:auto}.mf-title .ml{pointer-events:auto}.mf-btn{pointer-events:auto}
+/* доступность: фокус с клавиатуры */
+a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focus-visible,input:focus-visible,.art-hd:focus-visible,.wf-step:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+*:focus:not(:focus-visible){outline:none}
+
+/* демо v4: линза методиста */
+
+.demo-lens-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;color:var(--ink3);letter-spacing:.04em}
+.demo-lens-tog{width:38px;height:22px;border-radius:99px;background:var(--milk3);border:none;cursor:pointer;position:relative;transition:background .25s;padding:0}
+.demo-lens-tog.on{background:var(--iris)}
+.dlt-knob{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .25s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.demo-lens-tog.on .dlt-knob{transform:translateX(16px)}
+/* аннотации методиста */
+.lens-note{display:none;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--iris-lt);border-left:2px solid var(--iris);font-size:11px;line-height:1.5;color:var(--ink2)}
+.lens-on .lens-note{display:block;animation:fbIn .25s ease}
+.lens-tag{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--iris);display:block;margin-bottom:2px}
+/* адаптивная подсказка */
+.demo-hint-box{margin-top:10px;padding:9px 13px;border-radius:8px;background:var(--gold-lt);border-left:2px solid var(--gold);font-size:12px;line-height:1.55;color:var(--ink2);animation:fbIn .3s ease}
+.demo-hint-box b{font-weight:600}
+/* тип задания match (сопоставление) */
+.demo-match{display:none;flex-direction:column;gap:8px;margin-bottom:4px}
+.demo-match.show{display:flex}
+.dm-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dm-term{padding:11px 14px;border-radius:10px;background:var(--iris-lt);font-weight:600;font-size:14px;text-align:center;font-family:'Space Grotesk',sans-serif}
+.dm-opt{padding:11px 14px;border:1.5px solid var(--milk3);border-radius:10px;font-size:13px;background:var(--milk);cursor:pointer;text-align:center;transition:all .15s}
+.dm-opt:hover{border-color:var(--ink);transform:translateY(-2px)}
+.dm-opt.matched{border-color:var(--jade);background:var(--jade-lt);font-weight:600;pointer-events:none}
+.dm-opt.wrong{border-color:var(--fire);background:var(--fire-lt);animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+/* финал: компетенции + шеринг */
+.demo-skills{display:flex;flex-direction:column;gap:6px;margin:14px 0;text-align:left}
+.ds-row{display:flex;gap:9px;align-items:center;font-size:12px;color:var(--ink2);padding:7px 12px;background:var(--milk2);border-radius:8px}
+.ds-ic{color:var(--jade);font-weight:700;flex-shrink:0}
+.demo-share{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.share-btn{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;padding:11px 18px;border-radius:999px;border:1.5px solid var(--ink);background:none;color:var(--ink);cursor:pointer;transition:all .2s}
+.share-btn:hover{background:var(--ink);color:var(--milk)}
+.share-btn.copied{border-color:var(--jade);background:var(--jade);color:#fff}
+/* A/B реплей */
+.ab-replay{margin-top:12px;padding:16px;border-radius:14px;background:var(--fire-lt);border:1px solid rgba(224,58,47,.2)}
+.abr-h{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fire);margin-bottom:10px}
+.abr-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.abr-side{padding:12px;border-radius:10px;background:#FFFEFB}
+.abr-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;color:var(--ink3)}
+.abr-side.win{border:1.5px solid var(--jade)}
+.abr-side.win .abr-label{color:#0d6b3a}
+.abr-demo{font-size:12px;line-height:1.5;color:var(--ink2)}
+@media(max-width:560px){.abr-compare,.dm-pair{grid-template-columns:1fr}}
+
+/* ════ ДЕМО v5: двухпанельный экран приложения ════ */
+.demo-wrap{display:grid;grid-template-columns:minmax(320px,400px) 1fr;gap:32px;align-items:start}
+/* — телефон — */
+.demo-phone{border:1px solid var(--milk3);border-radius:34px;background:#FFFEFB;overflow:hidden;box-shadow:0 12px 40px rgba(14,14,12,.1),0 2px 8px rgba(14,14,12,.06);position:relative}
+.demo-notch{height:28px;background:var(--ink);display:flex;align-items:center;justify-content:center;position:relative}
+.dn-cam{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25)}
+.demo-statusbar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--milk2);border-bottom:1px solid var(--milk3)}
+.dsb-app{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.dsb-lens{display:inline-flex;align-items:center;gap:7px}
+.demo-lens-label{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:600;color:var(--ink3);letter-spacing:.02em}
+.demo-lens-tog{width:34px;height:20px;border-radius:99px;background:var(--milk3);border:none;cursor:pointer;position:relative;transition:background .25s;padding:0}
+.demo-lens-tog.on{background:var(--iris)}
+.dlt-knob{position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .25s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.demo-lens-tog.on .dlt-knob{transform:translateX(14px)}
+.demo-body{padding:24px 22px 22px;min-height:340px}
+/* — панель прогресса — */
+.demo-panel{display:flex;flex-direction:column;gap:18px;padding-top:8px}
+.dp-block{border:1px solid var(--milk3);border-radius:16px;background:#FFFEFB;padding:18px 20px}
+.dp-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.dp-stats{display:grid;grid-template-columns:1fr auto;gap:12px}
+.dp-stat{border:1px solid var(--milk3);border-radius:16px;background:#FFFEFB;padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.dp-stat-v{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.dp-stat-v span{font-size:13px;color:var(--ink3);margin-left:5px;font-weight:600}
+.dp-stat-l{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.dp-streak{min-width:92px;text-align:center;align-items:center;background:var(--fire-lt);border-color:transparent}
+.dp-streak .dp-stat-v{font-size:24px;color:var(--fire)}
+.demo-xp-track{height:8px;background:var(--milk3);border-radius:99px;overflow:hidden}
+.demo-xp-fill{height:100%;background:var(--jade);border-radius:99px;width:0;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.dp-dict{flex:1}
+/* журней в панели — крупнее */
+.demo-journey{display:flex;align-items:center;gap:6px;justify-content:space-between}
+.dj-stage{font-size:22px;opacity:.3;transition:opacity .3s,transform .3s;line-height:1}
+.dj-stage.on{opacity:1;transform:scale(1.3)}
+.dj-stage.done{opacity:.85}
+.dj-line{flex:1;height:2px;background:var(--milk3);border-radius:2px}
+
+@media(max-width:900px){
+  .demo-wrap{grid-template-columns:1fr;gap:20px}
+  .demo-phone{max-width:420px;margin:0 auto;width:100%}
+  .demo-panel{max-width:420px;margin:0 auto;width:100%}
+  .dj-stage{font-size:20px}
+}
+@media(max-width:420px){
+  .demo-stats{grid-template-columns:1fr}
+  .demo-body{padding:18px 16px}
+}
+.process-link{display:inline-flex;align-items:center;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;padding:14px 28px;border-radius:999px;background:var(--ink);color:var(--milk);text-decoration:none;transition:transform .2s}
+.process-link:hover{transform:translateY(-2px)}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<button id="btt" aria-label="Наверх" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div id="cur"></div>
+
+<nav>
+  <a class="nav-logo" href="#hero">Летяго</a>
+  <ul class="nav-links">
+    <li><a href="#about">Обо мне</a></li>
+    <li><a href="#demo">Демо</a></li>
+    <li><a href="#cases">Кейсы</a></li>
+    <li><a href="#process">Процесс</a></li>
+    <li><a href="#skills">Навыки</a></li>
+    <li><a href="#contact">Контакт</a></li>
+    <li><a href="toolkit.html">Кухня</a></li>
+    <li><a href="toolkit.html">Кухня</a>
+  <a href="resume.html">Резюме</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button class="nav-ham" id="ham" onclick="toggleMobileNav()" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Мобильное меню">
+  <a href="#about" onclick="closeMobileNav()">Обо мне</a>
+  <a href="#demo" onclick="closeMobileNav()">Демо</a>
+  <a href="#cases" onclick="closeMobileNav()">Кейсы</a>
+  <a href="#process" onclick="closeMobileNav()">Процесс</a>
+  <a href="#skills" onclick="closeMobileNav()">Навыки</a>
+  <a href="#education" onclick="closeMobileNav()">Образование</a>
+  <a href="#contact" onclick="closeMobileNav()">Контакт</a>
+  <a href="toolkit.html">Кухня</a>
+  <a href="resume.html">Резюме</a>
+</nav>
+
+<div class="mq-wrap">
+  <div class="mq-track">
+    <span class="mq-item"><span class="mq-dot"></span>Педдизайн<span class="mq-dot"></span>Lingo Magic<span class="mq-dot"></span>SEA 2025 Shortlist<span class="mq-dot"></span>Digital Bridge 2025<span class="mq-dot"></span>НИУ ВШЭ<span class="mq-dot"></span>Kirkpatrick L1–L4<span class="mq-dot"></span>SAM<span class="mq-dot"></span>60+ экспертов<span class="mq-dot"></span>Психометрика<span class="mq-dot"></span>ДКЭ Победитель<span class="mq-dot"></span>Геймификация<span class="mq-dot"></span>AI Fluency</span>
+    <span class="mq-item"><span class="mq-dot"></span>Педдизайн<span class="mq-dot"></span>Lingo Magic<span class="mq-dot"></span>SEA 2025 Shortlist<span class="mq-dot"></span>Digital Bridge 2025<span class="mq-dot"></span>НИУ ВШЭ<span class="mq-dot"></span>Kirkpatrick L1–L4<span class="mq-dot"></span>SAM<span class="mq-dot"></span>60+ экспертов<span class="mq-dot"></span>Психометрика<span class="mq-dot"></span>ДКЭ Победитель<span class="mq-dot"></span>Геймификация<span class="mq-dot"></span>AI Fluency</span>
+  </div>
+</div>
+
+<!-- HERO PLAYGROUND -->
+<section id="hero">
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+
+  <div class="hero-center">
+    <div class="hp-persona">
+      <div class="hp-avatar"><img src="photo.jpg" alt="Ирина Летяго" class="hp-avatar-img"></div>
+      <div>
+        <div class="hp-name">Ирина Летяго</div>
+        <div class="hp-loc"><span class="status-dot"></span>открыта к предложениям · отвечаю в течение дня</div>
+      </div>
+    </div>
+    <h1 class="hp-title">
+      <span class="hpt-gold">Обучение</span><br>
+      <span class="hpt-stroke">×</span> <span class="hpt-fire">Продукт</span><br>
+      <span class="hpt-thin">дизайнер</span>
+    </h1>
+    <p class="hp-sub">Проектирую обучение, которое меняет поведение. Карточки вокруг — можно таскать и кидать.</p>
+    <div class="hp-ctas">
+      <a href="#cases" class="btn-s magnetic">Смотреть кейсы →</a>
+      <a href="#contact" class="btn-g magnetic">Связаться</a>
+    </div>
+  </div>
+
+  <!-- DRAGGABLE STICKERS -->
+  <div class="sticker st-gold" data-rot="-6" style="top:12%;left:3%">
+    <div class="st-num">60+</div>
+    <div class="st-lab">авторов · 15+ стран</div>
+  </div>
+  <div class="sticker st-jade" data-rot="4" style="top:68%;left:4%">
+    <div class="st-num">3 000+</div>
+    <div class="st-lab">DAU · 3 платформы</div>
+  </div>
+  <div class="sticker st-iris st-round" data-rot="8" style="top:12%;right:3%">
+    <div class="st-num">SEA</div>
+    <div class="st-lab">'25 Shortlist ★</div>
+  </div>
+  <div class="sticker st-fire" data-rot="-5" style="top:68%;right:4%">
+    <div class="st-num">16</div>
+    <div class="st-lab">программ с нуля</div>
+  </div>
+  <div class="sticker st-ink" data-rot="3" style="bottom:5%;left:7%">
+    <div class="st-sys">Нарративно-психологическая система ↗</div>
+  </div>
+  <div class="sticker st-lvl st-round" data-rot="-8" style="bottom:6%;right:7%">
+    <div class="st-num" style="font-size:18px">LV.6</div>
+    <div class="st-lab">EXPERT</div>
+  </div>
+
+  <div class="hp-hint" aria-hidden="true">↖ потаскайте карточки</div>
+</section>
+
+<!-- ABOUT -->
+
+<!-- DEMO -->
+<div class="rule-wrap"><div class="rule-line" data-rule></div></div>
+<section id="demo" class="s">
+  <div class="s-ey">— Демо · Lingo Magic</div>
+  <h2 class="s-title">Методика в действии</h2>
+  <p class="cases-intro fu">Мини-модуль по стандартам Lingo Magic. Выберите страну — от неё зависит язык урока. Внутри: три типа заданий, адаптивная сложность, объясняющая обратная связь и заметки «как это сделано». Включите режим методиста, чтобы увидеть конструкцию за контентом.</p>
+
+  <div class="demo-wrap fu d1">
+    <!-- ЛЕВО: рамка телефона -->
+    <div class="demo-phone" id="demo-phone">
+      <div class="demo-notch"><span class="dn-cam"></span></div>
+      <div class="demo-statusbar">
+        <span class="dsb-app" id="demo-lvl">Lingo Magic</span>
+        <span class="dsb-lens">
+          <span class="demo-lens-label">👁 методист</span>
+          <button class="demo-lens-tog" id="lensTog" onclick="toggleLens()" role="switch" aria-checked="false"><span class="dlt-knob"></span></button>
+        </span>
+      </div>
+      <div class="demo-body" id="demo-body">
+        <div class="demo-scene"></div>
+        <div class="demo-q"></div>
+        <div class="demo-assemble"></div>
+        <div class="demo-opts"></div>
+        <div class="demo-fb"></div>
+        <button class="demo-next" onclick="demoNext()">Дальше →</button>
+      </div>
+    </div>
+
+    <!-- ПРАВО: панель прогресса -->
+    <div class="demo-panel">
+      <div class="dp-block">
+        <div class="dp-label">Маршрут</div>
+        <div class="demo-journey" id="demo-journey">
+          <span class="dj-stage" data-s="0">✈️</span><span class="dj-line"></span>
+          <span class="dj-stage" data-s="1">📶</span><span class="dj-line"></span>
+          <span class="dj-stage" data-s="2">🚪</span><span class="dj-line"></span>
+          <span class="dj-stage" data-s="3">🚕</span><span class="dj-line"></span>
+          <span class="dj-stage" data-s="4">🏨</span>
+        </div>
+      </div>
+
+      <div class="dp-stats">
+        <div class="dp-stat">
+          <div class="dp-stat-v" id="demo-xp-val">0<span>XP</span></div>
+          <div class="demo-xp-track"><div class="demo-xp-fill" id="demo-xp"></div></div>
+        </div>
+        <div class="dp-stat dp-streak">
+          <div class="dp-stat-v" id="demo-streak">🔥0</div>
+          <div class="dp-stat-l">серия</div>
+        </div>
+      </div>
+
+      <div class="dp-block dp-dict">
+        <div class="dp-label">Словарь · <span id="dict-count">0</span> слов</div>
+        <div class="dict-chips" id="dict-chips"><span class="dict-empty">слова появятся по мере прохождения</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule-wrap"><div class="rule-line" data-rule></div></div>
+<section id="about" class="s">
+  <div class="s-ey">— Обо мне</div>
+  <div class="about-layout">
+    <div class="fu">
+      <p class="about-lead"s make a course", but "what behavior will change and how will it affect metrics".'>
+        Проектирую обучение от <strong>бизнес-цели</strong> — не «сделаем курс», а «что изменится в поведении и как это повлияет на метрики продукта».
+      </p>
+      <p class="about-body">
+        Магистр педагогического дизайна НИУ ВШЭ. Разработала <strong>нарративно-психологическую систему вовлечения</strong> на основе когнитивных наук, психологии пользователя и геймдизайна (Lingo Magic, 3 000+ DAU). 16 образовательных программ с нуля — от мобильного EdTech до SEL и корпоративного L&D; мастер-классы по геймификации в 20+ частных школах Москвы. Pet-проект: <a href="https://corelin.lovable.app/" target="_blank" style="color:var(--iris);text-decoration:none;border-bottom:1px solid currentColor">corelin.lovable.app</a> — геймификация образования на вайб-кодинге.
+      </p>
+      <div class="tag-cloud">
+        <span class="tag g">Педдизайн</span><span class="tag r">EdTech</span><span class="tag v">Аналитика</span><span class="tag m">Геймификация</span><span class="tag">SAM</span><span class="tag">Блум</span><span class="tag">Kirkpatrick</span><span class="tag">Психометрика</span><span class="tag">AI for Educators</span><span class="tag">РИНЦ</span>
+      </div>
+
+      <!-- LANG XP -->
+      <div style="margin-top:36px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">Языки</div>
+        <div class="lang-xp">
+          <div class="lxp-row">
+            <span class="lxp-flag">🇷🇺</span>
+            <div class="lxp-info">
+              <div class="lxp-top"><span class="lxp-name">Русский</span><span class="lxp-level">Родной · MAX</span></div>
+              <div class="lxp-track"><div class="lxp-fill" style="background:var(--gold)" id="lx0"></div></div>
+            </div>
+          </div>
+          <div class="lxp-row">
+            <span class="lxp-flag">🇬🇧</span>
+            <div class="lxp-info">
+              <div class="lxp-top"><span class="lxp-name">Английский</span><span class="lxp-level">B2 — Средне-продвинутый</span></div>
+              <div class="lxp-track"><div class="lxp-fill" style="background:var(--fire)" id="lx1"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fu d1">
+      
+
+      <!-- ACHIEVEMENTS -->
+      <div style="margin-top:28px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px">Достижения</div>
+      <div class="ach-grid">
+        <div class="ach g">
+          <div class="ach-icon">🏆</div>
+          <div>
+            <div class="ach-name">ДКЭ Победитель</div>
+            <div class="ach-desc">Добровольный квалификационный экзамен</div>
+            <div class="ach-badge g">Правительство Москвы</div>
+          </div>
+        </div>
+        <div class="ach g">
+          <div class="ach-icon">🥇</div>
+          <div>
+            <div class="ach-name">Золотой медалист</div>
+            <div class="ach-desc">Я-Профессионал: Детство как феномен</div>
+            <div class="ach-badge g">2021</div>
+          </div>
+        </div>
+        <div class="ach r">
+          <div class="ach-icon">🎖️</div>
+          <div>
+            <div class="ach-name">Победитель</div>
+            <div class="ach-desc">Я-Профессионал: Педобразование</div>
+            <div class="ach-badge r">2021</div>
+          </div>
+        </div>
+        <div class="ach v">
+          <div class="ach-icon">🌐</div>
+          <div>
+            <div class="ach-name">Digital Bridge</div>
+            <div class="ach-desc">Международная выставка, Астана</div>
+            <div class="ach-badge v">2025</div>
+          </div>
+        </div>
+        <div class="ach m">
+          <div class="ach-icon">⭐</div>
+          <div>
+            <div class="ach-name">SEA Shortlist</div>
+            <div class="ach-desc">SEA</div>
+            <div class="ach-badge m">2025</div>
+          </div>
+        </div>
+        <div class="ach g">
+          <div class="ach-icon">📰</div>
+          <div>
+            <div class="ach-name">РИНЦ</div>
+            <div class="ach-desc">Научные публикации, педдизайн и SEL</div>
+            <div class="ach-badge g">Anthropic AI 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<div class="rule-wrap"><div class="rule-line" data-rule></div></div>
+<section id="cases" class="s">
+  <div class="s-ey">— Кейсы</div>
+  <h2 class="s-title">Реальная работа</h2>
+  <p class="cases-intro fu">
+    Не описания должностей — процессы, решения и артефакты. Каждый кейс — квест с конкретными наградами.
+  </p>
+
+  <!-- CASE 1 -->
+  <div class="case c1 fu" id="c1">
+    <div class="case-hd" onclick="toggleCase('c1')">
+      <div class="case-fill"></div>
+      <div class="case-idx">01</div>
+      <div>
+        <span class="ct ctg">EdTech · Мобильный продукт</span><span class="art-count">3 артефакта</span>
+        <div class="case-name">Lingo Magic — методическая система с нуля</div>
+        <div class="case-sub">Cognitio · Июнь 2024 — н.в. · 60+ авторов · 3 000+ DAU на трёх платформах</div>
+      </div>
+      <div class="case-tog">+</div>
+    </div>
+    <div class="case-body">
+      <div class="reward">
+        <div class="reward-icon">🏆</div>
+        <div>
+          <div class="reward-label">Ключевые результаты</div>
+          <div class="reward-items">
+            <span class="ri">3 000+ DAU · 3 платформы</span>
+            <span class="ri">D7/D30 retention — устойчивый рост</span>
+            <span class="ri">60+ авторов · единый стандарт</span>
+            <span class="ri">SEA 2025 Shortlist · Digital Bridge</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-cols">
+        <div class="case-col"><div class="ccl">Контекст</div><p>EdTech-продукт для изучения языков. Распределённая команда 60+ авторов из разных стран. Методической концепции не было вообще. Кросс-функциональная работа с художниками и разработчиками.</p></div>
+        <div class="case-col"><div class="ccl">Действия</div><ul><li><strong>Нарративно-психологическая система вовлечения</strong> — авторская методология (когнитивные науки + психология пользователя + геймдизайн)</li><li>Выстроила методическую систему для 60+ авторов: стандарты, чеклист, онбординг</li><li>Образовательные траектории с механиками ARCS, SDT, SSDL</li><li>Аналитический цикл: DAU, доходимость, D7/D30 retention → гипотезы → изменения</li><li>Исследования и публикация в РИНЦ</li></ul></div>
+        <div class="case-col"><div class="ccl">Чему научилась</div><ul><li>Масштаб держат стандарты, а не контроль — система работает без моего постоянного участия</li><li>Метрики продукта и педагогики — один язык: D7/D30 двигаются методикой</li><li>Документ живёт, только когда встроен в процесс: чеклист внутри ревью, а не рядом</li></ul></div>
+      </div>
+      <div class="artifact">
+        <div class="art-hd">Артефакт 1 — Дерево метрик продукта</div>
+        <div class="mt">
+          <div class="mt-root">Здоровье продукта Lingo Magic</div>
+          <div class="mt-group mg-g"><div class="mt-parent"><div class="mt-pl">Вовлечённость</div></div><div class="mt-ch"><span class="mt-lf">DAU / MAU</span><span class="mt-lf">Сессии/день</span><span class="mt-lf">Streak retention</span><span class="mt-lf">Push-открываемость</span></div></div>
+          <div class="mt-group mg-r"><div class="mt-parent"><div class="mt-pl">Обучение</div></div><div class="mt-ch"><span class="mt-lf">Доходимость курса</span><span class="mt-lf">Результат диагностик</span><span class="mt-lf">Повторные попытки</span></div></div>
+          <div class="mt-group mg-v"><div class="mt-parent"><div class="mt-pl">Качество контента</div></div><div class="mt-ch"><span class="mt-lf">Рейтинг упражнений</span><span class="mt-lf">Процент ошибок</span><span class="mt-lf">NPS модуля</span></div></div>
+          <div class="mt-group mg-m"><div class="mt-parent"><div class="mt-pl">Возвращаемость</div></div><div class="mt-ch"><span class="mt-lf">D1 / D7 / D30</span><span class="mt-lf">Churn rate</span></div></div>
+        </div>
+      </div>
+      <div class="artifact" style="margin-top:2px">
+        <div class="art-hd">Артефакт 2 — Карта геймификации (дизайн-решения)</div>
+        <div class="gmap-wrap">
+          <table class="gmap-table">
+            <thead>
+              <tr>
+                <th>Механика</th>
+                <th>Учебная цель</th>
+                <th>Мотивационная теория</th>
+                <th>KPI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="gmap-icon">🔥</span><div class="gmap-mech-name">Daily Streak</div><div style="font-size:11px;color:var(--ink3);margin-top:2px">Ежедневная серия</div></td>
+                <td>Habit formation — регулярная практика без внешнего принуждения</td>
+                <td><span class="gmap-theory-tag gt-sdt">SDT</span><div style="font-size:11px;margin-top:5px">Структура и предсказуемость как поддержка автономии</div></td>
+                <td><div class="gmap-metric">DAU · D7 retention</div><div style="font-size:11px;color:var(--ink3);margin-top:3px">Целевой D7 ≥ 40%</div></td>
+              </tr>
+              <tr>
+                <td><span class="gmap-icon">⭐</span><div class="gmap-mech-name">XP + Уровни</div><div style="font-size:11px;color:var(--ink3);margin-top:2px">Опыт и прогрессия</div></td>
+                <td>Ощущение компетентности — ученик видит рост даже при ошибках</td>
+                <td><span class="gmap-theory-tag gt-sdt">SDT</span><div style="font-size:11px;margin-top:5px">Компетентность как базовая психологическая потребность</div></td>
+                <td><div class="gmap-metric">XP / сессию</div><div style="font-size:11px;color:var(--ink3);margin-top:3px">Level completion rate</div></td>
+              </tr>
+              <tr>
+                <td><span class="gmap-icon">⚔️</span><div class="gmap-mech-name">Boss Battle</div><div style="font-size:11px;color:var(--ink3);margin-top:2px">Финальный босс модуля</div></td>
+                <td>Итоговая проверка усвоения (Kirkpatrick L2) — peak challenge в конце юнита</td>
+                <td><span class="gmap-theory-tag gt-bd">Backward Design</span><div style="font-size:11px;margin-top:5px">Итоговое задание как точка отсчёта при проектировании</div></td>
+                <td><div class="gmap-metric">Pass rate (1-я попытка)</div><div style="font-size:11px;color:var(--ink3);margin-top:3px">Целевой ≥ 70%</div></td>
+              </tr>
+              <tr>
+                <td><span class="gmap-icon">❤️</span><div class="gmap-mech-name">Lives / Энергия</div><div style="font-size:11px;color:var(--ink3);margin-top:2px">Ограниченные жизни</div></td>
+                <td>Осознанность при ответах — снижение импульсивного угадывания</td>
+                <td><span class="gmap-theory-tag gt-arcs">ARCS</span><div style="font-size:11px;margin-top:5px">Confidence: управляемый риск формирует уверенность</div></td>
+                <td><div class="gmap-metric">Error rate / сессию</div><div style="font-size:11px;color:var(--ink3);margin-top:3px">Снижение после внедрения</div></td>
+              </tr>
+              <tr>
+                <td><span class="gmap-icon">🏅</span><div class="gmap-mech-name">Achievement Badges</div><div style="font-size:11px;color:var(--ink3);margin-top:2px">Значки достижений</div></td>
+                <td>Milestone recognition — фиксация прогресса, укрепление самооценки</td>
+                <td><span class="gmap-theory-tag gt-arcs">ARCS</span><div style="font-size:11px;margin-top:5px">Satisfaction: внутреннее и внешнее подкрепление результата</div></td>
+                <td><div class="gmap-metric">Badge acquisition rate</div><div style="font-size:11px;color:var(--ink3);margin-top:3px">D30 retention correlation</div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="artifact" style="margin-top:2px">
+        <div class="art-hd">Артефакт 3 — До / После: одно задание, два мира <span class="ba-hint">⇔ потяните ручку</span></div>
+        <div class="ba-slider" id="ba-slider">
+          <div class="ba-side ba-before">
+            <div class="ba-tag ba-tag-bad">✗ До стандартов</div>
+            <div class="ba-card">
+              <div class="ba-ctx">Задание · A2</div>
+              <div class="ba-q">Переведите слово: <strong>cup</strong></div>
+              <div class="ba-opts">
+                <div class="ba-opt">кот</div>
+                <div class="ba-opt">стол</div>
+                <div class="ba-opt ba-ok">чашка ✓</div>
+                <div class="ba-opt">дерево</div>
+              </div>
+              <div class="ba-fb ba-fb-none">Обратная связь: отсутствует</div>
+            </div>
+          </div>
+          <div class="ba-side ba-after">
+            <div class="ba-tag ba-tag-good">✓ По стандарту</div>
+            <div class="ba-card">
+              <div class="ba-ctx">Сцена: Кафе · A2 · Лексика посуды</div>
+              <div class="ba-q">You're at a café. The waiter asks:<br><em>"Would you like a ___ of coffee?"</em></div>
+              <div class="ba-opts">
+                <div class="ba-opt ba-ok">cup ✓</div>
+                <div class="ba-opt">plate</div>
+                <div class="ba-opt">bag</div>
+                <div class="ba-opt">box</div>
+              </div>
+              <div class="ba-fb">«Plate» — для еды. Для напитков в кафе всегда «cup» ☕</div>
+            </div>
+          </div>
+          <div class="ba-handle" id="ba-handle"><div class="ba-grip">⇔</div></div>
+        </div>
+      </div>
+      <div style="margin-top:2px;padding:20px 24px;border:1px solid var(--milk3);border-radius:16px;background:var(--milk);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <span style="font-size:13px;font-weight:300;color:var(--ink3)">Анатомия задания, интерактивный чеклист ревью, процесс дизайн-решений</span>
+        <a href="#demo" style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border-radius:999px;background:transparent;color:var(--ink);border:1.5px solid var(--ink);text-decoration:none;flex-shrink:0">▶ Демо-урок</a>
+        <a href="lingo-magic-case.html" style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border-radius:999px;background:var(--gold);color:var(--ink);text-decoration:none;flex-shrink:0">Полный кейс →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 2 -->
+  <div class="case c2 fu d1" id="c2">
+    <div class="case-hd" onclick="toggleCase('c2')">
+      <div class="case-fill"></div>
+      <div class="case-idx">02</div>
+      <div>
+        <span class="ct ctr">K-12 · Психометрика · Онбординг</span><span class="art-count">3 артефакта</span>
+        <div class="case-name">Школа «Азбука» — методическая система</div>
+        <div class="case-sub">ОАНО «Азбука» · Сен 2022 — Июн 2024 · 1–9 классы · 15+ педагогов онбордировано · Москва</div>
+      </div>
+      <div class="case-tog">+</div>
+    </div>
+    <div class="case-body">
+      <div class="reward">
+        <div class="reward-icon">🎯</div>
+        <div>
+          <div class="reward-label">Результаты квеста</div>
+          <div class="reward-items">
+            <span class="ri">Готовность к лицензированию</span>
+            <span class="ri">Онбординг 5–7 дней вместо 2–3 нед.</span>
+            <span class="ri">Единые стандарты</span>
+            <span class="ri">Психометрика внедрена</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-cols">
+        <div class="case-col"><div class="ccl">Контекст</div><p>Частная школа 1–9 классы. Учредители — депутаты с чёткой ценностной рамкой. Нужно перевести политические запросы в педагогические цели и выстроить воспроизводимую систему.</p></div>
+        <div class="case-col"><div class="ccl">Действия</div><ul><li>Перевела политический язык в педагогические цели</li><li>Создала систему оценивания с психометрикой</li><li>Два формата онбординга (летний 4–6 нед. + срочный 5–7 дн.)</li><li>Подготовка программ к лицензированию</li><li>Работа с региональными и всероссийскими экспертами</li></ul></div>
+        <div class="case-col"><div class="ccl">Чему научилась</div><ul><li>Перевод языка стейкхолдеров важнее идеальной программы</li><li>Экстренный режим проектируется отдельно — это не урезанный полный</li><li>Онбординг — продукт: у него есть свои метрики и итерации</li></ul></div>
+      </div>
+      <div class="artifact">
+        <div class="art-hd">Артефакт 1 — Journey Map онбординга педагога</div>
+        <div class="jmap">
+          <table class="jtbl">
+            <thead><tr><th>Этап</th><th>Задачи педагога</th><th>Инструменты</th><th>Поддержка</th><th>Эмоция</th><th>Контроль</th></tr></thead>
+            <tbody>
+              <tr><td><span class="js">До начала</span><div class="jsub">−7 дней</div></td><td>Приветственный пакет, концепция школы</td><td>Welcome-письмо, методгид</td><td>Назначен куратор</td><td><span class="jem">😟</span><span class="jemt">Тревога</span></td><td>—</td></tr>
+              <tr><td><span class="js">День 1–2</span><div class="jsub">Ориентация</div></td><td>Расписание, требования, знакомство</td><td>Памятка первого дня</td><td>Куратор рядом</td><td><span class="jem">🤔</span><span class="jemt">Ориентация</span></td><td>Check-in</td></tr>
+              <tr><td><span class="js">День 3–4</span><div class="jsub">Методминимум</div></td><td>Стандарты, оценивание, инструменты</td><td>Онбординг-модуль, рубрики</td><td>Наблюдение за опытным</td><td><span class="jem">📚</span><span class="jemt">Погружение</span></td><td>Тест базы</td></tr>
+              <tr><td><span class="js">День 5</span><div class="jsub">Пробный урок</div></td><td>Урок под наблюдением</td><td>Чек-лист наблюдения</td><td>ОС методиста</td><td><span class="jem">😬</span><span class="jemt">Стресс → ↑</span></td><td><strong>Урок + ОС</strong></td></tr>
+              <tr><td><span class="js">Нед. 2–4</span><div class="jsub">Интеграция</div></td><td>Работа, фоновые модули</td><td>Асинхронные модули</td><td>Наставник 30 дней</td><td><span class="jem">🌱</span><span class="jemt">Рост</span></td><td>Check-in 30 дн.</td></tr>
+              <tr><td><span class="js">Месяц 2+</span><div class="jsub">Автономия</div></td><td>Peer-обмен, горизонтальный рост</td><td>Рабочие группы</td><td>→ стать куратором</td><td><span class="jem">💪</span><span class="jemt">Уверенность</span></td><td>ИПР с метриками</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="artifact" style="margin-top:2px">
+        <div class="art-hd">Артефакт 2 — Рубрика оценивания (1–9 класс, устный ответ)</div>
+        <div class="rubric-wrap">
+          <table class="rubric-table">
+            <thead>
+              <tr>
+                <th class="rth-crit">Критерий оценки</th>
+                <th class="rth-1">1 — Не достигнут</th>
+                <th class="rth-2">2 — Базовый</th>
+                <th class="rth-3">3 — Профильный</th>
+                <th class="rth-4">4 — Продвинутый</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="rc">Понимание материала</td>
+                <td class="r1">Не воспроизводит ключевые понятия даже с подсказкой</td>
+                <td class="r2">Называет понятия, но не может объяснить своими словами</td>
+                <td class="r3">Объясняет материал, приводит примеры из изученного</td>
+                <td class="r4">Применяет знания в новых, незнакомых ситуациях</td>
+              </tr>
+              <tr>
+                <td class="rc">Логика и структура</td>
+                <td class="r1">Ответ не структурирован, мысль не прослеживается</td>
+                <td class="r2">Есть начало и конец, но переходы не выстроены</td>
+                <td class="r3">Последовательное изложение с причинно-следственными связями</td>
+                <td class="r4">Аргументированный ответ с выводом и самостоятельной оценкой</td>
+              </tr>
+              <tr>
+                <td class="rc">Самостоятельность</td>
+                <td class="r1">Требует постоянных наводящих вопросов и помощи</td>
+                <td class="r2">Работает при наличии подсказок и опоры</td>
+                <td class="r3">Отвечает самостоятельно, уточняет при необходимости</td>
+                <td class="r4">Проявляет инициативу, дополняет и задаёт вопросы</td>
+              </tr>
+              <tr>
+                <td class="rc">Рефлексия</td>
+                <td class="r1">Не может оценить свой ответ</td>
+                <td class="r2">Называет «хорошо» / «плохо» без конкретики</td>
+                <td class="r3">Указывает конкретные ошибки и удачные моменты</td>
+                <td class="r4">Предлагает, как улучшить ответ; переносит на будущее</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="artifact" style="margin-top:2px">
+        <div class="art-hd">Артефакт 3 — Матрица компетенций (Методист · Педагог)</div>
+        <div class="cmap-wrap">
+          <table class="cmap">
+            <thead>
+              <tr>
+                <th class="cmap-h0">Компетенция</th>
+                <th class="cmap-h1">Стажёр · 0–3 мес.</th>
+                <th class="cmap-h2">Базовый · год 1–2</th>
+                <th class="cmap-h3">Опытный · год 3–5</th>
+                <th class="cmap-h4">Эксперт · 6+ лет</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="ck">Методика и дизайн курса</td>
+                <td class="c1">Следует типовым методическим картам и планам уроков без модификации</td>
+                <td class="c2">Адаптирует стандартные программы под аудиторию и образовательный контекст</td>
+                <td class="c3">Разрабатывает авторские методические блоки, кейсы и задания под цель</td>
+                <td class="c4">Создаёт системную методологию, транслирует стандарты качества в команде</td>
+              </tr>
+              <tr>
+                <td class="ck">Оценивание результатов</td>
+                <td class="c1">Применяет готовые рубрики и тесты без изменений</td>
+                <td class="c2">Осознанно выбирает формы контроля, корректирует критерии под задачу</td>
+                <td class="c3">Разрабатывает рубрики с поведенческими индикаторами по уровням Блума</td>
+                <td class="c4">Проектирует психометрические системы, анализирует надёжность инструментов</td>
+              </tr>
+              <tr>
+                <td class="ck">Работа с данными</td>
+                <td class="c1">Фиксирует оценки и посещаемость по установленным форматам</td>
+                <td class="c2">Анализирует динамику успеваемости в разрезе группы, выявляет отстающих</td>
+                <td class="c3">Строит аналитические отчёты, выявляет паттерны и риски по метрикам</td>
+                <td class="c4">Проектирует системы метрик, формирует гипотезы для итерации программ</td>
+              </tr>
+              <tr>
+                <td class="ck">Работа с учащимися</td>
+                <td class="c1">Ведёт занятия по плану, обеспечивает рабочую атмосферу в группе</td>
+                <td class="c2">Адаптирует темп, форматы и объяснения под разных учеников</td>
+                <td class="c3">Выстраивает ИОТ, работает с ОВЗ (СДВГ, РАС, дислексия) и одарёнными</td>
+                <td class="c4">Создаёт инклюзивную среду, формирует учебные сообщества и peer-поддержку</td>
+              </tr>
+              <tr>
+                <td class="ck">Профессиональный рост</td>
+                <td class="c1">Участвует в методических мероприятиях, осваивает стандарты и регламенты</td>
+                <td class="c2">Обменивается практиками с коллегами, анализирует чужой опыт</td>
+                <td class="c3">Ведёт peer-обмен, курирует стажёров по индивидуальному плану развития</td>
+                <td class="c4">Наставник новых педагогов, ведёт открытые уроки и методические мастер-классы</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style="margin-top:2px;padding:20px 24px;border:1px solid var(--milk3);border-radius:16px;background:var(--milk);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <span style="font-size:13px;font-weight:300;color:var(--ink3)">Перевод «политика → педагогика», две модели онбординга, journey map по дням</span>
+        <a href="azbuka-case.html" style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border-radius:999px;background:var(--fire);color:#fff;text-decoration:none;flex-shrink:0">Полный кейс →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 3 -->
+  <div class="case c3 fu d2" id="c3">
+    <div class="case-hd" onclick="toggleCase('c3')">
+      <div class="case-fill"></div>
+      <div class="case-idx">03</div>
+      <div>
+        <span class="ct ctv">SEL · ВШЭ · Skillbox · Uchi.ru</span><span class="art-count">2 артефакта</span>
+        <div class="case-name">НИУ ВШЭ + SEL + Аналитика — педагоги как дизайнеры</div>
+        <div class="case-sub">НИУ ВШЭ + Skillbox + Uchi.ru · 2022–2024 · Публикация РИНЦ</div>
+      </div>
+      <div class="case-tog">+</div>
+    </div>
+    <div class="case-body">
+      <div class="reward">
+        <div class="reward-icon">🔬</div>
+        <div>
+          <div class="reward-label">Результаты квеста</div>
+          <div class="reward-items">
+            <span class="ri">РИНЦ публикация</span>
+            <span class="ri">SEL интегрирован самостоятельно</span>
+            <span class="ri">Дерево метрик Uchi.ru</span>
+            <span class="ri">Аудит Skillbox</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-cols">
+        <div class="case-col"><div class="ccl">Контекст</div><p>Параллельно: SEL-программа для 3 школ Казахстана + курс педдизайна для преподавателей ВШЭ + аналитика Skillbox + «дерево метрик» для Uchi.ru. Каждый трек — своя аудитория.</p></div>
+        <div class="case-col"><div class="ccl">Действия</div><ul><li>SEL на Pebble in the Pond и 4C/ID, оценка SSES OECD 2021</li><li>«Мастерская учителя» — вебинарная серия для магистрантов</li><li>Аудит курсов Skillbox, анализ метрик и отзывов</li><li>Разработка «древа метрик» для нового продукта Uchi.ru</li><li>Интервью со школьниками для анализа визуала</li></ul></div>
+        <div class="case-col"><div class="ccl">Чему научилась</div><ul><li>Экспертам нужен не курс, а инструменты, применимые уже завтра</li><li>SEL измерим, если выбрать правильную рамку — SSES OECD 2021</li><li>Аудит чужих курсов — лучшая школа взгляда на собственные слепые зоны</li></ul></div>
+      </div>
+      <div class="artifact">
+        <div class="art-hd">Артефакт 1 — Оценка по Киркпатрику</div>
+        <div class="kp">
+          <div class="kpc kp1"><div class="kplvl">L1</div><div class="kpname">Реакция</div><div class="kpq">Понравилось ли?</div><ul class="kpt"><li>Анкеты после модуля</li><li>NPS вебинара</li><li>Неформальная ОС</li></ul><div class="kpeg">«Мастерская учителя» — ОС после каждого вебинара</div></div>
+          <div class="kpc kp2"><div class="kplvl">L2</div><div class="kpname">Усвоение</div><div class="kpq">Научились ли?</div><ul class="kpt"><li>Диагностики до/после</li><li>Тесты по Блуму</li><li>Качество работ</li></ul><div class="kpeg">«Азбука» — психометрика, входные и итоговые диагностики</div></div>
+          <div class="kpc kp3"><div class="kplvl">L3</div><div class="kpname">Поведение</div><div class="kpq">Изменились действия?</div><ul class="kpt"><li>Наблюдение за уроками</li><li>Follow-up 2–4 нед.</li><li>SSES OECD 2021</li></ul><div class="kpeg">«СО-Знание» — внедрение механик в уроки</div></div>
+          <div class="kpc kp4"><div class="kplvl">L4</div><div class="kpname">Результаты</div><div class="kpq">Повлияло на орг.?</div><ul class="kpt"><li>Метрики до/после</li><li>ОС стейкхолдеров</li><li>Дерево метрик</li></ul><div class="kpeg">Lingo Magic — метрики → гипотезы → изменения</div></div>
+        </div>
+      </div>
+      <div class="artifact" style="margin-top:2px">
+        <div class="art-hd">Артефакт 2 — Профиль учащегося (курс педдизайна ВШЭ)</div>
+        <div class="persona-wrap">
+          <div class="persona-left">
+            <div class="persona-avatar">МА</div>
+            <div class="persona-name">Марина А., 38 лет</div>
+            <div class="persona-role">Старший преподаватель, кафедра социологии НИУ ВШЭ · 10 лет в аудитории · нет педобразования</div>
+            <div class="persona-quote">"Знаю предмет хорошо, но не знаю, как правильно структурировать его для онлайна — и боюсь потерять живость"</div>
+            <div style="margin-top:16px">
+              <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px">Контекст</div>
+              <div style="font-size:12px;font-weight:300;color:var(--ink2);line-height:1.65">Курс «Методология социальных исследований», 60 студентов, хочет перевести в онлайн без потери качества</div>
+            </div>
+          </div>
+          <div class="persona-right">
+            <div class="pg">
+              <div class="pg-label">🎯 Цели обучения</div>
+              <ul class="pg-items">
+                <li>Структурировать лекционный материал для онлайн-формата</li>
+                <li>Научиться создавать задания с проверяемыми результатами</li>
+                <li>Понять, как оценивать знания дистанционно</li>
+              </ul>
+            </div>
+            <div class="pg">
+              <div class="pg-label">😰 Боли и барьеры</div>
+              <ul class="pg-items">
+                <li>Нет времени на длительное обучение</li>
+                <li>Не понимает, с чего начать</li>
+                <li>Боится потерять «живость» и контакт со студентами</li>
+                <li>LMS незнакома, опыта в дизайне контента нет</li>
+              </ul>
+            </div>
+            <div class="pg">
+              <div class="pg-label">💡 Мотивации</div>
+              <ul class="pg-items">
+                <li>Признание среди коллег и студентов</li>
+                <li>Возможность преподавать удалённо</li>
+                <li>Современные методы в копилке</li>
+              </ul>
+            </div>
+            <div class="pg">
+              <div class="pg-label">📋 Предпочтения в обучении</div>
+              <ul class="pg-items">
+                <li>Конкретные примеры из похожих курсов коллег</li>
+                <li>Практические задания, применимые сразу</li>
+                <li>Peer-обмен — «что сделали другие»</li>
+                <li>Короткие модули, без «воды»</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 4: AI PROCESS -->
+  <div class="case c4 fu d3" id="c4">
+    <div class="case-hd" onclick="toggleCase('c4')">
+      <div class="case-fill"></div>
+      <div class="case-idx">04</div>
+      <div>
+        <span class="ct ctm">AI · Рабочий процесс</span><span class="art-count">полный кейс</span>
+        <div class="case-name">AI как соавтор в педдизайне</div>
+        <div class="case-sub">Claude · Perplexity · Gemini · AI Fluency Anthropic 2026 · Весь цикл SAM</div>
+      </div>
+      <div class="case-tog">+</div>
+    </div>
+    <div class="case-body">
+      <div class="reward">
+        <div class="reward-icon">🤖</div>
+        <div>
+          <div class="reward-label">Ключевые результаты</div>
+          <div class="reward-items">
+            <span class="ri" style="border-color:var(--jade);color:var(--jade)">×3 итерации дизайна</span>
+            <span class="ri" style="border-color:var(--jade);color:var(--jade)">−70% времени на поиск аналогов</span>
+            <span class="ri" style="border-color:var(--jade);color:var(--jade)">AI Fluency · Anthropic 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="ccl">Принцип</div>
+          <p>AI не пишет курсы вместо меня — он ускоряет петли обратной связи. Больше итераций за то же время = лучший продукт при том же бюджете времени.</p>
+        </div>
+        <div class="case-col">
+          <div class="ccl">Разделение труда</div>
+          <ul>
+            <li>Claude — рефлексия и проверка логики</li>
+            <li>Perplexity — исследование с источниками</li>
+            <li>Gemini — документы, данные, адаптация</li>
+            <li>Каждый на своём этапе SAM</li>
+          </ul>
+        </div>
+        <div class="case-col">
+          <div class="ccl">Что внутри кейса</div>
+          <ul>
+            <li>Карта инструментов: роль каждого</li>
+            <li>SAM × AI интерактивный флоу</li>
+            <li>3 реальных диалога с промптами</li>
+            <li>4 границы где AI не заменяет</li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding:24px;border:1.5px dashed var(--milk3);border-radius:16px;background:var(--milk);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+        <span style="font-size:13px;font-weight:300;color:var(--ink3);max-width:420px;line-height:1.65">Интерактивный кейс: SAM × AI по этапам, реальные диалоги с промптами, где AI не заменяет — 4 границы</span>
+        <a href="ai-process-case.html" style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 24px;border-radius:999px;background:var(--jade);color:var(--milk);text-decoration:none;flex-shrink:0">Открыть полный кейс →</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--milk3)"></div>
+</section>
+
+<!-- PROCESS -->
+<div class="rule-wrap"><div class="rule-line" data-rule></div></div>
+<section id="process" class="s">
+  <div class="s-ey">— Процесс</div>
+  <h2 class="s-title">Как я работаю</h2>
+  <p class="cases-intro fu">Я проектирую по модели SAM с backward design: от измеримого результата назад к контенту, короткими итерациями с проверкой на реальных данных. Весь процесс — шесть этапов от анализа задачи до пилота — с входами, выходами и артефактами разобран отдельно.</p>
+  <div class="fu d1" style="margin-top:8px">
+    <a href="toolkit.html" class="process-link">Открыть процесс в Кухне методиста →</a>
+  </div>
+</section>
+
+<!-- SKILLS = SKILL TREE -->
+<div class="rule-wrap"><div class="rule-line" data-rule></div></div>
+<section id="skills" class="s">
+  <div class="s-ey">— Навыки</div>
+  <h2 class="s-title">Карта компетенций</h2>
+  <p class="st-intro fu">Карта построена по открытому «Скиллсету методиста» (ред. 09.2024): пять линий по фазам ADDIE, на маршрутах — задачи, подтверждённые реальными проектами. Пересадки — навыки на стыке областей.</p>
+  <div class="metro-legend fu d1">
+    <span class="ml-chip"><i style="background:var(--fire)"></i>Analysis · Исследования</span>
+    <span class="ml-chip"><i style="background:var(--gold)"></i>Design · Проектирование</span>
+    <span class="ml-chip"><i style="background:var(--jade)"></i>Implementation · Запуск и оценка</span>
+    <span class="ml-chip"><i style="background:var(--iris)"></i>Development · Разработка</span>
+    <span class="ml-chip"><i style="background:var(--ink)"></i>Meta · Управление и рост</span>
+    <span class="ml-chip ml-int"><i class="ml-ring"></i>пересадка — навык на стыке</span>
+  </div>
+
+  <div class="metro-wrap fu d2" id="metro-wrap">
+    <svg viewBox="0 0 1120 640" id="metro-svg" aria-label="Карта компетенций по скиллсету методиста">
+      <path class="mline" d="M60,120 H1060" stroke="var(--fire)"/>
+      <path class="mline" d="M60,205 H758 L820,240 L882,205 H1060" stroke="var(--gold)"/>
+      <path class="mline" d="M60,300 H758 L820,240 L882,300 H1060" stroke="var(--jade)"/>
+      <path class="mline" d="M60,395 H498 L560,442 L622,395 H1060" stroke="var(--iris)"/>
+      <path class="mline" d="M60,490 H498 L560,442 L622,490 H1060" stroke="var(--ink)"/>
+
+      <!-- ANALYSIS -->
+      <g class="mst" data-name="Исследования ЦА и контекста" data-sub="3 задачи: проектирование исследований, интервью и опросы ЦА, анализ контекста. Интервью школьников для Uchi.ru, анализ среды школ «СО-Знание»"><circle cx="220" cy="120" r="9" class="msc" style="stroke:var(--fire)"/><text x="220" y="92" text-anchor="middle">Исследования ЦА</text></g>
+      <g class="mst" data-name="Предметная область и контент" data-sub="2 задачи: исследование предметной области, оценка эффективности контента. Структурирование материала 60+ экспертов, аудит курсов Skillbox"><circle cx="560" cy="120" r="9" class="msc" style="stroke:var(--fire)"/><text x="560" y="152" text-anchor="middle">Предметная область</text></g>
+      <g class="mst" data-name="Метрики эффективности" data-sub="2 задачи: бизнес-метрики и метрики курса. Дерево метрик Uchi.ru, Киркпатрик L1–L4, D1/D7/D30 в Lingo Magic"><circle cx="880" cy="120" r="9" class="msc" style="stroke:var(--fire)"/><text x="880" y="92" text-anchor="middle">Метрики</text></g>
+
+      <!-- DESIGN -->
+      <g class="mst" data-name="Методическая концепция" data-sub="2 задачи: концепция решения, рамки программы. Lingo Magic с нуля, «Азбука» 1–9 классы, 16 программ"><circle cx="150" cy="205" r="9" class="msc" style="stroke:var(--gold)"/><text x="150" y="177" text-anchor="middle">Концепция</text></g>
+      <g class="mst" data-name="Учебные результаты по Блуму" data-sub="1 задача: формулировка учебных задач и образовательных результатов. Курс педдизайна ВШЭ, стандарты Lingo Magic"><circle cx="305" cy="205" r="9" class="msc" style="stroke:var(--gold)"/><text x="305" y="237" text-anchor="middle">Результаты · Блум</text></g>
+      <g class="mst" data-name="Образовательный путь и вовлечение" data-sub="2 задачи: путь, который вовлекает и достигает целей + образовательная среда. Нарративно-психологическая система, D7/D30 рост"><circle cx="460" cy="205" r="9" class="msc" style="stroke:var(--gold)"/><text x="460" y="177" text-anchor="middle">Путь и вовлечение</text></g>
+      <g class="mst" data-name="Карты компетенций и скиллсеты" data-sub="1 задача: составление скиллсетов и карт компетенций. Матрица 5×4 для педагогов «Азбуки» — и эта карта тоже"><circle cx="615" cy="205" r="9" class="msc" style="stroke:var(--gold)"/><text x="615" y="237" text-anchor="middle">Карты компетенций</text></g>
+      <g class="mst" data-name="Заказчик и защита концепций" data-sub="4 задачи: портрет аудитории, знакомство с форматом, пути реализации, защита концепции. Учредители «Азбуки»: политический запрос → педагогическая цель"><circle cx="955" cy="205" r="9" class="msc" style="stroke:var(--gold)"/><text x="955" y="237" text-anchor="middle">Заказчик и защита</text></g>
+      <g class="mst" data-name="Упаковка продукта" data-sub="1 задача: креативная концепция для привлечения клиентов. Авторский курс упакован и продан покупателю из Кремниевой долины"><circle cx="1040" cy="205" r="9" class="msc" style="stroke:var(--gold)"/><text x="1040" y="177" text-anchor="middle">Упаковка</text></g>
+
+      <!-- INTERCHANGE 1: Оценочные мероприятия (gold × jade) -->
+      <g class="mst mint" data-name="Оценочные мероприятия и психометрика" data-sub="2 задачи на стыке Design × Evaluation: проектирование оценочных мероприятий + оценка усвоения. Психометрика «Азбуки», рубрики, диагностики"><circle cx="820" cy="240" r="14" class="msc-int"/><circle cx="820" cy="240" r="7" class="msc-int-core"/><text x="820" y="272" text-anchor="middle" class="mt-bold">Оценивание</text></g>
+
+      <!-- IMPL+EVAL -->
+      <g class="mst" data-name="Пилоты и запуск" data-sub="4 задачи: стратегия запуска, мониторинг первого запуска, обратная связь, устранение недочётов. SAM-итерации: прототип → пилот → доработка"><circle cx="180" cy="300" r="9" class="msc" style="stroke:var(--jade)"/><text x="180" y="272" text-anchor="middle">Пилоты и запуск</text></g>
+      <g class="mst" data-name="Сбор обратной связи" data-sub="2 задачи: формы сбора ОС, исследование аудитории обучения. ОС после каждого вебинара «Мастерской», сбор ОС о самом онбординге"><circle cx="420" cy="300" r="9" class="msc" style="stroke:var(--jade)"/><text x="420" y="332" text-anchor="middle">Сбор ОС</text></g>
+      <g class="mst" data-name="Аналитика и итерации продукта" data-sub="5 задач: анализ учебных метрик, ОС участников и заказчика, конкуренты, актуализация. Цикл метрики → гипотезы → изменения в Lingo Magic"><circle cx="640" cy="300" r="9" class="msc" style="stroke:var(--jade)"/><text x="640" y="272" text-anchor="middle">Аналитика и итерации</text></g>
+
+      <!-- DEVELOPMENT -->
+      <g class="mst" data-name="Эталонные модули и шаблоны" data-sub="1 задача: структура курса и эталонного модуля с экспертом. Шаблоны заданий для 60+ авторов Lingo Magic"><circle cx="170" cy="395" r="9" class="msc" style="stroke:var(--iris)"/><text x="170" y="367" text-anchor="middle">Эталонные модули</text></g>
+      <g class="mst" data-name="Сценарии и задания" data-sub="3 задачи: сценарии контентных единиц, форматы практики, подбор форматов проверки. Структурирование уроков, задания по стандартам T1–T4"><circle cx="340" cy="395" r="9" class="msc" style="stroke:var(--iris)"/><text x="340" y="427" text-anchor="middle">Сценарии и задания</text></g>
+      <g class="mst" data-name="Ревью и согласование" data-sub="2 задачи: вычитка материалов экспертов, согласование с заказчиком. Чеклист ревью — скорость проверки ×2–3"><circle cx="740" cy="395" r="9" class="msc" style="stroke:var(--iris)"/><text x="740" y="367" text-anchor="middle">Ревью</text></g>
+      <g class="mst" data-name="Материалы и инструкции" data-sub="3 задачи: подбор материалов под уровень ЦА, доп. материалы, инструкции для ведущих. Памятки и лонгриды для педагогов, родителей, учеников"><circle cx="880" cy="395" r="9" class="msc" style="stroke:var(--iris)"/><text x="880" y="427" text-anchor="middle">Материалы</text></g>
+      <g class="mst" data-name="СДО и подготовка производства" data-sub="4 задачи: оформление в СДО + подготовка материалов, визуала и презентаций к съёмкам. Moodle, iSpring, SmartLMS (ВШЭ); ТЗ для съёмок курса"><circle cx="1020" cy="395" r="9" class="msc" style="stroke:var(--iris)"/><text x="1020" y="367" text-anchor="middle">СДО</text></g>
+
+      <!-- INTERCHANGE 2: QA (iris × ink) -->
+      <g class="mst mint" data-name="Стандарты качества и QA" data-sub="2 задачи на стыке Development × Meta: проверка по критериям качества + процесс постоянных улучшений (CI). Стандарты T1–T4 / L1–L4 для 60+ авторов, итерации онбординга"><circle cx="560" cy="442" r="14" class="msc-int"/><circle cx="560" cy="442" r="7" class="msc-int-core"/><text x="560" y="474" text-anchor="middle" class="mt-bold">Стандарты и QA</text></g>
+
+      <!-- META -->
+      <g class="mst" data-name="Управление разработкой" data-sub="1 задача: управление процессом разработки. Распределённая команда 60+ авторов, требования, ревью, релизы"><circle cx="180" cy="490" r="9" class="msc" style="stroke:var(--ink)"/><text x="180" y="522" text-anchor="middle">Управление 60+</text></g>
+      <g class="mst" data-name="HR-проекты" data-sub="1 задача: участие в HR-проектах. Двойная система онбординга: летняя (4–6 нед.) и экстренная (5–7 дн., −65%)"><circle cx="340" cy="490" r="9" class="msc" style="stroke:var(--ink)"/><text x="340" y="462" text-anchor="middle">HR · Онбординг</text></g>
+      <g class="mst" data-name="Развитие преподавателей" data-sub="2 задачи: развитие преподавателей + обмен опытом. Мастер-классы в 20+ школах, «Мастерская учителя» ВШЭ, наставничество"><circle cx="760" cy="490" r="9" class="msc" style="stroke:var(--ink)"/><text x="760" y="522" text-anchor="middle">Развитие педагогов</text></g>
+      <g class="mst" data-name="Саморазвитие" data-sub="1 задача: повышение квалификации. Магистратура ВШЭ, AI Fluency (Anthropic 2026), 13 курсов ПК"><circle cx="960" cy="490" r="9" class="msc" style="stroke:var(--ink)"/><text x="960" y="462" text-anchor="middle">Саморазвитие</text></g>
+    </svg>
+    <div class="metro-tip" id="metro-tip" role="tooltip"></div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="metro-mobile fu d2">
+    <div class="mm-line" style="--lc:var(--fire)">
+      <div class="mm-title">Analysis · Исследования</div>
+      <div class="mm-st"><i></i><div><b>Исследования ЦА и контекста</b><span>Интервью школьников Uchi.ru, анализ среды школ «СО-Знание»</span></div></div>
+      <div class="mm-st"><i></i><div><b>Предметная область и контент</b><span>60+ экспертов, аудит Skillbox</span></div></div>
+      <div class="mm-st"><i></i><div><b>Метрики эффективности</b><span>Дерево метрик, Киркпатрик, D1/D7/D30</span></div></div>
+    </div>
+    <div class="mm-line" style="--lc:var(--gold)">
+      <div class="mm-title">Design · Проектирование</div>
+      <div class="mm-st"><i></i><div><b>Методическая концепция</b><span>Lingo Magic с нуля, «Азбука», 16 программ</span></div></div>
+      <div class="mm-st"><i></i><div><b>Учебные результаты по Блуму</b><span>Курс ВШЭ, стандарты Lingo Magic</span></div></div>
+      <div class="mm-st"><i></i><div><b>Образовательный путь и вовлечение</b><span>Нарративно-психологическая система</span></div></div>
+      <div class="mm-st"><i></i><div><b>Карты компетенций</b><span>Матрица 5×4 для педагогов «Азбуки»</span></div></div>
+      <div class="mm-st"><i></i><div><b>Заказчик и защита концепций</b><span>Политический запрос → педагогическая цель</span></div></div>
+      <div class="mm-st"><i></i><div><b>Упаковка продукта</b><span>Курс продан в Кремниевую долину</span></div></div>
+      <div class="mm-st mm-int"><i></i><div><b>Оценивание и психометрика ⇄</b><span>Стык Design × Evaluation: рубрики, диагностики «Азбуки»</span></div></div>
+    </div>
+    <div class="mm-line" style="--lc:var(--jade)">
+      <div class="mm-title">Implementation · Запуск и оценка</div>
+      <div class="mm-st"><i></i><div><b>Пилоты и запуск</b><span>SAM-итерации: прототип → пилот → доработка</span></div></div>
+      <div class="mm-st"><i></i><div><b>Сбор обратной связи</b><span>ОС вебинаров, ОС о самом онбординге</span></div></div>
+      <div class="mm-st"><i></i><div><b>Аналитика и итерации</b><span>Метрики → гипотезы → изменения</span></div></div>
+    </div>
+    <div class="mm-line" style="--lc:var(--iris)">
+      <div class="mm-title">Development · Разработка</div>
+      <div class="mm-st"><i></i><div><b>Эталонные модули и шаблоны</b><span>Шаблоны заданий для 60+ авторов</span></div></div>
+      <div class="mm-st"><i></i><div><b>Сценарии и задания</b><span>Стандарты T1–T4, форматы практики</span></div></div>
+      <div class="mm-st"><i></i><div><b>Ревью и согласование</b><span>Чеклист ревью — скорость ×2–3</span></div></div>
+      <div class="mm-st"><i></i><div><b>Материалы и инструкции</b><span>Памятки и лонгриды для педагогов и родителей</span></div></div>
+      <div class="mm-st"><i></i><div><b>СДО и производство</b><span>Moodle, iSpring, SmartLMS; ТЗ для съёмок</span></div></div>
+      <div class="mm-st mm-int"><i></i><div><b>Стандарты качества и QA ⇄</b><span>Стык Development × Meta: CI, критерии качества</span></div></div>
+    </div>
+    <div class="mm-line" style="--lc:var(--ink)">
+      <div class="mm-title">Meta · Управление и рост</div>
+      <div class="mm-st"><i></i><div><b>Управление разработкой</b><span>Распределённая команда 60+</span></div></div>
+      <div class="mm-st"><i></i><div><b>HR · Онбординг</b><span>Две модели, −65% срока</span></div></div>
+      <div class="mm-st"><i></i><div><b>Развитие педагогов</b><span>20+ школ, «Мастерская учителя», наставничество</span></div></div>
+      <div class="mm-st"><i></i><div><b>Саморазвитие</b><span>Магистратура ВШЭ, AI Fluency 2026</span></div></div>
+    </div>
+  </div>
+
+</section>
+<div class="rule-wrap"><div class="rule-line" data-rule></div></div>
+<section id="education" class="s">
+  <div class="s-ey">— Образование</div>
+  <h2 class="s-title">Академический трек</h2>
+  <div class="edu-grid">
+    <div class="tl fu">
+      <div class="tl-item now"><div class="tlyr">2024</div><div class="tlname">Магистр педагогического дизайна</div><div class="tlplace">НИУ ВШЭ, Москва · Институт образования</div></div>
+      <div class="tl-item"><div class="tlyr">2022</div><div class="tlname">Бакалавр педагогики и психологии</div><div class="tlplace">НГПУ, Новосибирск · Институт детства</div></div>
+      <div class="tl-item"><div class="tlyr">2022</div><div class="tlname">Менеджмент в образовании</div><div class="tlplace">НГПУ, Новосибирск · ИДО</div></div>
+    </div>
+    <div class="fu d1">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--milk3)">Повышение квалификации</div>
+      <div class="quals">
+        <div class="qual"><span class="qyr">2026</span><div><div class="qname">AI Fluency for Educators</div><div class="qby">Anthropic</div></div></div>
+        <div class="qual"><span class="qyr">2026</span><div><div class="qname">Teaching with AI</div><div class="qby">Anthropic</div></div></div>
+        <div class="qual"><span class="qyr old">2025</span><div><div class="qname">Вайб-кодинг LXD hero 1.0</div><div class="qby">Дарья Туча</div></div></div>
+        <div class="qual"><span class="qyr old">2024</span><div><div class="qname">Нейросети для педагога · Медиация · Проектная деятельность</div><div class="qby">Фоксфорд · Яндекс.Учебник · 6 курсов</div></div></div>
+        <div class="qual"><span class="qyr old">2023</span><div><div class="qname">Орг. дистанционного обучения и основы педдизайна</div><div class="qby">Фоксфорд</div></div></div>
+        <div class="qual"><span class="qyr old">2020</span><div><div class="qname">Диагностика и мониторинг учащихся</div><div class="qby">Смотри Учись · 26Кадр</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="rule-wrap"><div class="rule-line" data-rule></div></div>
+<section id="bring" class="s">
+  <div class="s-ey">— Что я принесу в команду</div>
+  <h2 class="s-title">Четыре обещания</h2>
+  <div class="bring-grid fu d1">
+    <div class="bg-card"><div class="bg-star">★</div><div class="bg-t">Система, а не зависимость</div><div class="bg-d">Методическая система, которая работает без постоянного контроля — стандарты, шаблоны и чеклисты вместо ручного управления каждым автором.</div></div>
+    <div class="bg-card"><div class="bg-star">★</div><div class="bg-t">Прототип за неделю</div><div class="bg-d">Быстрые проверяемые прототипы вместо идеального курса через полгода — SAM-итерации с пилотами и данными.</div></div>
+    <div class="bg-card"><div class="bg-star">★</div><div class="bg-t">Культура обратной связи</div><div class="bg-d">Наставничество, peer-ревью и горизонтальный рост — команда, которая развивает себя сама.</div></div>
+    <div class="bg-card"><div class="bg-star">★</div><div class="bg-t">Обучение под бизнес-задачу</div><div class="bg-d">Каждая программа начинается с вопроса «какую проблему решаем» — и заканчивается метриками, а не сертификатами.</div></div>
+  </div>
+</section>
+
+<section id="contact" class="mf">
+  <div class="mf-marquee" aria-hidden="true">
+    <div class="mf-mq-track">
+      <span class="mf-mq-item">Открыта к предложениям ✦ LXD ✦ Методолог-продуктолог ✦ EdTech ✦ Геймификация ✦ Корпоративный L&D ✦ </span><span class="mf-mq-item">Открыта к предложениям ✦ LXD ✦ Методолог-продуктолог ✦ EdTech ✦ Геймификация ✦ Корпоративный L&D ✦ </span>
+    </div>
+  </div>
+
+  <div class="mf-stage" id="mf-stage">
+    <div class="mf-blob mf-b1" aria-hidden="true"></div>
+    <div class="mf-blob mf-b2" aria-hidden="true"></div>
+
+    <h2 class="mf-title" id="mf-title" aria-label="Работаем?"></h2>
+
+    <a href="mailto:irinaletyago25@gmail.com" class="mf-btn" id="mf-btn">Написать →</a>
+
+    <div class="fsticker fs-tg" data-rot="-7" style="top:10%;left:4%" data-href="https://t.me/IrinaLetyago" role="link" tabindex="0" aria-label="Telegram @IrinaLetyago">
+      <div class="fs-icon">✈</div>
+      <div class="fs-name">@IrinaLetyago</div>
+      <div class="fs-sub">Telegram · написать</div>
+    </div>
+    <div class="fsticker fs-ch" data-rot="5" style="top:10%;right:4%" data-href="https://t.me/eduletyago" role="link" tabindex="0" aria-label="Канал eduletyago">
+      <div class="fs-icon">📡</div>
+      <div class="fs-name">eduletyago</div>
+      <div class="fs-sub">канал · открыть</div>
+    </div>
+    <div class="fsticker fs-pet" data-rot="-4" style="bottom:12%;left:5%" data-href="https://corelin.lovable.app/" role="link" tabindex="0" aria-label="Pet-проект corelin">
+      <div class="fs-icon">🎮</div>
+      <div class="fs-name">corelin</div>
+      <div class="fs-sub">pet-проект · открыть</div>
+    </div>
+    <div class="fsticker fs-mail" data-rot="6" style="bottom:12%;right:5%" id="fs-mail">
+      <div class="fs-icon">✉</div>
+      <div class="fs-name" id="fs-mail-txt">копировать email</div>
+      <div class="fs-sub">irinaletyago25@gmail.com</div>
+    </div>
+
+    <div class="mf-hint" aria-hidden="true">стикеры тоже летают ↗</div>
+  </div>
+
+  <div class="mf-bottom">
+    <span>© 2026 Ирина Летяго</span>
+    <span>Learning × Product Designer · Москва</span>
+  </div>
+</section>
+
+<script>
+// Cursor
+const cur=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
+function curHover(els,cls){els.forEach(el=>{el.addEventListener('mouseenter',()=>{cur.classList.add('big',cls)});el.addEventListener('mouseleave',()=>{cur.classList.remove('big','gold','fire','iris','jade')})})}
+curHover(document.querySelectorAll('.c1 .case-hd,.tag.g,.ach.g,.btn-s'),'gold');
+curHover(document.querySelectorAll('.c2 .case-hd,.tag.r,.ach.r'),'fire');
+curHover(document.querySelectorAll('.c3 .case-hd,.tag.v,.ach.v'),'iris');
+curHover(document.querySelectorAll('.tag.m,.ach.m,.c4 .case-hd'),'jade');
+
+// Cases
+function toggleCase(id){
+  const el=document.getElementById(id);
+  const body=el.querySelector('.case-body');
+  if(el.classList.contains('open')){
+    body.style.overflow='hidden';
+    el.classList.remove('open');
+  }else{
+    el.classList.add('open');
+    const onEnd=e=>{
+      if(e.propertyName==='max-height'){
+        body.style.overflow='visible';
+        body.removeEventListener('transitionend',onEnd);
+      }
+    };
+    body.addEventListener('transitionend',onEnd);
+  }
+}
+
+// SAM
+
+function samClick(i,el){
+  document.querySelectorAll('.ss').forEach(s=>s.classList.remove('act'));
+  el.classList.add('act');
+  const d=samD[i];
+  const box=document.getElementById('sdb');
+  box.innerHTML=`<div class="sdt">${d.t}</div><ul class="sdl">${d.items.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  box.classList.add('vis');
+}
+
+// Scroll reveal + bars
+let barsAnimated=false;
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.08});
+document.querySelectorAll('.fu,.s-title').forEach(el=>obs.observe(el));
+
+const ruleObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('drawn')})},{threshold:.5});
+document.querySelectorAll('[data-rule]').forEach(el=>ruleObs.observe(el));
+
+// Animate stat bars + xp on hero enter
+const heroObs=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting&&!barsAnimated){
+      barsAnimated=true;
+      setTimeout(()=>{
+        // xp bar removed in playground hero
+        [{id:'lx0',w:100},{id:'lx1',w:72}].forEach((l,i)=>{
+          const el=document.getElementById(l.id);
+          if(el)setTimeout(()=>{el.style.width=l.w+'%'},200+i*100);
+        });
+      },400);
+    }
+  });
+},{threshold:.3});
+const heroEl=document.getElementById('hero');
+if(heroEl)heroObs.observe(heroEl);
+
+
+
+// Back to top visibility
+window.addEventListener('scroll',()=>{
+  const b=document.getElementById('btt');
+  if(b) b.classList.toggle('vis', scrollY>400);
+},{passive:true});
+
+
+// Bento reveal + count-up
+const bentoObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      const numEl=e.target.querySelector('.b-num[data-count]');
+      if(numEl&&!numEl.dataset.done){
+        numEl.dataset.done='1';
+        const target=parseInt(numEl.dataset.count);
+        const suffix=numEl.dataset.suffix||'';
+        const useSpace=numEl.dataset.format==='space';
+        const dur=1200;const t0=performance.now();
+        const tick=t=>{
+          const p=Math.min((t-t0)/dur,1);
+          const eased=1-Math.pow(1-p,3);
+          let val=Math.round(target*eased);
+          let str=useSpace?val.toLocaleString('ru-RU'):String(val);
+          numEl.textContent=str+(p>=1?suffix:'');
+          if(p<1)requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+      bentoObs.unobserve(e.target);
+    }
+  });
+},{threshold:.2});
+document.querySelectorAll('.bf').forEach(el=>bentoObs.observe(el));
+
+
+// ── STICKER PHYSICS ──
+(function(){
+  if(matchMedia('(pointer:coarse)').matches || innerWidth<960) return;
+  const hero=document.getElementById('hero');
+  const stickers=document.querySelectorAll('.sticker');
+  stickers.forEach(st=>{
+    let x=0,y=0,vx=0,vy=0,rot=parseFloat(st.dataset.rot||0),vr=0;
+    let dragging=false,px=0,py=0,lastT=0,raf=null;
+    const apply=()=>{st.style.transform=`translate(${x}px,${y}px) rotate(${rot}deg)`};
+    apply();
+    const tick=()=>{
+      if(!dragging){
+        vx*=.96;vy*=.96;vr*=.94;
+        x+=vx;y+=vy;rot+=vr;
+        const r=st.getBoundingClientRect();
+        const hr=hero.getBoundingClientRect();
+        if(r.left<hr.left&&vx<0){vx*=-.65;vr+=vx*.18}
+        if(r.right>hr.right&&vx>0){vx*=-.65;vr+=vx*.18}
+        if(r.top<hr.top&&vy<0){vy*=-.65;vr+=vy*.12}
+        if(r.bottom>hr.bottom&&vy>0){vy*=-.65;vr+=vy*.12}
+        apply();
+        if(Math.abs(vx)>.08||Math.abs(vy)>.08||Math.abs(vr)>.08){raf=requestAnimationFrame(tick)}else{raf=null}
+      }
+    };
+    st.addEventListener('pointerdown',e=>{
+      dragging=true;st.classList.add('dragging');
+      st.setPointerCapture(e.pointerId);
+      px=e.clientX;py=e.clientY;lastT=performance.now();
+      vx=vy=vr=0;
+      if(raf){cancelAnimationFrame(raf);raf=null}
+    });
+    st.addEventListener('pointermove',e=>{
+      if(!dragging)return;
+      const now=performance.now();
+      const dt=Math.max(now-lastT,1);
+      const dx=e.clientX-px,dy=e.clientY-py;
+      x+=dx;y+=dy;
+      vx=dx/dt*16;vy=dy/dt*16;
+      rot+=dx*.06;
+      px=e.clientX;py=e.clientY;lastT=now;
+      apply();
+    });
+    const release=()=>{
+      if(!dragging)return;
+      dragging=false;st.classList.remove('dragging');
+      vr=vx*.25;
+      if(!raf)raf=requestAnimationFrame(tick);
+    };
+    st.addEventListener('pointerup',release);
+    st.addEventListener('pointercancel',release);
+  });
+})();
+
+
+// Mobile: relocate stickers into a flex row under hero text
+(function(){
+  if(innerWidth>=960) return;
+  const hero=document.getElementById('hero');
+  const wrap=document.createElement('div');
+  wrap.className='stickers-mobile-wrap';
+  document.querySelectorAll('.sticker').forEach(s=>wrap.appendChild(s));
+  hero.appendChild(wrap);
+})();
+
+// ── MAGNETIC BUTTONS ──
+(function(){
+  if(matchMedia('(pointer:coarse)').matches) return;
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      const r=btn.getBoundingClientRect();
+      const mx=e.clientX-(r.left+r.width/2);
+      const my=e.clientY-(r.top+r.height/2);
+      btn.style.transform=`translate(${mx*.22}px,${my*.22}px)`;
+    });
+    btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
+  });
+})();
+
+// ── TILT CASE HEADERS ──
+(function(){
+  if(matchMedia('(pointer:coarse)').matches) return;
+  document.querySelectorAll('.case-hd').forEach(hd=>{
+    hd.addEventListener('mousemove',e=>{
+      const r=hd.getBoundingClientRect();
+      const rx=((e.clientY-r.top)/r.height-.5)*-3;
+      const ry=((e.clientX-r.left)/r.width-.5)*2.5;
+      hd.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    hd.addEventListener('mouseleave',()=>{hd.style.transform=''});
+  });
+})();
+
+
+// ── MEGA FOOTER ──
+(function(){
+  // Title letters
+  const t=document.getElementById('mf-title');
+  if(t){
+    const word='Работаем?';
+    t.innerHTML=[...word].map(ch=>`<span class="ml${ch==='?'?' q':''}">${ch}</span>`).join('');
+  }
+  // Strong magnetic CTA
+  const btn=document.getElementById('mf-btn');
+  if(btn&&!matchMedia('(pointer:coarse)').matches){
+    const stage=document.getElementById('mf-stage');
+    stage.addEventListener('mousemove',e=>{
+      const r=btn.getBoundingClientRect();
+      const cx=r.left+r.width/2,cy=r.top+r.height/2;
+      const dx=e.clientX-cx,dy=e.clientY-cy;
+      const dist=Math.hypot(dx,dy);
+      if(dist<260){
+        const pull=(260-dist)/260;
+        btn.style.transform=`translate(${dx*pull*.28}px,${dy*pull*.28}px) scale(${1+pull*.05})`;
+      }else btn.style.transform='';
+    });
+    stage.addEventListener('mouseleave',()=>{btn.style.transform=''});
+  }
+  // Footer sticker physics (desktop)
+  if(!matchMedia('(pointer:coarse)').matches&&innerWidth>=960){
+    const stage=document.getElementById('mf-stage');
+    document.querySelectorAll('.fsticker').forEach(st=>{
+      let x=0,y=0,vx=0,vy=0,rot=parseFloat(st.dataset.rot||0),vr=0;
+      let dragging=false,px=0,py=0,lastT=0,raf=null,moved=false;
+      const apply=()=>{st.style.transform=`translate(${x}px,${y}px) rotate(${rot}deg)`};
+      apply();
+      const tick=()=>{
+        if(!dragging){
+          vx*=.96;vy*=.96;vr*=.94;x+=vx;y+=vy;rot+=vr;
+          const r=st.getBoundingClientRect(),hr=stage.getBoundingClientRect();
+          if(r.left<hr.left&&vx<0){vx*=-.65;vr+=vx*.18}
+          if(r.right>hr.right&&vx>0){vx*=-.65;vr+=vx*.18}
+          if(r.top<hr.top&&vy<0){vy*=-.65;vr+=vy*.12}
+          if(r.bottom>hr.bottom&&vy>0){vy*=-.65;vr+=vy*.12}
+          apply();
+          if(Math.abs(vx)>.08||Math.abs(vy)>.08||Math.abs(vr)>.08){raf=requestAnimationFrame(tick)}else{raf=null}
+        }
+      };
+      st.addEventListener('pointerdown',e=>{
+        dragging=true;moved=false;st.classList.add('dragging');
+        st.setPointerCapture(e.pointerId);
+        px=e.clientX;py=e.clientY;lastT=performance.now();vx=vy=vr=0;
+        if(raf){cancelAnimationFrame(raf);raf=null}
+      });
+      st.addEventListener('pointermove',e=>{
+        if(!dragging)return;
+        const now=performance.now(),dt=Math.max(now-lastT,1);
+        const dx=e.clientX-px,dy=e.clientY-py;
+        if(Math.abs(dx)+Math.abs(dy)>3)moved=true;
+        x+=dx;y+=dy;vx=dx/dt*16;vy=dy/dt*16;rot+=dx*.06;
+        px=e.clientX;py=e.clientY;lastT=now;apply();
+      });
+      const release=()=>{
+        if(!dragging)return;
+        dragging=false;st.classList.remove('dragging');
+        vr=vx*.25;
+        if(!raf)raf=requestAnimationFrame(tick);
+      };
+      st.addEventListener('pointerup',release);
+      st.addEventListener('pointercancel',release);
+      st._moved=()=>moved;
+    });
+  }
+  // Mobile: collect fstickers in a row
+  if(innerWidth<960){
+    const stage=document.getElementById('mf-stage');
+    if(stage){
+      const wrap=document.createElement('div');
+      wrap.className='fstickers-mobile';
+      document.querySelectorAll('.fsticker').forEach(s=>wrap.appendChild(s));
+      stage.insertBefore(wrap,document.querySelector('.mf-hint'));
+    }
+  }
+  // Sticker clicks: open link (or copy email) — works anywhere on the card, unless dragged
+  document.querySelectorAll('.fsticker').forEach(st=>{
+    const open=()=>{
+      if(st._moved&&st._moved())return;
+      if(st.id==='fs-mail'){
+        navigator.clipboard.writeText('irinaletyago25@gmail.com').then(()=>{
+          const txt=document.getElementById('fs-mail-txt');
+          txt.textContent='скопировано ✓';
+          st.style.borderColor='var(--jade)';
+          setTimeout(()=>{txt.textContent='копировать email';st.style.borderColor=''},2000);
+        });
+      }else if(st.dataset.href){
+        window.open(st.dataset.href,'_blank','noopener');
+      }
+    };
+    st.addEventListener('click',open);
+    st.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
+  });
+})();
+
+
+// ── BEFORE/AFTER SLIDER ──
+(function(){
+  const sl=document.getElementById('ba-slider');
+  if(!sl)return;
+  const set=clientX=>{
+    const r=sl.getBoundingClientRect();
+    let p=(clientX-r.left)/r.width*100;
+    p=Math.max(4,Math.min(96,p));
+    sl.style.setProperty('--pos',p+'%');
+  };
+  let drag=false;
+  sl.addEventListener('pointerdown',e=>{drag=true;sl.setPointerCapture(e.pointerId);set(e.clientX)});
+  sl.addEventListener('pointermove',e=>{if(drag)set(e.clientX)});
+  sl.addEventListener('pointerup',()=>{drag=false});
+  sl.addEventListener('pointercancel',()=>{drag=false});
+})();
+
+// ── ZOOM ARTIFACTS ──
+(function(){
+  document.querySelectorAll('.artifact').forEach(art=>{
+    if(art.closest('#zoom-content'))return;
+    if(art.querySelector('.ba-slider'))return; // slider has its own interaction
+    const hd=art.querySelector('.art-hd');
+    if(!hd)return;
+    const btn=document.createElement('button');
+    btn.className='zoom-btn';btn.innerHTML='⤢';btn.title='На весь экран';btn.setAttribute('aria-label','Открыть на весь экран');
+    btn.addEventListener('click',e=>{e.stopPropagation();openZoom(art)});
+    hd.appendChild(btn);
+  });
+})();
+function openZoom(art){
+  const ov=document.getElementById('zoom-overlay');
+  const box=document.getElementById('zoom-content');
+  const clone=art.cloneNode(true);
+  const zb=clone.querySelector('.zoom-btn');if(zb)zb.remove();
+  box.innerHTML='';box.appendChild(clone);
+  ov.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeZoom(){
+  document.getElementById('zoom-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeZoom()});
+
+
+// ── LINGO MAGIC DEMO v4 ──
+const demoData={
+br:[
+ {stage:0,type:'choice',diff:1,scene:'✈️ Сан-Паулу, аэропорт Гуарульюс. Российская симка молчит, португальского вы не знаете. План: Wi-Fi → выход → такси → отель.',q:'Какую вывеску ищете для бесплатного Wi-Fi?',opts:[{t:'Wi-Fi Grátis',ok:true},{t:'Wi-Fi Caro'},{t:'Sem Internet'}],fb_ok:'Grátis — «бесплатный»! Caro — «дорогой», sem — «без».',fb_no:'Caro — «дорогой», sem internet — «без интернета». Нужно grátis.',note:'Потребность раньше знания: слово нужно прямо сейчас. Автономная мотивация по SDT.',lens:'Дистрактор «Caro» — типичная ошибка: похожее слово из той же сцены. Не случайный шум.',words:[['grátis','бесплатный'],['caro','дорогой']]},
+ {stage:1,type:'choice',diff:1,scene:'📶 Wi-Fi пойман, Uber вызван. Теперь найти выход из терминала.',q:'Какой знак ведёт на улицу?',opts:[{t:'Entrada'},{t:'Saída',ok:true},{t:'Chegadas'}],fb_ok:'Saída — «выход». Entrada — «вход», chegadas — «прилёт».',fb_no:'Entrada — «вход», chegadas — «прилёт». Выход — saída.',note:'Все три — реальные вывески одного аэропорта. Стандарт T2 для всех 60+ авторов.',lens:'Situated learning: задание встроено в реальный контекст аэропорта, а не абстрактно.',words:[['saída','выход'],['entrada','вход']]},
+ {stage:2,type:'assemble',diff:2,scene:'🚪 Несколько стоянок. Рядом сотрудник. Спросите «Где находится такси?»',q:'Соберите фразу из плиток:',target:['Onde','fica','o','táxi?'],extra:['obrigado','grátis'],hint:'onde — где · fica — находится',fb_ok:'Onde fica o táxi? — первая собранная фраза.',fb_no:'Правильно: Onde fica o táxi?',note:'Сборка — продуктивное задание (уровень «применение» по Блуму), выше выбора.',lens:'Дистракторы-плитки obrigado/grátis — слова, которые вы уже знаете. Проверка на интерференцию.',words:[['onde','где'],['fica','находится']]},
+ {stage:3,type:'choice',diff:1,scene:'🚕 Водитель Uber подъехал: «Para onde?»',q:'Что он спрашивает?',opts:[{t:'Как вас зовут'},{t:'Куда едем',ok:true},{t:'Есть ли наличные'}],fb_ok:'Para onde? — «Куда?». Контекст подсказал.',fb_no:'Para onde? — «куда?». Логика ситуации — главная подсказка.',note:'Понимание на слух через прагматику: что логично спросит таксист?',lens:'Опора на жизненный опыт снижает extraneous cognitive load — догадка по ситуации.',words:[['para onde?','куда?']]},
+ {stage:4,type:'match',diff:2,scene:'🏨 Почти приехали. Закрепим слова из поездки — соедините пары.',q:'Сопоставьте слово и перевод:',pairs:[['saída','выход'],['grátis','бесплатный'],['onde','где']],fb_ok:'Все пары верны — слова закрепились.',fb_no:'',note:'Это spaced retrieval: слова из начала урока всплывают в конце. Интервальное повторение в действии.',lens:'Retrieval practice + spacing: вы достаёте слова из памяти спустя 4 шага — так формируется долговременное запоминание.',words:[['por favor','пожалуйста']]}
+],
+uk:[
+ {stage:0,type:'choice',diff:1,scene:'✈️ Лондон, Хитроу. Симка молчит, вокруг британский английский. План: Wi-Fi → выход → такси → отель.',q:'Какую вывеску ищете для бесплатного Wi-Fi?',opts:[{t:'Free Wi-Fi',ok:true},{t:'Paid Lounge'},{t:'No Service'}],fb_ok:'Free — «бесплатный»! Paid — «платный», no service — «нет связи».',fb_no:'Paid — «платный», no service — «нет сигнала». Ищем free.',note:'Потребность раньше знания: слово нужно прямо сейчас. Автономная мотивация по SDT.',lens:'Дистрактор «Paid» — антоним-ловушка: проверяет понимание, а не угадывание.',words:[['free','бесплатный'],['paid','платный']]},
+ {stage:1,type:'choice',diff:1,scene:'📶 Wi-Fi пойман, Uber вызван. Найти выход из терминала.',q:'Какой знак ведёт на улицу?',opts:[{t:'Arrivals'},{t:'Way Out',ok:true},{t:'Check-in'}],fb_ok:'Way Out — британский «выход»! Не Exit, как в учебниках.',fb_no:'Arrivals — «прилёт», check-in — «регистрация». В Британии — Way Out.',note:'Аутентичность: реальные вывески, а не «правильный» язык учебника.',lens:'Authentic material: готовим к улице, не к тесту. Way Out вместо учебникового Exit.',words:[['way out','выход (брит.)'],['arrivals','прилёт']]},
+ {stage:2,type:'assemble',diff:2,scene:'🚪 Несколько стоянок. Рядом сотрудник. Спросите «Где стоянка такси?»',q:'Соберите фразу из плиток:',target:['Where','is','the','taxi','rank?'],extra:['please','free'],hint:'taxi rank — стоянка такси (брит.)',fb_ok:'Where is the taxi rank? — и снова британская деталь.',fb_no:'Правильно: Where is the taxi rank?',note:'Сборка — продуктивное задание (уровень «применение» по Блуму), выше выбора.',lens:'Дистракторы-плитки please/free — уже знакомые слова. Проверка на интерференцию.',words:[['where is...?','где...?'],['taxi rank','стоянка такси']]},
+ {stage:3,type:'choice',diff:1,scene:'🚕 Чёрный кэб подъехал: «Where to, love?»',q:'Что он спрашивает?',opts:[{t:'Как вас зовут'},{t:'Куда едем',ok:true},{t:'Есть ли наличные'}],fb_ok:'Where to? — «Куда?». А «love» — обращение ко всем, не флирт.',fb_no:'Where to? — «куда?». «love» лондонцы говорят всем.',note:'Культура зашита в задание: «love» от таксиста может смутить туриста.',lens:'Прагматика + культурный код: хороший языковой дизайн учит ситуации целиком.',words:[['where to?','куда?']]},
+ {stage:4,type:'match',diff:2,scene:'🏨 Почти приехали. Закрепим слова из поездки — соедините пары.',q:'Сопоставьте слово и перевод:',pairs:[['way out','выход'],['free','бесплатный'],['taxi rank','стоянка такси']],fb_ok:'Все пары верны — слова закрепились.',fb_no:'',note:'Это spaced retrieval: слова из начала урока всплывают в конце. Интервальное повторение в действии.',lens:'Retrieval practice + spacing: вы достаёте слова из памяти спустя 4 шага — так формируется долговременное запоминание.',words:[['please','пожалуйста']]}
+]};
+let demoLocale=null,demoQ=[],demoStep=0,demoXP=0,demoStreak=0,demoAnswered=false,demoDict=[],demoErrors=0,demoLens=false,demoTypesUsed=new Set();
+const XP_OK=18,XP_RETRY=6,XP_STREAK_BONUS=10;
+const demoCity={br:'Сан-Паулу',uk:'Лондоне'};
+const demoCtrl={br:'Wi-Fi · Saída · Táxi — списком слов с переводом',uk:'Wi-Fi · Way Out · Taxi — списком слов с переводом'};
+function toggleLens(){
+  demoLens=!demoLens;
+  const t=document.getElementById('lensTog');
+  t.classList.toggle('on',demoLens);
+  t.setAttribute('aria-checked',demoLens);
+  document.getElementById('demo-phone').classList.toggle('lens-on',demoLens);
+}
+function demoJourney(){
+  document.querySelectorAll('.dj-stage').forEach(s=>{
+    const i=+s.dataset.s;
+    s.classList.toggle('on',demoLocale&&i===Math.min(demoStep,4));
+    s.classList.toggle('done',demoLocale&&i<demoStep);
+  });
+}
+function demoAddWords(words){
+  const chips=document.getElementById('dict-chips');
+  const empty=chips.querySelector('.dict-empty');
+  if(empty)empty.remove();
+  words.forEach(([w,ru])=>{
+    if(demoDict.includes(w))return;
+    demoDict.push(w);
+    const ch=document.createElement('span');ch.className='dict-chip';ch.innerHTML=`${w} <i>· ${ru}</i>`;
+    chips.appendChild(ch);
+  });
+  document.getElementById('dict-count').textContent=demoDict.length;
+}
+function demoHUD(){
+  document.getElementById('demo-xp').style.width=Math.min(demoXP,100)+'%';
+  document.getElementById('demo-xp-val').innerHTML=demoXP+'<span>XP</span>';
+  document.getElementById('demo-streak').textContent='🔥'+demoStreak;
+}
+function demoStart(){
+  demoLocale=null;demoStep=0;demoXP=0;demoStreak=0;demoDict=[];demoErrors=0;demoAnswered=false;demoTypesUsed=new Set();
+  if(demoLens){demoLens=false;const lt=document.getElementById('lensTog');if(lt){lt.classList.remove('on');lt.setAttribute('aria-checked','false');}document.getElementById('demo-phone').classList.remove('lens-on');}
+  document.getElementById('demo-lvl').textContent='Lingo Magic';
+  document.getElementById('dict-chips').innerHTML='<span class="dict-empty">слова появятся по мере прохождения</span>';
+  document.getElementById('dict-count').textContent='0';
+  demoHUD();demoJourney();
+  document.getElementById('demo-body').innerHTML=`
+    <div class="demo-scene">🎁 Вы выиграли поездку — но куда? От выбора зависит язык урока. Методика и структура одинаковы: так один дизайн масштабируется на 15+ языков.</div>
+    <div class="demo-q">Куда летим?</div>
+    <div class="demo-choice">
+      <button class="demo-country" onclick="demoBegin('uk')"><div class="dc-flag">🇬🇧</div><div class="dc-city">Лондон</div><div class="dc-lang">английский · British English</div></button>
+      <button class="demo-country" onclick="demoBegin('br')"><div class="dc-flag">🇧🇷</div><div class="dc-city">Сан-Паулу</div><div class="dc-lang">португальский · с нуля</div></button>
+    </div>`;
+}
+function demoBegin(loc){
+  demoLocale=loc;demoQ=demoData[loc];
+  document.getElementById('demo-lvl').textContent='Lingo Magic · '+(loc==='br'?'PT':'EN');
+  demoRender();
+}
+function demoBody(){
+  return `<div class="demo-scene" id="demo-scene"></div><div class="demo-q" id="demo-q"></div><div class="demo-assemble" id="demo-assemble"></div><div class="demo-match" id="demo-match"></div><div class="demo-opts" id="demo-opts"></div><div id="demo-hint-slot"></div><div class="demo-fb" id="demo-fb"></div><div id="demo-note-slot"></div><div id="demo-lens-slot"></div><button class="demo-next" id="demo-next" onclick="demoNext()">Дальше →</button>`;
+}
+function demoRender(){
+  const d=demoQ[demoStep];
+  demoTypesUsed.add(d.type);
+  document.getElementById('demo-body').innerHTML=demoBody();
+  demoJourney();
+  document.getElementById('demo-scene').textContent=d.scene;
+  document.getElementById('demo-q').textContent=d.q;
+  const opts=document.getElementById('demo-opts');
+  const asm=document.getElementById('demo-assemble');
+  const match=document.getElementById('demo-match');
+  // адаптивная подсказка: если 2+ ошибки подряд — показываем хинт
+  if(demoErrors>=2 && d.hint){
+    document.getElementById('demo-hint-slot').innerHTML=`<div class="demo-hint-box"><b>Подсказка:</b> ${d.hint} <span style="color:var(--ink3)">— стало проще, потому что предыдущее далось тяжело</span></div>`;
+  }
+  if(d.type==='choice'){
+    d.opts.forEach(o=>{const b=document.createElement('button');b.className='demo-opt';b.textContent=o.t;b.onclick=()=>demoAnswer(b,o.ok,d);opts.appendChild(b);});
+  }else if(d.type==='assemble'){
+    asm.classList.add('show');
+    const line=document.createElement('div');line.className='asm-line';
+    const bank=document.createElement('div');bank.className='asm-bank';
+    const check=document.createElement('button');check.className='asm-check';check.textContent='Проверить';check.disabled=true;
+    [...d.target,...d.extra].sort(()=>Math.random()-.5).forEach(t=>{
+      const tile=document.createElement('button');tile.className='asm-tile';tile.textContent=t;
+      tile.onclick=()=>{(tile.parentElement===bank?line:bank).appendChild(tile);line.classList.toggle('filled',line.children.length>0);check.disabled=line.children.length===0;};
+      bank.appendChild(tile);
+    });
+    const hint=document.createElement('div');hint.className='asm-hint';hint.textContent='Подсказка: '+d.hint;
+    check.onclick=()=>{const ok=[...line.children].map(x=>x.textContent).join(' ')===d.target.join(' ');check.disabled=true;[...line.children,...bank.children].forEach(x=>x.style.pointerEvents='none');if(!ok){line.innerHTML='';d.target.forEach(t=>{const tl=document.createElement('span');tl.className='asm-tile';tl.textContent=t;line.appendChild(tl)});}demoAnswer(null,ok,d);};
+    asm.appendChild(line);asm.appendChild(bank);asm.appendChild(hint);asm.appendChild(check);
+  }else if(d.type==='match'){
+    match.classList.add('show');
+    let solved=0;const total=d.pairs.length;
+    const answers=d.pairs.map(p=>p[1]).sort(()=>Math.random()-.5);
+    d.pairs.forEach(([term,corr])=>{
+      const row=document.createElement('div');row.className='dm-pair';
+      const t=document.createElement('div');t.className='dm-term';t.textContent=term;
+      const o=document.createElement('div');o.className='dm-opt';o.textContent='— выберите —';o.dataset.corr=corr;o.dataset.i=-1;
+      o.onclick=()=>{
+        if(o.classList.contains('matched'))return;
+        const cur=+o.dataset.i;const next=(cur+1)%answers.length;o.dataset.i=next;o.textContent=answers[next];
+        o.classList.remove('wrong');
+        if(answers[next]===corr){
+          o.classList.add('matched');solved++;
+          if(solved===total){demoAnswer(null,true,d);}
+        }
+      };
+      row.appendChild(t);row.appendChild(o);match.appendChild(row);
+    });
+    document.getElementById('demo-q').insertAdjacentHTML('afterend','<div class="asm-hint" style="margin-bottom:8px">Тапайте правый блок, пока не встанет верный перевод</div>');
+  }
+  demoAnswered=false;
+}
+function demoAnswer(btn,ok,d){
+  if(demoAnswered)return;demoAnswered=true;
+  document.querySelectorAll('.demo-opt').forEach(b=>{b.disabled=true});
+  const fb=document.getElementById('demo-fb');
+  if(ok){
+    if(btn)btn.classList.add('correct');
+    demoStreak++;demoXP+=XP_OK;demoErrors=0;
+    if(d.fb_ok){fb.textContent=d.fb_ok;fb.className='demo-fb show ok';}
+  }else{
+    if(btn){btn.classList.add('wrong');document.querySelectorAll('.demo-opt').forEach(b=>{const o=d.opts&&d.opts.find(x=>x.t===b.textContent);if(o&&o.ok)b.classList.add('correct');});}
+    demoStreak=0;demoXP+=XP_RETRY;demoErrors++;
+    fb.textContent=d.fb_no;fb.className='demo-fb show no';
+  }
+  demoAddWords(d.words);demoHUD();
+  document.getElementById('demo-note-slot').innerHTML=`<div class="demo-note"><b>📐 Как это сделано</b>${d.note}</div>`;
+  if(d.lens)document.getElementById('demo-lens-slot').innerHTML=`<div class="lens-note"><span class="lens-tag">👁 глазами методиста</span>${d.lens}</div>`;
+  const next=document.getElementById('demo-next');
+  next.classList.add('show');next.textContent=demoStep<demoQ.length-1?'Дальше →':'Завершить урок ✓';
+}
+function demoNext(){
+  demoStep++;
+  if(demoStep<demoQ.length){demoRender()}
+  else{
+    if(demoStreak>=demoQ.length){demoXP+=XP_STREAK_BONUS;demoHUD();}
+    demoStep=5;demoJourney();
+    const wordChips=demoDict.map(w=>`<span class="dict-chip">${w}</span>`).join('');
+    const perfect=demoStreak>=demoQ.length;
+    document.getElementById('demo-body').innerHTML=`
+      <div class="demo-done">
+        <div style="font-size:40px">${demoLocale==='br'?'🇧🇷':'🇬🇧'}</div>
+        <div class="demo-badge">★ Первый день в ${demoCity[demoLocale]} · ${demoXP} XP${perfect?' · идеальная серия 🔥':''}</div>
+        <div class="demo-skills">
+          <div class="ds-row"><span class="ds-ic">✓</span>Пройдено ${demoTypesUsed.size} типа заданий: выбор, сборка фразы, сопоставление</div>
+          <div class="ds-row"><span class="ds-ic">✓</span>${demoDict.length} слов усвоено через situated learning</div>
+          <div class="ds-row"><span class="ds-ic">✓</span>Закрепление через retrieval practice и spacing</div>
+          <div class="ds-row"><span class="ds-ic">✓</span>Механики вовлечения: XP, streak, journey map</div>
+        </div>
+        <div class="demo-words-final">${wordChips}</div>
+        <div class="ab-replay">
+          <div class="abr-h">🧪 Вы прошли вариант B. Вот контроль</div>
+          <div class="abr-compare">
+            <div class="abr-side"><div class="abr-label">Вариант A · контроль</div><div class="abr-demo">${demoCtrl[demoLocale]}. Доходимость ниже.</div></div>
+            <div class="abr-side win"><div class="abr-label">Вариант B · вы прошли</div><div class="abr-demo">Ситуация-сцена с задачей. Доходимость выше — мотив «зачем» до контента.</div></div>
+          </div>
+        </div>
+        <div class="demo-share">
+          <button class="share-btn" id="shareBtn" onclick="demoShare()">📋 Поделиться результатом</button>
+          <button class="demo-next show" style="width:auto;padding:11px 20px" onclick="demoStart()">Другая страна ↺</button>
+          <a href="lingo-magic-case.html#ab" class="demo-next show" style="width:auto;padding:11px 20px;text-decoration:none;text-align:center;background:var(--gold);color:var(--ink)">A/B-кейс →</a>
+        </div>
+        <p style="font-size:12px;font-weight:300;color:var(--ink3);line-height:1.7;max-width:340px;margin:14px auto 0">${demoDict.length} слов, 3 типа заданий, адаптивная сложность — за две минуты. Так устроена нарративно-психологическая система Lingo Magic.</p>
+      </div>`;
+  }
+}
+function demoShare(){
+  const txt=`Я выжил${demoLocale==='br'?' в Сан-Паулу':' в Лондоне'} на ${demoXP} XP в демо-уроке Ирины Летяго 🎓`;
+  const btn=document.getElementById('shareBtn');
+  if(navigator.share){navigator.share({text:txt}).catch(()=>{});}
+  else{navigator.clipboard.writeText(txt).then(()=>{btn.classList.add('copied');btn.textContent='✓ Скопировано';setTimeout(()=>{btn.classList.remove('copied');btn.textContent='📋 Поделиться результатом';},2000);});}
+}
+demoStart();
+
+
+// ── METRO MAP TOOLTIP ──
+(function(){
+  const wrap=document.getElementById('metro-wrap');
+  const tip=document.getElementById('metro-tip');
+  if(!wrap||!tip)return;
+  document.querySelectorAll('.mst').forEach(st=>{
+    const show=()=>{
+      tip.innerHTML='<b>'+st.dataset.name+'</b>'+st.dataset.sub;
+      tip.classList.add('show');
+      const c=st.querySelector('circle');
+      const sr=c.getBoundingClientRect(),wr=wrap.getBoundingClientRect();
+      let x=sr.left-wr.left+sr.width/2, y=sr.top-wr.top;
+      tip.style.left=Math.min(Math.max(x-130,8),wr.width-tip.offsetWidth-8)+'px';
+      tip.style.top=Math.max(y-tip.offsetHeight-14,6)+'px';
+    };
+    st.addEventListener('mouseenter',show);
+    st.addEventListener('click',show);
+    st.addEventListener('mouseleave',()=>tip.classList.remove('show'));
+  });
+})();
+
+
+// Пересборка раскладки при пересечении мобильного брейкпоинта (поворот экрана / ресайз)
+(function(){
+  let wasMobile = innerWidth < 960;
+  let t;
+  addEventListener('resize', ()=>{
+    clearTimeout(t);
+    t = setTimeout(()=>{
+      const isMobile = innerWidth < 960;
+      if(isMobile !== wasMobile){ location.reload(); }
+    }, 300);
+  });
+})();
+
+function toggleMobileNav(){
+  const mn=document.getElementById('mobile-nav');
+  const ham=document.getElementById('ham');
+  mn.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+function closeMobileNav(){
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('ham').classList.remove('open');
+}
+// Scroll progress bar
+const progressEl=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const pct=Math.min(scrollY/(document.body.scrollHeight-innerHeight)*100,100);
+  progressEl.style.width=pct+'%';
+  if(pct>2)closeMobileNav();
+},{passive:true});
+
+// Active nav highlighting
+const allSects=document.querySelectorAll('section[id]');
+const navIO2=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
+      if(a)a.classList.add('active');
+    }
+  });
+},{threshold:.35,rootMargin:'-52px 0px -30% 0px'});
+allSects.forEach(s=>navIO2.observe(s));
+</script>
+<div class="zoom-overlay" id="zoom-overlay" onclick="if(event.target===this)closeZoom()">
+  <div class="zoom-box">
+    <button class="zoom-close" onclick="closeZoom()" aria-label="Закрыть">✕</button>
+    <div id="zoom-content"></div>
+  </div>
+</div>
+</body>
+</html>

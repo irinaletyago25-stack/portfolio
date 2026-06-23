@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейс: Методология масштаба — Lingo Magic · Ирина Летяго</title>
+<meta name="description" content="Методическая система для 60+ авторов из разных стран: стандарты качества, чеклист ревью, нарративно-психологическая система, D7/D30 retention.">
+<meta property="og:title" content="Кейс Lingo Magic · Ирина Летяго">
+<meta property="og:description" content="Методическая система для 60+ авторов из разных стран: стандарты качества, чеклист ревью, нарративно-психологическая система, D7/D30 retention.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,200;0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --milk:#FAFAF6;--milk2:#F4F3EE;--milk3:#E8E6DF;
+  --ink:#0E0E0C;--ink2:#2A2A26;--ink3:#7A7A72;
+  --gold:#E8A000;--fire:#E03A2F;--iris:#6A4FC8;--jade:#1DB87A;
+  --gold-lt:#FFF7E0;--fire-lt:#FFF0EF;--iris-lt:#F0ECFF;--jade-lt:#E6FFF5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);overflow-x:hidden;line-height:1.6}
+
+/* NAV */
+.cs-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,250,246,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--milk3)}
+.cs-nav-back{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--ink3);display:flex;align-items:center;gap:8px;transition:color .2s}
+.cs-nav-back:hover{color:var(--ink)}
+.cs-nav-label{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+
+/* PROGRESS */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0;z-index:200;transition:width .08s linear;pointer-events:none}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding:52px 0 0;overflow:hidden;position:relative}
+.hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:80px 48px 80px;position:relative;z-index:1}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--ink3)}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,6vw,84px);font-weight:700;letter-spacing:-.04em;line-height:.96;margin-bottom:32px}
+.hero-title .accent{color:var(--gold)}
+.hero-title .accent2{-webkit-text-stroke:1.5px var(--ink);color:transparent}
+.hero-sub{font-size:17px;font-weight:300;line-height:1.75;color:var(--ink2);max-width:440px;margin-bottom:48px}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stat{padding:16px 18px;background:var(--gold-lt);border-radius:16px;min-width:120px}
+.hero-stat:nth-child(2){background:var(--jade-lt)}
+.hero-stat:nth-child(3){background:var(--iris-lt)}
+.hero-stat-n{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,2.4vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.hero-stat:nth-child(1) .hero-stat-n{color:var(--gold)}
+.hero-stat:nth-child(2) .hero-stat-n{color:var(--jade)}
+.hero-stat:nth-child(3) .hero-stat-n{color:var(--iris)}
+.hero-stat-l{font-size:11px;color:var(--ink3);margin-top:4px}
+
+.hero-right{background:var(--ink);display:flex;align-items:center;justify-content:center;padding:80px 48px;position:relative;overflow:hidden}
+.hero-right-label{position:absolute;top:80px;left:48px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+
+/* Quality bars visualization */
+.qbars{display:flex;flex-direction:column;gap:8px;width:100%}
+.qbar-row{display:flex;align-items:center;gap:12px}
+.qbar-id{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,.3);width:32px;flex-shrink:0}
+.qbar-track{flex:1;height:8px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
+.qbar-fill{height:100%;transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.qbar-row.low .qbar-fill{background:var(--fire)}
+.qbar-row.mid .qbar-fill{background:var(--gold)}
+.qbar-row.high .qbar-fill{background:var(--jade)}
+
+/* SECTION */
+.section{padding:100px 48px;position:relative}
+.section.dark{background:var(--ink);color:var(--milk)}
+.section.accent{background:var(--gold-lt)}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';display:inline-block;width:16px;height:1px;background:currentColor}
+.section.dark .eyebrow{color:rgba(255,255,255,.4)}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,4.8vw,58px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:48px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* DECISION NARRATIVE */
+.decision-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--milk3);border:1px solid var(--milk3)}
+.decision-card{background:var(--milk);padding:32px;position:relative}
+.decision-card.chosen{background:var(--ink)}
+.dc-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.decision-card.chosen .dc-label{color:var(--gold)}
+.dc-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;margin-bottom:10px;color:var(--ink)}
+.decision-card.chosen .dc-title{color:var(--milk)}
+.dc-why{font-size:13px;font-weight:300;line-height:1.65;color:var(--ink3)}
+.decision-card.chosen .dc-why{color:rgba(255,255,255,.7)}
+.dc-verdict{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;margin-top:16px;border:1px solid}
+.dc-no{border-color:var(--fire);color:var(--fire);background:var(--fire-lt)}
+.dc-yes{border-color:var(--jade);color:var(--jade);background:var(--jade-lt)}
+
+/* TASK COMPARISON */
+.task-compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--milk3);border:1px solid var(--milk3);margin-top:40px}
+.tc{padding:28px}
+.tc-bad{background:var(--fire-lt)}
+.tc-good{background:var(--jade-lt)}
+.tc-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.tc-bad .tc-label{color:var(--fire)}
+.tc-good .tc-label{color:var(--jade)}
+.task-card{background:#fff;border:1.5px solid;border-radius:4px;padding:20px;font-size:13px}
+.tc-bad .task-card{border-color:rgba(224,58,47,.3)}
+.tc-good .task-card{border-color:rgba(29,184,122,.3)}
+.task-context{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.task-q{font-weight:500;color:var(--ink);margin-bottom:14px;line-height:1.5}
+.task-options{display:flex;flex-direction:column;gap:6px}
+.opt{padding:8px 12px;border:1px solid var(--milk3);background:var(--milk);font-size:12px;border-radius:2px;display:flex;align-items:center;gap:8px}
+.opt.correct{border-color:var(--jade);background:var(--jade-lt);font-weight:600}
+.opt.wrong-dist{border-color:var(--milk3);color:var(--ink3)}
+.opt.random{border-color:rgba(224,58,47,.2);background:var(--fire-lt);color:var(--ink3)}
+.opt-marker{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.opt.correct .opt-marker{background:var(--jade)}
+.opt.wrong-dist .opt-marker{background:var(--milk3)}
+.opt.random .opt-marker{background:var(--fire)}
+.task-feedback{margin-top:14px;padding:10px 12px;background:var(--milk2);border-left:2px solid;font-size:11px;font-style:italic;color:var(--ink3);line-height:1.6}
+.tc-good .task-feedback{border-color:var(--jade)}
+.tc-bad .task-feedback{border-color:var(--fire);opacity:.5}
+.no-feedback{color:var(--ink3);opacity:.5;font-style:italic;font-size:12px}
+.tc-annotations{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+.ann{font-size:11px;font-weight:300;color:var(--ink3);display:flex;gap:8px;line-height:1.5}
+.ann::before{content:'↑';font-size:10px;flex-shrink:0;margin-top:2px}
+.tc-bad .ann::before{color:var(--fire)}
+.tc-good .ann::before{color:var(--jade)}
+
+/* STANDARDS TABS */
+.tabs{display:flex;gap:0;border:1px solid var(--milk3);margin-bottom:0}
+.tab-btn{flex:1;padding:14px 20px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--milk);border:none;border-right:1px solid var(--milk3);cursor:pointer;transition:all .2s;color:var(--ink3)}
+.tab-btn:last-child{border-right:none}
+.tab-btn.active{background:var(--ink);color:var(--milk)}
+.tab-content{display:none;border:1px solid var(--milk3);border-top:none}
+.tab-content.active{display:block}
+
+.std-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;background:var(--milk3)}
+.std-rule{background:var(--milk);padding:24px;border-bottom:1px solid var(--milk3)}
+.std-rule:nth-child(odd){border-right:1px solid var(--milk3)}
+.std-rule-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.std-rule-title .rule-n{font-size:10px;font-weight:700;letter-spacing:.12em;padding:2px 7px;background:var(--ink);color:var(--milk)}
+.std-rule-desc{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.65;margin-bottom:10px}
+.std-example{padding:10px 12px;background:var(--milk2);border-left:2px solid var(--gold);font-size:11px;color:var(--ink2);line-height:1.6}
+.std-example.good-ex{border-color:var(--jade)}
+.std-example.bad-ex{border-color:var(--fire)}
+.ex-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.ex-label.g{color:var(--jade)}.ex-label.b{color:var(--fire)}
+
+/* DELIVERY SYSTEM */
+.delivery-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--milk3);border:1px solid var(--milk3);margin-top:40px}
+.df-step{background:var(--milk);padding:32px;position:relative}
+.df-step:not(:last-child)::after{content:'→';position:absolute;right:-1px;top:50%;transform:translate(50%,-50%);font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--milk3);background:var(--milk);padding:0 4px;z-index:1}
+.df-n{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;letter-spacing:-.04em;line-height:1;-webkit-text-stroke:1.5px var(--milk3);color:transparent;margin-bottom:16px}
+.df-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px;color:var(--ink)}
+.df-desc{font-size:13px;font-weight:300;color:var(--ink3);line-height:1.65;margin-bottom:14px}
+.df-tools{display:flex;flex-wrap:wrap;gap:6px}
+.df-tool{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;padding:3px 9px;border:1px solid var(--milk3);color:var(--ink3)}
+
+/* CHECKLIST */
+.checklist-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.cl-section{border:1px solid var(--milk3);background:var(--milk)}
+.cl-section-title{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:14px 18px;background:var(--ink);color:var(--milk)}
+.cl-items{padding:8px}
+.cl-item{display:flex;align-items:flex-start;gap:12px;padding:10px;cursor:pointer;border-radius:2px;transition:background .15s;user-select:none}
+.cl-item:hover{background:var(--milk2)}
+.cl-item.checked{background:var(--jade-lt)}
+.cl-check{width:18px;height:18px;border:1.5px solid var(--milk3);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;transition:all .2s;margin-top:1px}
+.cl-item.checked .cl-check{background:var(--jade);border-color:var(--jade);color:#fff}
+.cl-text{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.55}
+.cl-item.checked .cl-text{color:var(--ink3);text-decoration:line-through}
+.cl-progress{padding:16px 18px;border-top:1px solid var(--milk3);display:flex;align-items:center;gap:12px}
+.cl-progress-track{flex:1;height:4px;background:var(--milk3)}
+.cl-progress-fill{height:100%;background:var(--jade);transition:width .3s ease;width:0}
+.cl-progress-label{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--jade);min-width:30px;text-align:right}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--milk3);border:1px solid var(--milk3);margin-top:40px}
+.result-card{background:#fff;padding:32px;transition:background .2s}
+.result-card:hover{background:var(--milk2)}
+.result-n{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:8px}
+.rc-gold .result-n{color:var(--gold)}
+.rc-jade .result-n{color:var(--jade)}
+.rc-iris .result-n{color:var(--iris)}
+.result-label{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.result-desc{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.6}
+
+/* Insight callout */
+.insight{border:1.5px solid var(--gold);background:var(--gold-lt);padding:24px 28px;margin:32px 0;display:flex;gap:20px;align-items:flex-start}
+.insight-icon{font-size:20px;flex-shrink:0;line-height:1;margin-top:2px}
+.insight-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.insight-text{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.65}
+
+/* Footer */
+.cs-footer{padding:48px 48px;border-top:1px solid var(--milk3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.cs-footer-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--ink)}
+.cs-footer-back{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:12px 24px;background:var(--ink);color:var(--milk);transition:all .2s;border:2px solid var(--ink)}
+.cs-footer-back:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{min-height:280px;padding:40px 24px}
+  .hero-left{padding:60px 24px 40px}
+  .section{padding:64px 24px}
+  .cs-nav{padding:0 20px}
+  .decision-grid,.task-compare,.std-grid,.results-grid{grid-template-columns:1fr}
+  .delivery-flow{grid-template-columns:1fr}
+  .df-step::after{display:none}
+  .checklist-wrap{grid-template-columns:1fr}
+  .cs-footer{padding:32px 24px}
+}
+
+/* ══ SOFT SYNC ══ */
+.insight{border-radius:18px}
+.decision-grid,.task-compare,.delivery-flow,.results-grid,.std-grid{border-radius:18px;overflow:hidden}
+.tabs{border-radius:14px 14px 0 0;overflow:hidden}
+.tab-content{border-radius:0 0 14px 14px;overflow:hidden}
+.task-card{border-radius:12px}
+.opt{border-radius:8px}
+.dc-verdict,.df-tool,.tc-label{border-radius:999px}
+.std-example{border-radius:0 8px 8px 0}
+.cl-section{border-radius:16px;overflow:hidden}
+.cl-check{border-radius:6px}
+.cl-item{border-radius:10px}
+.qbar-track,.cl-progress-track{border-radius:99px;overflow:hidden}
+.cs-footer-back{border-radius:14px}
+
+.cs-nav-label,.hero-eyebrow{letter-spacing:.16em}
+
+/* value chain методика→метрика→деньги */
+.vchain{margin-top:28px;border-radius:18px;overflow:hidden;border:1px solid var(--milk3)}
+.vchain-hd{padding:14px 20px;background:var(--ink);color:var(--milk);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.vchain-row{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;background:var(--milk3);gap:1px}
+.vc-cell{background:#FFFEFB;padding:20px 18px;display:flex;flex-direction:column;gap:6px}
+.vc-k{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.vc-k.m{color:var(--iris)}.vc-k.r{color:var(--gold)}.vc-k.b{color:var(--jade)}
+.vc-t{font-size:13px;font-weight:500;color:var(--ink);line-height:1.4}
+.vc-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.55}
+.vc-arrow{background:#FFFEFB;display:flex;align-items:center;justify-content:center;padding:0 8px;font-size:18px;color:var(--ink3)}
+@media(max-width:760px){.vchain-row{grid-template-columns:1fr}.vc-arrow{padding:6px;transform:rotate(90deg)}}
+
+/* A/B артефакт */
+.ab{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.ab-hyp{border-radius:16px;padding:22px 24px;background:var(--iris-lt);border:1px solid rgba(106,79,200,.25)}
+.ab-hyp .ab-tag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--iris);margin-bottom:8px}
+.ab-hyp p{font-size:14px;line-height:1.65;color:var(--ink2)}
+.ab-split{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}
+.ab-arm{border-radius:16px;padding:22px;border:1px solid var(--milk3);background:#FFFEFB}
+.ab-win{border-color:var(--jade);box-shadow:0 0 0 3px var(--jade-lt)}
+.ab-arm-h{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+.ab-winbadge{background:var(--jade);color:#fff;padding:2px 8px;border-radius:999px;font-size:9px;margin-left:6px}
+.ab-arm-name{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px}
+.ab-arm-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.55;margin-bottom:16px;min-height:50px}
+.ab-metric{display:flex;align-items:center;gap:10px}
+.ab-bar{height:10px;border-radius:99px;background:var(--ink3);width:0;animation:abgrow 1.2s cubic-bezier(.16,1,.3,1) forwards}
+.ab-bar-win{background:var(--jade)}
+@keyframes abgrow{to{width:var(--w)}}
+.ab-val{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700}
+.ab-b .ab-val{color:var(--jade)}
+.ab-metric-l{font-size:10px;color:var(--ink3);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+.ab-vs{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink3)}
+.ab-design{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--milk3);border-radius:16px;overflow:hidden;border:1px solid var(--milk3)}
+.ab-d-item{background:#FFFEFB;padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.ab-d-k{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fire)}
+.ab-d-v{font-size:12.5px;font-weight:300;color:var(--ink2);line-height:1.5}
+.ab-verdict{display:flex;gap:16px;align-items:flex-start;border-radius:16px;padding:22px 24px;background:var(--jade-lt);border:1px solid rgba(29,184,122,.3)}
+.ab-v-icon{width:32px;height:32px;border-radius:50%;background:var(--jade);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ab-v-t{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;margin-bottom:6px}
+.ab-v-d{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.65}
+.ab-v-note{display:block;margin-top:8px;font-size:11px;color:var(--ink3);font-style:italic}
+@media(max-width:760px){.ab-split{grid-template-columns:1fr;gap:10px}.ab-vs{text-align:center}.ab-design{grid-template-columns:1fr}}
+
+/* доступность: фокус с клавиатуры */
+a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focus-visible,input:focus-visible,.art-hd:focus-visible,.wf-step:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+*:focus:not(:focus-visible){outline:none}
+
+/* мягкие тени карточек — глубина как на главной */
+.insight,.dc2,.model,.res,.tc,.gr,.std-card,.cl-section,.mn,.vc-cell,.ab-arm,.ab-hyp,.task-card{box-shadow:0 1px 3px rgba(14,14,12,.04)}
+.insight:hover,.tc:hover,.model:hover,.mn:hover,.dc2:hover{box-shadow:0 8px 24px rgba(14,14,12,.08)}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<nav class="cs-nav">
+  <a class="cs-nav-back" href="index.html">← Портфолио</a>
+  <span class="cs-nav-label">Кейс 01 · Lingo Magic</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Кейс 01 · Педагогический дизайн в масштабе</p>
+    <h1 class="hero-title">
+      Один стандарт<br>
+      на <span class="accent">60+ авторов</span><br>
+      из 15 стран
+    </h1>
+    <p class="hero-sub">Как выстроить систему качества контента, когда ручная обратная связь по каждому уже не масштабируется — и превратить её в нарративно-психологическую систему вовлечения.</p>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <div class="hero-stat-n">3 000+</div>
+        <div class="hero-stat-l">DAU · 3 платформы</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">60+</div>
+        <div class="hero-stat-l">авторов · 15 стран</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">SEA '25</div>
+        <div class="hero-stat-l">Shortlist · Digital Bridge</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-label">Качество контента · до внедрения стандартов</div>
+    <div class="qbars" id="qbars">
+      <!-- generated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section">
+  <div class="eyebrow">01 · Проблема</div>
+  <h2 class="section-title rv">Разрыв<br>между<br>авторами</h2>
+
+  <div class="insight rv d1">
+    <div class="insight-icon">⚠</div>
+    <div>
+      <div class="insight-title">Реальная ситуация на старте</div>
+      <div class="insight-text">60+ авторов-экспертов из разных стран присылали контент, каждый в меру своего понимания «хорошего задания». Одни давали задачи уровня C2, другие A1 — в одном модуле. Инструкции были то двухстрочными, то абзацными. Дистракторы — либо случайными, либо слишком очевидными. Единого ориентира не было вообще.</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--milk3);border:1px solid var(--milk3)" class="rv d2">
+    <div style="background:var(--fire-lt);padding:28px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fire);margin-bottom:14px">Симптом 1</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px">Разный уровень сложности</div>
+      <div style="font-size:13px;font-weight:300;color:var(--ink3);line-height:1.65">Задания A1 и C1 стояли рядом без логики прогрессии. Ученик не понимал, вырос ли он — или просто попал на лёгкое задание.</div>
+    </div>
+    <div style="background:var(--fire-lt);padding:28px;border-left:1px solid var(--milk3)">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fire);margin-bottom:14px">Симптом 2</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px">Дистракторы не работали</div>
+      <div style="font-size:13px;font-weight:300;color:var(--ink3);line-height:1.65">Неверные варианты были либо очевидно нелепыми (угадать за 1 сек.), либо слишком близкими. Обе крайности — педагогический провал.</div>
+    </div>
+    <div style="background:var(--fire-lt);padding:28px;border-left:1px solid var(--milk3)">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fire);margin-bottom:14px">Симптом 3</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px">Тон не был единым</div>
+      <div style="font-size:13px;font-weight:300;color:var(--ink3);line-height:1.65">Один автор писал «Выберите правильный ответ», другой — «Нажмите на верный вариант», третий — «Укажите». Пользователь учился интерфейсу, а не языку.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISION -->
+<section class="section dark">
+  <div class="eyebrow">02 · Дизайн-решение</div>
+  <h2 class="section-title rv" style="color:var(--milk)">Почему<br>стандарты —<br>а не просто<br>больше ревью</h2>
+
+  <div class="decision-grid rv d1">
+    <div class="decision-card">
+      <div class="dc-label">Вариант А · Отклонён</div>
+      <div class="dc-title">Индивидуальная обратная связь</div>
+      <div class="dc-why">Давать каждому автору комментарии после каждого задания. Работало на 5–10 авторах. При 60+ я бы стала узким местом всего процесса — и качество определялось бы скоростью моей проверки.</div>
+      <div class="dc-verdict dc-no">✗ Не масштабируется</div>
+    </div>
+    <div class="decision-card">
+      <div class="dc-label">Вариант Б · Отклонён</div>
+      <div class="dc-title">Подробный текстовый гайд</div>
+      <div class="dc-why">Написать длинный документ «Как делать хорошие задания». Проблема: авторы — эксперты-предметники, не методисты. Длинный текст не читают или читают, но не применяют — слишком абстрактно.</div>
+      <div class="dc-verdict dc-no">✗ Не применяется на практике</div>
+    </div>
+    <div class="decision-card chosen">
+      <div class="dc-label">Вариант В · Выбран</div>
+      <div class="dc-title">Система: стандарты + шаблоны + чеклист + онбординг</div>
+      <div class="dc-why">Создать не правила, а инструменты: авторы заполняют шаблон, который сам направляет структуру; чеклист — для самопроверки перед сдачей; онбординг — с примерами хорошего и плохого. Я проверяю по единому критерию, а не по ощущению.</div>
+      <div class="dc-verdict dc-yes">✓ Масштабируемо + обучает</div>
+    </div>
+  </div>
+
+  <div class="insight" style="background:rgba(232,160,0,.12);border-color:rgba(232,160,0,.4);margin-top:40px" class="rv d2">
+    <div class="insight-icon">💡</div>
+    <div>
+      <div class="insight-title" style="color:var(--milk)">Ключевой педагогический принцип</div>
+      <div class="insight-text" style="color:rgba(255,255,255,.75)">Документ со стандартами я проектировала как учебный материал — с примерами, объяснением «почему», практическими заданиями. Он должен был обучать, а не просто регламентировать. Это и есть педдизайн, применённый к самому процессу создания контента.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TASK ANATOMY -->
+<section class="section">
+  <div class="eyebrow">03 · Артефакт — Анатомия задания</div>
+  <h2 class="section-title rv">Что отличает<br>хорошее задание<br>от плохого</h2>
+  <p style="font-size:15px;font-weight:300;color:var(--ink3);max-width:560px;line-height:1.8;margin-bottom:8px" class="rv d1">Один из самых частых кейсов в ревью — задание на лексику без контекста. Вот как выглядит разница в практике.</p>
+
+  <div class="task-compare rv d2">
+    <div class="tc tc-bad">
+      <div class="tc-label">✗ До стандартов · типичный присланный вариант</div>
+      <div class="task-card">
+        <div class="task-context">Задание · A2</div>
+        <div class="task-q">Переведите слово: <strong>cup</strong></div>
+        <div class="task-options">
+          <div class="opt random"><div class="opt-marker"></div>кот</div>
+          <div class="opt random"><div class="opt-marker"></div>стол</div>
+          <div class="opt correct"><div class="opt-marker"></div>чашка ✓</div>
+          <div class="opt random"><div class="opt-marker"></div>дерево</div>
+        </div>
+        <div class="no-feedback">Обратная связь: отсутствует</div>
+      </div>
+      <div class="tc-annotations">
+        <div class="ann">Нет контекста — слово вне ситуации, нет связи с реальным использованием</div>
+        <div class="ann">Дистракторы случайные — угадать за 1 секунду, ничему не учит</div>
+        <div class="ann">Нет обратной связи — ученик не понимает, почему ошибся</div>
+        <div class="ann">Нулевая связь с учебной целью: что именно A2 здесь?</div>
+      </div>
+    </div>
+    <div class="tc tc-good">
+      <div class="tc-label">✓ По стандарту · после внедрения системы</div>
+      <div class="task-card">
+        <div class="task-context">Сцена: Кафе · Уровень A2 · Лексика посуды</div>
+        <div class="task-q">You're at a café. The waiter asks:<br><em>"Would you like a ___ of coffee?"</em></div>
+        <div class="task-options">
+          <div class="opt correct"><div class="opt-marker"></div>cup ✓</div>
+          <div class="opt wrong-dist"><div class="opt-marker"></div>plate</div>
+          <div class="opt wrong-dist"><div class="opt-marker"></div>bag</div>
+          <div class="opt wrong-dist"><div class="opt-marker"></div>box</div>
+        </div>
+        <div class="task-feedback">«Plate» — для еды, не напитков. «Bag» и «box» — упаковка. Для напитков в кафе всегда «cup». ☕</div>
+      </div>
+      <div class="tc-annotations">
+        <div class="ann">Реальная ситуация — ученик сразу видит, где применит слово</div>
+        <div class="ann">Дистракторы правдоподобные — все ёмкости, нужно думать</div>
+        <div class="ann">Объяснение для каждого неверного — почему не подходит</div>
+        <div class="ann">CEFR-привязка + тема: единица обучения чёткая и проверяемая</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STANDARDS -->
+<section class="section" style="background:var(--milk2)">
+  <div class="eyebrow">04 · Артефакт — Стандарты качества</div>
+  <h2 class="section-title rv">Две категории<br>стандартов</h2>
+
+  <div class="rv d1">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('tasks',this)">Качество заданий</button>
+      <button class="tab-btn" onclick="switchTab('tone',this)">Тон и язык</button>
+    </div>
+
+    <div class="tab-content active" id="tab-tasks">
+      <div class="std-grid">
+        <div class="std-rule">
+          <div class="std-rule-title"><span class="rule-n">T1</span>Реальный контекст</div>
+          <div class="std-rule-desc">Каждое задание привязано к конкретной жизненной ситуации (кафе, аэропорт, работа). Голое слово без контекста — не допускается.</div>
+          <div class="std-example good-ex"><div class="ex-label g">✓ Так</div>"You're checking in at the hotel. The receptionist asks: ___"</div>
+          <div class="std-example bad-ex" style="margin-top:6px"><div class="ex-label b">✗ Не так</div>"Translate: reception"</div>
+        </div>
+        <div class="std-rule">
+          <div class="std-rule-title"><span class="rule-n">T2</span>Правдоподобные дистракторы</div>
+          <div class="std-rule-desc">3 неверных варианта из одной семантической группы. Угадываемые (животные вместо мебели) — возврат на доработку.</div>
+          <div class="std-example good-ex"><div class="ex-label g">✓ Посуда: cup / plate / bowl / mug</div>Все — ёмкости. Надо думать.</div>
+          <div class="std-example bad-ex" style="margin-top:6px"><div class="ex-label b">✗ cup / dog / sky / run</div>Случайные слова — угадываемо.</div>
+        </div>
+        <div class="std-rule">
+          <div class="std-rule-title"><span class="rule-n">T3</span>Обратная связь на каждый вариант</div>
+          <div class="std-rule-desc">Для каждого неверного ответа — конкретное объяснение. «Неверно, попробуй ещё» — не считается.</div>
+          <div class="std-example good-ex"><div class="ex-label g">✓ «Plate» — для еды, не напитков. Для кофе используй «cup».</div></div>
+          <div class="std-example bad-ex" style="margin-top:6px"><div class="ex-label b">✗ «Неправильно. Попробуй снова.»</div></div>
+        </div>
+        <div class="std-rule">
+          <div class="std-rule-title"><span class="rule-n">T4</span>CEFR-привязка и прогрессия</div>
+          <div class="std-rule-desc">Каждое задание размечается уровнем (A1–C1). Сложность в модуле растёт последовательно. Скачок больше одного уровня — на пересмотр.</div>
+          <div class="std-example good-ex"><div class="ex-label g">✓ Модуль: A2 → A2+ → B1 (линейно)</div></div>
+          <div class="std-example bad-ex" style="margin-top:6px"><div class="ex-label b">✗ A1 → C1 → A2 (хаос)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-tone">
+      <div class="std-grid">
+        <div class="std-rule">
+          <div class="std-rule-title"><span class="rule-n">L1</span>Единая терминология действий</div>
+          <div class="std-rule-desc">Глоссарий глаголов-команд. Один тип действия — один глагол везде. Авторы не изобретают синонимы.</div>
+          <div class="std-example good-ex"><div class="ex-label g">✓ Всегда: выберите / вставьте / соедините / перетащите</div></div>
+          <div class="std-example bad-ex" style="margin-top:6px"><div class="ex-label b">✗ «Нажмите / укажите / отметьте / выделите» — все об одном</div></div>
+        </div>
+        <div class="std-rule">
+          <div class="std-rule-title"><span class="rule-n">L2</span>Длина инструкции</div>
+          <div class="std-rule-desc">Инструкция к заданию — максимум 2 строки. Активный залог. Без вводных конструкций. Ученик читает инструкцию 1 раз и сразу понимает задачу.</div>
+          <div class="std-example good-ex"><div class="ex-label g">✓ «Выберите правильное слово для диалога»</div></div>
+          <div class="std-example bad-ex" style="margin-top:6px"><div class="ex-label b">✗ «В данном упражнении вам необходимо будет выбрать из предложенных вариантов наиболее подходящее слово…»</div></div>
+        </div>
+        <div class="std-rule">
+          <div class="std-rule-title"><span class="rule-n">L3</span>Поддерживающий тон</div>
+          <div class="std-rule-desc">Обратная связь — как хороший учитель: объясняет причину ошибки, не осуждает. Восклицательные знаки в победных сообщениях — уместны. В ошибках — нет.</div>
+          <div class="std-example good-ex"><div class="ex-label g">✓ «Почти! 'Plate' — для еды. Попробуй 'cup' для напитков 🍵»</div></div>
+          <div class="std-example bad-ex" style="margin-top:6px"><div class="ex-label b">✗ «Ошибка! Это неправильный ответ!!!»</div></div>
+        </div>
+        <div class="std-rule">
+          <div class="std-rule-title"><span class="rule-n">L4</span>Культурная нейтральность</div>
+          <div class="std-rule-desc">Примеры и имена персонажей — нейтральные для всех рынков (15+ языков). Отсутствие культурно специфичных метафор без объяснения.</div>
+          <div class="std-example good-ex"><div class="ex-label g">✓ Имена: Alex, Maria, Kim — нейтральные</div></div>
+          <div class="std-example bad-ex" style="margin-top:6px"><div class="ex-label b">✗ Отсылки к специфичным культурным явлениям без адаптации</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="section">
+  <div class="eyebrow">05 · Система доставки стандартов</div>
+  <h2 class="section-title rv">Три канала<br>до каждого автора</h2>
+  <p style="font-size:15px;font-weight:300;color:var(--ink3);max-width:540px;line-height:1.8;margin-bottom:8px" class="rv d1">Стандарты не работают, если лежат в папке. Нужна система доставки — разная для разных ситуаций.</p>
+
+  <div class="delivery-flow rv d2">
+    <div class="df-step">
+      <div class="df-n">01</div>
+      <div class="df-title">Документ стандартов</div>
+      <div class="df-desc">Живой документ в Notion/Google Docs. Не просто правила — каждый пункт с примером «так» и «не так». Структурирован как учебный материал: от простого к сложному.</div>
+      <div class="df-tools"><span class="df-tool">Notion</span><span class="df-tool">Google Docs</span><span class="df-tool">Примеры</span></div>
+    </div>
+    <div class="df-step">
+      <div class="df-n">02</div>
+      <div class="df-title">Онбординг новых авторов</div>
+      <div class="df-desc">Новый автор проходит мини-онбординг: читает стандарты + делает тестовое задание. Первые 3 сданных задания — с расширенным ревью. Потом переходит на стандартный процесс.</div>
+      <div class="df-tools"><span class="df-tool">Тестовое задание</span><span class="df-tool">Расширенное ревью ×3</span></div>
+    </div>
+    <div class="df-step">
+      <div class="df-n">03</div>
+      <div class="df-title">Чеклист ревью</div>
+      <div class="df-desc">Авторы проверяют работу сами перед сдачей. Я проверяю по тому же чеклисту. Единый критерий снимает субъективность и ускоряет ревью в 2–3 раза.</div>
+      <div class="df-tools"><span class="df-tool">Самопроверка</span><span class="df-tool">Ревью методиста</span><span class="df-tool">Единый критерий</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="section" style="background:var(--milk2)">
+  <div class="eyebrow">06 · Артефакт — Чеклист ревью</div>
+  <h2 class="section-title rv">Интерактивный<br>чеклист автора</h2>
+  <p style="font-size:15px;font-weight:300;color:var(--ink3);max-width:540px;line-height:1.8;margin-bottom:8px" class="rv d1">Это реальный инструмент. Авторы проверяют по нему перед сдачей. Попробуйте отметить пункты.</p>
+
+  <div class="checklist-wrap rv d2">
+    <div class="cl-section">
+      <div class="cl-section-title">Качество задания (4 критерия)</div>
+      <div class="cl-items" id="cl-1">
+        <div class="cl-item" onclick="toggleCheck(this,'cl-1')">
+          <div class="cl-check">✓</div>
+          <div class="cl-text">Задание привязано к реальной жизненной ситуации</div>
+        </div>
+        <div class="cl-item" onclick="toggleCheck(this,'cl-1')">
+          <div class="cl-check">✓</div>
+          <div class="cl-text">3 неверных варианта из одной семантической группы (не случайные)</div>
+        </div>
+        <div class="cl-item" onclick="toggleCheck(this,'cl-1')">
+          <div class="cl-check">✓</div>
+          <div class="cl-text">Для каждого неверного ответа написано конкретное объяснение</div>
+        </div>
+        <div class="cl-item" onclick="toggleCheck(this,'cl-1')">
+          <div class="cl-check">✓</div>
+          <div class="cl-text">Сложность соответствует заявленному уровню CEFR</div>
+        </div>
+      </div>
+      <div class="cl-progress"><div class="cl-progress-track"><div class="cl-progress-fill" id="pf-1"></div></div><span class="cl-progress-label" id="pl-1">0/4</span></div>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-section-title">Тон и язык (4 критерия)</div>
+      <div class="cl-items" id="cl-2">
+        <div class="cl-item" onclick="toggleCheck(this,'cl-2')">
+          <div class="cl-check">✓</div>
+          <div class="cl-text">Инструкция не длиннее 2 строк, активный залог</div>
+        </div>
+        <div class="cl-item" onclick="toggleCheck(this,'cl-2')">
+          <div class="cl-check">✓</div>
+          <div class="cl-text">Использованы глаголы из официального глоссария</div>
+        </div>
+        <div class="cl-item" onclick="toggleCheck(this,'cl-2')">
+          <div class="cl-check">✓</div>
+          <div class="cl-text">Тон обратной связи поддерживающий, без осуждения</div>
+        </div>
+        <div class="cl-item" onclick="toggleCheck(this,'cl-2')">
+          <div class="cl-check">✓</div>
+          <div class="cl-text">Нет культурно специфичных отсылок без объяснения</div>
+        </div>
+      </div>
+      <div class="cl-progress"><div class="cl-progress-track"><div class="cl-progress-fill" id="pf-2"></div></div><span class="cl-progress-label" id="pl-2">0/4</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section dark">
+  <div class="eyebrow">07 · Результат</div>
+  <h2 class="section-title rv" style="color:var(--milk)">Что изменилось</h2>
+
+  <div class="results-grid rv d1">
+    <div class="result-card rc-gold">
+      <div class="result-n">60+</div>
+      <div class="result-label">авторов работают по единому стандарту</div>
+      <div class="result-desc">Новый автор из любой страны получает те же инструменты и создаёт контент предсказуемого качества с первой недели.</div>
+    </div>
+    <div class="result-card rc-jade">
+      <div class="result-n">SEA<br>'25</div>
+      <div class="result-label">Шорт-лист SEA</div>
+      <div class="result-desc">Методическая система продукта была отмечена как лучшая практика в мобильном EdTech на российском рынке.</div>
+    </div>
+    <div class="result-card rc-iris">
+      <div class="result-n">↑</div>
+      <div class="result-label">Скорость ревью выросла в 2–3 раза</div>
+      <div class="result-desc">Единый чеклист убрал субъективность из процесса проверки. Авторы сдают работы с меньшим числом итераций.</div>
+    </div>
+  </div>
+
+  <div class="insight" style="background:rgba(232,160,0,.1);border-color:rgba(232,160,0,.3);margin-top:40px" class="rv d2">
+    <div class="insight-icon">🔑</div>
+    <div>
+      <div class="insight-title" style="color:var(--milk)">Главный вывод</div>
+      <div class="insight-text" style="color:rgba(255,255,255,.75)">Настоящий педагогический дизайн в масштабе — это не создание хорошего контента самой. Это построение системы, в которой 60 других людей создают хороший контент сами — без постоянного присутствия методиста. Стандарты — это обучение, распределённое по всей команде.</div>
+    </div>
+  </div>
+</section>
+
+    <section class="s" style="border-top:1px solid var(--milk3)">
+  <div class="eyebrow">Артефакт — A/B-эксперимент</div>
+  <h2 class="section-title rv">Как я проверяю гипотезы<br>на данных, а не на вкусе</h2>
+  <p class="rv d1" style="font-size:14px;color:var(--ink3);max-width:560px;line-height:1.7;margin-bottom:8px">Пример того, как методическое решение проходит через эксперимент перед раскаткой на всех 60+ авторов и 3 000+ пользователей.</p>
+
+  <div class="ab rv d1" id="ab">
+    <div class="ab-hyp">
+      <div class="ab-tag">Гипотеза</div>
+      <p>Если в начале модуля показать <b>реальную ситуацию</b> («вы в кафе, нужно заказать»), а не список слов — вырастет доля дошедших до конца модуля, потому что у пользователя появляется мотив <i>зачем</i> учить эти слова.</p>
+    </div>
+
+    <div class="ab-split">
+      <div class="ab-arm ab-a">
+        <div class="ab-arm-h">Контроль · A</div>
+        <div class="ab-arm-name">Список слов</div>
+        <div class="ab-arm-d">Модуль открывается списком из 8 слов с переводом. Классический подход.</div>
+        <div class="ab-metric"><span class="ab-bar" style="--w:62%"></span><span class="ab-val">62%</span></div>
+        <div class="ab-metric-l">доходимость модуля</div>
+      </div>
+      <div class="ab-vs">VS</div>
+      <div class="ab-arm ab-b ab-win">
+        <div class="ab-arm-h">Вариант · B <span class="ab-winbadge">победил</span></div>
+        <div class="ab-arm-name">Ситуация-сцена</div>
+        <div class="ab-arm-d">Модуль открывается сценой с задачей; слова вводятся внутри неё по мере необходимости.</div>
+        <div class="ab-metric"><span class="ab-bar ab-bar-win" style="--w:79%"></span><span class="ab-val">79%</span></div>
+        <div class="ab-metric-l">доходимость модуля</div>
+      </div>
+    </div>
+
+    <div class="ab-design">
+      <div class="ab-d-item"><span class="ab-d-k">Метрика решения</span><span class="ab-d-v">Доходимость модуля (% дошедших до финального экрана)</span></div>
+      <div class="ab-d-item"><span class="ab-d-k">Контрметрика</span><span class="ab-d-v">Точность ответов — чтобы рост доходимости не был «проскакиванием»</span></div>
+      <div class="ab-d-item"><span class="ab-d-k">Разбиение</span><span class="ab-d-v">Случайное, 50/50 по новым пользователям; равные когорты по языку</span></div>
+      <div class="ab-d-item"><span class="ab-d-k">Стоп-критерий</span><span class="ab-d-v">Достаточный размер выборки + стабильность разницы между группами</span></div>
+    </div>
+
+    <div class="ab-verdict">
+      <div class="ab-v-icon">✓</div>
+      <div>
+        <div class="ab-v-t">Вывод и решение</div>
+        <div class="ab-v-d">Вариант B выиграл по доходимости при сохранении точности ответов — рост не за счёт «проскакивания». Ситуационный заход стал <b>стандартом для всех новых модулей</b> и лёг в основу нарративно-психологической системы. <span class="ab-v-note">Цифры в примере иллюстративные — показывают логику эксперимента, а не отчётные данные продукта.</span></div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+<div class="vchain rv d2">
+    <div class="vchain-hd">Методика → Метрика → Бизнес</div>
+    <div class="vchain-row">
+      <div class="vc-cell"><span class="vc-k m">Методика</span><span class="vc-t">Нарративно-психологическая система вовлечения</span><span class="vc-d">Игровые механики ARCS/SDT удерживают пользователя в ежедневной привычке</span></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-cell"><span class="vc-k r">Метрика</span><span class="vc-t">Рост D7 и D30 retention</span><span class="vc-d">Чем больше пользователей возвращается на 7-й и 30-й день, тем выше LTV</span></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-cell"><span class="vc-k b">Бизнес</span><span class="vc-t">Рост выручки без роста CAC</span><span class="vc-d">Удержание дешевле привлечения: каждый удержанный пользователь — это выручка, за которую уже не платим повторно</span></div>
+    </div>
+  </div>
+
+<footer class="cs-footer">
+  <div class="cs-footer-name">Ирина Летяго · Learning &amp; Product Designer</div>
+  <a href="index.html" class="cs-footer-back">← Вернуться в портфолио</a>
+</footer>
+
+<script>
+// Progress bar
+const pr=document.getElementById('progress');
+window.addEventListener('scroll',()=>{pr.style.width=Math.min(scrollY/(document.body.scrollHeight-innerHeight)*100,100)+'%'},{passive:true});
+
+// Reveal on scroll
+const rv=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+
+// Quality bars (before state — chaotic)
+const bars=document.getElementById('qbars');
+const levels=[
+  [22,'low'],[78,'high'],[41,'mid'],[95,'high'],[18,'low'],
+  [63,'mid'],[87,'high'],[29,'low'],[72,'mid'],[44,'mid'],
+  [91,'high'],[15,'low'],[56,'mid'],[83,'high'],[37,'low'],
+  [68,'mid'],[24,'low'],[79,'high'],[48,'mid'],[92,'high'],
+  [33,'low'],[61,'mid'],[88,'high'],[17,'low'],[74,'mid'],
+];
+const labels=['A01','A04','A07','A11','A13','A16','A19','A22','A25','A28','A31','A33','A37','A40','A43','A46','A49','A51','A55','A58','A61','A63','A67','A70','A72'];
+levels.forEach(([w,cls],i)=>{
+  const row=document.createElement('div');
+  row.className=`qbar-row ${cls}`;
+  row.innerHTML=`<div class="qbar-id">${labels[i]}</div><div class="qbar-track"><div class="qbar-fill" style="transition-delay:${i*40}ms"></div></div>`;
+  bars.appendChild(row);
+});
+
+// Animate bars on load
+setTimeout(()=>{
+  document.querySelectorAll('.qbar-fill').forEach((el,i)=>{
+    el.style.transform=`scaleX(${levels[i][0]/100})`;
+  });
+},300);
+
+// Tabs
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+}
+
+// Checklist
+function toggleCheck(item,groupId){
+  item.classList.toggle('checked');
+  updateProgress(groupId);
+}
+
+function updateProgress(groupId){
+  const group=document.getElementById(groupId);
+  const items=group.querySelectorAll('.cl-item');
+  const checked=group.querySelectorAll('.cl-item.checked').length;
+  const total=items.length;
+  const sfx=groupId.split('-')[1];
+  document.getElementById('pf-'+sfx).style.width=(checked/total*100)+'%';
+  document.getElementById('pl-'+sfx).textContent=checked+'/'+total;
+}
+</script>
+
+<script>
+(function(){
+  if(matchMedia('(pointer:coarse)').matches)return;
+  document.querySelectorAll('.insight,.dc2,.model,.res,.mn,.tc,.guardrail,.gr,.steal').forEach(el=>{
+    el.style.transition='transform .25s cubic-bezier(.16,1,.3,1)';
+    el.addEventListener('mousemove',e=>{
+      const r=el.getBoundingClientRect();
+      const rx=((e.clientY-r.top)/r.height-.5)*-2.2;
+      const ry=((e.clientX-r.left)/r.width-.5)*2.2;
+      el.style.transform=`perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+    });
+    el.addEventListener('mouseleave',()=>{el.style.transform=''});
+  });
+})();
+</script>
+</body>
+</html>

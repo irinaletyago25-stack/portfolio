@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Резюме · Ирина Летяго — Learning × Product Designer</title>
+<meta name="description" content="Резюме: 6+ лет в EdTech и образовании, нарративно-психологическая система (3 000+ DAU), 60+ авторов, SEA 2025 Shortlist, магистр педдизайна ВШЭ.">
+<meta property="og:title" content="Резюме · Ирина Летяго">
+<meta property="og:description" content="Learning × Product Designer · 6+ лет · SEA 2025 Shortlist">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="ru_RU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--milk:#FAFAF6;--milk2:#F4F3EE;--milk3:#E8E6DF;--ink:#0E0E0C;--ink2:#2A2A26;--ink3:#7A7A72;
+--gold:#E8A000;--fire:#E03A2F;--iris:#6A4FC8;--jade:#1DB87A;
+--gold-lt:#FFF7E0;--fire-lt:#FFF0EF;--iris-lt:#F0ECFF;--jade-lt:#E6FFF5}
+body{overflow-x:hidden;font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);line-height:1.55;font-size:13px}
+.page{max-width:860px;margin:0 auto;padding:48px 40px}
+
+.top-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.tn-back{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink3)}
+.tn-back:hover{color:var(--ink)}
+.tn-print{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 22px;border-radius:999px;background:var(--gold);color:var(--ink);border:none;cursor:pointer;transition:transform .2s}
+.tn-print:hover{transform:translateY(-2px)}
+
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding-bottom:22px;border-bottom:2px solid var(--ink);margin-bottom:22px}
+h1{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.role{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--gold);margin-top:6px}
+.role b{color:var(--fire);font-weight:600}
+.contacts{text-align:right;font-size:12px;color:var(--ink2);line-height:1.8;flex-shrink:0}
+.contacts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--milk3)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#0d6b3a;background:var(--jade-lt);padding:3px 12px;border-radius:999px;margin-top:4px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--jade)}
+
+.summary{font-size:13px;font-weight:300;line-height:1.75;color:var(--ink2);margin-bottom:20px}
+.summary strong{font-weight:500;color:var(--ink)}
+
+.key-nums{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:26px}
+.kn{border:1px solid var(--milk3);border-radius:14px;padding:12px 10px;text-align:center;background:#FFFEFB}
+.kn b{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;display:block;letter-spacing:-.02em}
+.kn span{font-size:9.5px;color:var(--ink3);line-height:1.3;display:block;margin-top:3px}
+.kn:nth-child(1) b{color:var(--gold)}.kn:nth-child(2) b{color:var(--jade)}.kn:nth-child(3) b{color:var(--iris)}.kn:nth-child(4) b{color:var(--fire)}.kn:nth-child(5) b{color:var(--ink)}
+
+h2{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:24px 0 12px;display:flex;align-items:center;gap:10px}
+h2::after{content:'';flex:1;height:1px;background:var(--milk3)}
+
+.job{margin-bottom:16px;page-break-inside:avoid}
+.job-hd{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.job-co{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:700}
+.job-role{font-size:12.5px;font-weight:500;color:var(--iris)}
+.job-dt{font-size:11px;color:var(--ink3);white-space:nowrap}
+.job ul{list-style:none;margin-top:6px}
+.job li{font-size:12.5px;font-weight:300;color:var(--ink2);padding:2.5px 0 2.5px 16px;position:relative;line-height:1.55}
+.job li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+.job li strong{font-weight:500;color:var(--ink)}
+
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px}
+.sk-row{font-size:12px;line-height:1.65}
+.sk-row b{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:11.5px}
+.sk-row span{font-weight:300;color:var(--ink2)}
+
+.two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:0 36px}
+.edu{margin-bottom:8px;font-size:12.5px}
+.edu b{font-weight:500}
+.edu span{color:var(--ink3);font-size:11.5px;display:block}
+.award{display:flex;gap:8px;font-size:12px;padding:3px 0;font-weight:300;color:var(--ink2)}
+.award::before{content:'★';color:var(--gold);font-size:11px}
+.award strong{font-weight:500;color:var(--ink)}
+
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.pill{font-size:10.5px;padding:4px 11px;border-radius:999px;background:var(--milk2);color:var(--ink2)}
+
+footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--milk3);display:flex;justify-content:space-between;font-size:11px;color:var(--ink3)}
+
+@media(max-width:680px){
+  .page{padding:24px 16px}
+  header{flex-direction:column}
+  .contacts{text-align:left}
+  .key-nums{grid-template-columns:repeat(2,1fr)}
+  .skills,.two-col{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff;font-size:11.5px}
+  .page{max-width:none;padding:0}
+  .top-nav{display:none}
+  .key-nums{grid-template-columns:repeat(5,1fr)}
+  a{border:none!important}
+  @page{size:A4;margin:14mm 14mm}
+}
+
+/* доступность: фокус с клавиатуры */
+a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focus-visible,input:focus-visible,.art-hd:focus-visible,.wf-step:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+*:focus:not(:focus-visible){outline:none}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="top-nav">
+  <a class="tn-back" href="index.html">← Портфолио</a>
+  <button class="tn-print" onclick="window.print()">⬇ Сохранить в PDF</button>
+</div>
+
+<header>
+  <div>
+    <h1>Ирина Летяго</h1>
+    <div class="role">Learning <b>×</b> Product Designer · Методолог (LXD)</div>
+    <div class="status"><span class="dot"></span>открыта к предложениям · отвечаю в течение дня</div>
+  </div>
+  <div class="contacts">
+    Москва · удалённо / гибрид / офис<br>
+    <a href="mailto:irinaletyago25@gmail.com">irinaletyago25@gmail.com</a><br>
+    Telegram: <a href="https://t.me/IrinaLetyago">@IrinaLetyago</a> · канал <a href="https://t.me/eduletyago">eduletyago</a><br>
+    Портфолио: <a href="index.html">интерактивная версия</a>
+  </div>
+</header>
+
+<p class="summary">Методолог-продуктолог с <strong>6+ годами</strong> в EdTech, K-12 и высшей школе. Автор <strong>нарративно-психологической системы вовлечения</strong> (когнитивные науки + психология пользователя + геймдизайн) — внедрена в Lingo Magic: 3 000+ DAU на трёх платформах, метрики удержания D7/D30 показали устойчивый рост. Выстроила методическую систему для <strong>60+ авторов из 15+ стран</strong> — шорт-лист SEA 2025, Digital Bridge 2025 (Астана). <strong>16 образовательных программ с нуля</strong>; онбординг педагогов сокращён с 2–3 недель до 5–7 дней (−65%). Магистр педагогического дизайна НИУ ВШЭ, публикации РИНЦ.</p>
+
+<div class="key-nums">
+  <div class="kn"><b>60+</b><span>авторов · 15+ стран · единый стандарт</span></div>
+  <div class="kn"><b>3 000+</b><span>DAU ежедневно · 3 платформы</span></div>
+  <div class="kn"><b>SEA '25</b><span>Shortlist + Digital Bridge, Астана</span></div>
+  <div class="kn"><b>−65%</b><span>срок онбординга педагогов</span></div>
+  <div class="kn"><b>16</b><span>программ с нуля · EdTech до SEL</span></div>
+</div>
+
+<h2>Опыт работы — 6+ лет</h2>
+
+<div class="job">
+  <div class="job-hd"><span class="job-co">Cognitio · Lingo Magic <span class="job-role">— Дизайнер образовательного опыта (LXD)</span></span><span class="job-dt">июнь 2024 — н. в. · 2 года</span></div>
+  <ul>
+    <li><strong>Нарративно-психологическая система вовлечения</strong> — авторская методология, основа продукта: 3 000+ DAU, D7/D30 retention — устойчивый рост после внедрения</li>
+    <li>Методическая система для 60+ авторов из 15+ стран: стандарты качества заданий, единый глоссарий, чеклист ревью, онбординг новых авторов</li>
+    <li>Образовательные траектории и игровые механики на базе ARCS, SDT, SSDL</li>
+    <li>Аналитический цикл: DAU, доходимость, D7/D30, NPS модулей → гипотезы → изменения контента</li>
+    <li>Шорт-лист SEA 2025; продукт представлен на Digital Bridge 2025 · публикация РИНЦ</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-hd"><span class="job-co">Фриланс <span class="job-role">— Консультирующий методист · геймификация и L&D</span></span><span class="job-dt">окт 2023 — сен 2025 · 2 года</span></div>
+  <ul>
+    <li>Мастер-классы по геймификации обучения в <strong>20+ частных школах</strong> Москвы и области</li>
+    <li>Сеть «СО-Знание»: аудит программ, методические рекомендации, анализ учебной среды</li>
+    <li>Авторский онлайн-курс полного цикла — упакован и <strong>продан покупателю из Кремниевой долины</strong> (соло, без команды и бюджета)</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-hd"><span class="job-co">ОАНО «Азбука» <span class="job-role">— Старший методист</span></span><span class="job-dt">сен 2022 — июн 2024 · 1 г. 10 мес.</span></div>
+  <ul>
+    <li>Методическая концепция онлайн- и очного отделений: 9 программ для 1–9 классов, система оценивания с психометрикой, подготовка к лицензированию</li>
+    <li>Двойной онбординг педагогов: летний (4–6 нед.) и экстренный — срок сокращён с 2–3 недель до 5–7 дней (<strong>−65%</strong>), 15+ педагогов без потери качества</li>
+    <li>Перевод запросов учредителей в измеримые педагогические цели (стейкхолдер-менеджмент)</li>
+    <li>Трёхуровневая система наставничества: формальное → peer-to-peer → горизонтальный рост</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-hd"><span class="job-co">ОАНО «Азбука» <span class="job-role">— Методист-куратор олимпиадного движения</span></span><span class="job-dt">дек 2022 — янв 2024 · 1 г. 2 мес.</span></div>
+  <ul>
+    <li>Работа с одарёнными детьми: всероссийские олимпиады (Яндекс, Учи.ру, Инфоурок)</li>
+    <li>Инструкции, памятки и лонгриды для педагогов, родителей и учеников 1–9 классов</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-hd"><span class="job-co">НИУ ВШЭ · Uchi.ru <span class="job-role">— Методист образовательных программ</span></span><span class="job-dt">сен 2022 — май 2024 · 1 г. 9 мес.</span></div>
+  <ul>
+    <li>«Дерево метрик» нового продукта Uchi.ru: связь учебных показателей с продуктовыми; интервью со школьниками, анализ контента</li>
+    <li>Курс «Педагогический дизайн для работников высшего образования»: задания по Блуму, ТЗ для съёмок</li>
+    <li>Вебинарная серия «Мастерская учителя»; курс мультипликации для младших школьников — полный цикл</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-hd"><span class="job-co">Skillbox <span class="job-role">— Методист-стажёр</span></span><span class="job-dt">фев — апр 2023 · 3 мес.</span></div>
+  <ul>
+    <li>Аудит курсов «Геймдизайн. Документация» и «Технические основы разработки игр»: метрики, отзывы, рекомендации</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-hd"><span class="job-co">Profi.ru <span class="job-role">— Репетитор</span></span><span class="job-dt">апр 2020 — ноя 2022 · 2 г. 8 мес.</span></div>
+  <ul>
+    <li>50+ учеников онлайн, включая детей с ОВЗ (СДВГ, РАС, дислексия, дисграфия): адаптация материалов, геймифицированные задания, подготовка к олимпиадам</li>
+  </ul>
+</div>
+
+<h2>Навыки</h2>
+<div class="skills">
+  <div class="sk-row"><b>Педдизайн:</b> <span>SAM · Backward Design · 4C/ID · Pebble in the Pond · Киркпатрик L1–L4 · Блум</span></div>
+  <div class="sk-row"><b>Мотивация:</b> <span>ARCS · SDT · нарративно-психологическая система · геймификация</span></div>
+  <div class="sk-row"><b>Аналитика:</b> <span>психометрика · D1/D7/D30 · дерево метрик · NPS · SSES OECD · РИНЦ</span></div>
+  <div class="sk-row"><b>LMS:</b> <span>Moodle · iSpring Suite · SmartLMS · Articulate Rise (осваиваю)</span></div>
+  <div class="sk-row"><b>AI:</b> <span>Claude · Perplexity · Gemini — во всех этапах SAM · вайб-кодинг (pet-проект)</span></div>
+  <div class="sk-row"><b>Инструменты:</b> <span>Notion · Miro · Figma · Canva · Google Workspace</span></div>
+</div>
+
+<div class="two-col">
+  <div>
+    <h2>Образование</h2>
+    <div class="edu"><b>Магистр педагогического дизайна</b> — НИУ ВШЭ, Институт образования<span>2024</span></div>
+    <div class="edu"><b>Бакалавр педагогики и психологии</b> — НГПУ, Институт детства<span>2022</span></div>
+    <div class="edu"><b>Менеджмент в образовании</b> — НГПУ<span>2022</span></div>
+    <h2>Квалификация</h2>
+    <div class="pills">
+      <span class="pill">AI Fluency · Anthropic 2026</span>
+      <span class="pill">Teaching with AI · Anthropic 2026</span>
+      <span class="pill">Вайб-кодинг LXD hero · 2025</span>
+      <span class="pill">+ 13 курсов ПК 2020–2024</span>
+    </div>
+  </div>
+  <div>
+    <h2>Награды</h2>
+    <div class="award"><span><strong>SEA 2025</strong> — Shortlist</span></div>
+    <div class="award"><span><strong>Digital Bridge 2025</strong>, Астана — презентация продукта</span></div>
+    <div class="award"><span><strong>ДКЭ «Методист»</strong> — победитель, Правительство Москвы</span></div>
+    <div class="award"><span><strong>«Я-Профессионал»</strong> — золотой медалист (Детство)</span></div>
+    <div class="award"><span><strong>«Я-Профессионал»</strong> — победитель (Педобразование)</span></div>
+    <h2>Языки</h2>
+    <div class="pills"><span class="pill">Русский — родной</span><span class="pill">English — B2</span></div>
+  </div>
+</div>
+
+<footer>
+  <span>Ирина Летяго · Learning × Product Designer · Москва</span>
+  <span>Обучение, которое меняет поведение</span>
+</footer>
+
+</div>
+</body>
+</html>
