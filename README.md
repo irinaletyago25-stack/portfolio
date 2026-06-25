@@ -16,17 +16,6 @@ Learning × Product Designer · Методолог (LXD)
 | `ai-process-case.html` | Кейс: AI и промпт-инжиниринг |
 | `404.html` | Страница ошибки |
 
-## Публикация на GitHub Pages
-
-1. Создайте репозиторий и загрузите все файлы в корень.
-2. Settings → Pages → Source: ветка `main`, папка `/ (root)`.
-3. Через минуту сайт будет доступен по адресу `https://<username>.github.io/<repo>/`.
-
-Файл `.nojekyll` отключает обработку Jekyll — все файлы отдаются как есть.
-
-## Технологии
-
-Чистые HTML/CSS/JS без зависимостей и сборки. Шрифты — Google Fonts (Space Grotesk, DM Sans, JetBrains Mono). Работает на десктопе и мобильных.
 
 ## Контакты
 
