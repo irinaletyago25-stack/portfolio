@@ -102,7 +102,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .b-cell{border:1.5px solid var(--milk3);background:#FFFEFB;padding:24px;position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .25s}
 .b-cell:hover{transform:translateY(-3px);border-color:var(--ink2)}
 
-.b-main{grid-column:1/3;grid-row:1/4;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.b-
 .b-main-top{display:flex;align-items:center;gap:14px}
 .b-avatar{width:52px;height:52px;border-radius:50%;border:2px dashed var(--milk3);background:var(--milk2);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--ink3);flex-shrink:0;transition:border-color .2s}
 .b-avatar:hover{border-color:var(--gold)}
@@ -658,7 +658,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.2);border-top:1px solid rgb
 .art-count{border-radius:999px}
 .kpc{border-radius:14px}
 .kpeg{border-radius:0 8px 8px 0}
-.jmap,.gmap-wrap,.rubric-wrap,.cmap-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--milk3)}
+.jmap,.gmap-wrap,.rubric-wrap,.cmap-wrap{border-radius:12px;overflow:hidden;overflow-x:auto;border:1px solid var(--milk3)}
 .jtbl,.gmap-table,.rubric-table,.cmap{min-width:620px}
 .jtbl th:first-child{border-top-left-radius:0}
 
@@ -705,17 +705,17 @@ nav{border-bottom-color:var(--milk2)}
 @keyframes mfmq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .mf-stage{position:relative;min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;padding:80px 24px}
 .mf-blob{position:absolute;border-radius:60% 40% 55% 45%/50% 60% 40% 50%;filter:blur(4px);opacity:.16;pointer-events:none;animation:blobFloat 16s ease-in-out infinite}
-.mf-b1{width:380px;height:340px;background:var(--gold);top:-80px;right:-100px}
+.mf-b1{width:380px;height:340px;background:var(--iris);top:-80px;right:-100px}
 .mf-b2{width:300px;height:280px;background:var(--iris);bottom:-70px;left:-80px;animation-delay:-7s}
 .mf-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(64px,13vw,170px);font-weight:700;letter-spacing:-.05em;line-height:1;color:var(--milk);user-select:none;display:flex;pointer-events:none}
 .mf-title .ml{display:inline-block;transition:transform .3s cubic-bezier(.16,1,.3,1),color .3s;cursor:default}
-.mf-title .ml:hover{transform:translateY(-14px) rotate(-6deg);color:var(--gold)}
-.mf-title .ml.q{color:var(--gold);-webkit-text-stroke:0}
-.mf-btn{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:24px 56px;background:var(--gold);color:var(--ink);border-radius:999px;transition:transform .25s cubic-bezier(.16,1,.3,1),background .2s,box-shadow .25s;box-shadow:0 0 0 0 rgba(232,160,0,.4);position:relative;z-index:4}
-.mf-btn:hover{background:var(--milk);box-shadow:0 0 0 14px rgba(232,160,0,.12)}
+.mf-title .ml:hover{transform:translateY(-14px) rotate(-6deg);color:var(--iris)}
+.mf-title .ml.q{color:var(--iris);-webkit-text-stroke:0}
+.mf-btn{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:24px 56px;background:var(--iris);color:#fff;border-radius:999px;transition:transform .25s cubic-bezier(.16,1,.3,1),background .2s,box-shadow .25s;box-shadow:0 0 0 0 rgba(106,79,200,.4);position:relative;z-index:4}
+.mf-btn:hover{background:var(--milk);color:var(--ink);box-shadow:0 0 0 14px rgba(106,79,200,.12)}
 .mf-hint{position:absolute;bottom:20px;right:28px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);animation:hintPulse 2.5s ease-in-out infinite}
 .fsticker{position:absolute;z-index:3;padding:18px 24px;border-radius:20px;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);backdrop-filter:blur(6px);cursor:pointer;user-select:none;touch-action:none;will-change:transform;transition:border-color .2s,background .2s}
-.fsticker:hover{border-color:var(--gold);background:rgba(232,160,0,.12)}
+.fsticker:hover{border-color:var(--iris);background:rgba(106,79,200,.12)}
 .fsticker:active{cursor:grabbing}
 .fsticker.dragging{z-index:60;transition:none}
 .fs-icon{font-size:24px;margin-bottom:8px}
@@ -815,15 +815,15 @@ nav{border-bottom-color:var(--milk2)}
 @keyframes statusPulse{0%{box-shadow:0 0 0 0 rgba(29,184,122,.45)}70%{box-shadow:0 0 0 7px rgba(29,184,122,0)}100%{box-shadow:0 0 0 0 rgba(29,184,122,0)}}
 
 /* ══ DEMO ══ */
-.demo-wrap{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:36px;align-items:start}
-.demo-phone{border:1.5px solid var(--ink);border-radius:28px;background:#FFFEFB;overflow:hidden;box-shadow:4px 6px 0 rgba(14,14,12,.1)}
+
+
 
 
 
 .demo-xp-track{flex:1;height:8px;background:var(--milk3);border-radius:99px;overflow:hidden}
-.demo-xp-fill{height:100%;background:var(--jade);border-radius:99px;width:0;transition:width .6s cubic-bezier(.16,1,.3,1)}
 
-.demo-body{padding:24px 20px 20px}
+
+
 .demo-scene{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.65;padding:12px 14px;background:var(--iris-lt);border-radius:12px;margin-bottom:16px}
 .demo-q{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--ink);line-height:1.45;margin-bottom:16px}
 .demo-opts{display:flex;flex-direction:column;gap:8px}
@@ -850,11 +850,11 @@ nav{border-bottom-color:var(--milk2)}
 .dm-n{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--gold);flex-shrink:0}
 .dm-t{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
 .dm-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.6}
-@media(max-width:900px){.demo-wrap{grid-template-columns:1fr}}
+
 
 /* demo v2 */
-.demo-journey{display:flex;align-items:center;gap:6px;justify-content:center;margin-bottom:12px}
-.dj-stage{font-size:18px;opacity:.3;transition:opacity .3s,transform .3s;line-height:1}
+
+
 .dj-stage.on{opacity:1;transform:scale(1.25)}
 .dj-stage.done{opacity:.85}
 .dj-line{flex:1;max-width:34px;height:2px;background:var(--milk3);border-radius:2px}
@@ -873,7 +873,7 @@ nav{border-bottom-color:var(--milk2)}
 .asm-check:disabled{background:var(--milk3);color:var(--ink3);cursor:default}
 .asm-hint{font-size:11px;color:var(--ink3);font-style:italic}
 
-.dict-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.dict-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;min-height:48px}
 .dict-empty{font-size:11px;color:var(--ink3);font-style:italic}
 .dict-chip{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--jade-lt);color:#0d6b3a;animation:badgePop .4s cubic-bezier(.34,1.56,.64,1)}
 .dict-chip i{font-style:normal;opacity:.6;font-weight:400}
@@ -945,10 +945,10 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
 /* демо v4: линза методиста */
 
 .demo-lens-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;color:var(--ink3);letter-spacing:.04em}
-.demo-lens-tog{width:38px;height:22px;border-radius:99px;background:var(--milk3);border:none;cursor:pointer;position:relative;transition:background .25s;padding:0}
+
 .demo-lens-tog.on{background:var(--iris)}
-.dlt-knob{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .25s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.demo-lens-tog.on .dlt-knob{transform:translateX(16px)}
+
+
 /* аннотации методиста */
 .lens-note{display:none;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--iris-lt);border-left:2px solid var(--iris);font-size:11px;line-height:1.5;color:var(--ink2)}
 .lens-on .lens-note{display:block;animation:fbIn .25s ease}
@@ -986,7 +986,7 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
 @media(max-width:560px){.abr-compare,.dm-pair{grid-template-columns:1fr}}
 
 /* ════ ДЕМО v5: двухпанельный экран приложения ════ */
-.demo-wrap{display:grid;grid-template-columns:minmax(320px,400px) 1fr;gap:32px;align-items:start}
+.demo-wrap{display:grid;grid-template-columns:minmax(340px,380px) minmax(0,1fr);gap:24px;align-items:start;max-width:920px}
 /* — телефон — */
 .demo-phone{border:1px solid var(--milk3);border-radius:34px;background:#FFFEFB;overflow:hidden;box-shadow:0 12px 40px rgba(14,14,12,.1),0 2px 8px rgba(14,14,12,.06);position:relative}
 .demo-notch{height:28px;background:var(--ink);display:flex;align-items:center;justify-content:center;position:relative}
@@ -1001,10 +1001,10 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
 .demo-lens-tog.on .dlt-knob{transform:translateX(14px)}
 .demo-body{padding:24px 22px 22px;min-height:340px}
 /* — панель прогресса — */
-.demo-panel{display:flex;flex-direction:column;gap:18px;padding-top:8px}
-.dp-block{border:1px solid var(--milk3);border-radius:16px;background:#FFFEFB;padding:18px 20px}
+.demo-panel{display:flex;flex-direction:column;gap:14px;justify-content:flex-start}
+.dp-block{border:1px solid var(--milk3);border-radius:16px;background:#FFFEFB;padding:16px 18px}
 .dp-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
-.dp-stats{display:grid;grid-template-columns:1fr auto;gap:12px}
+.dp-stats{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:stretch}
 .dp-stat{border:1px solid var(--milk3);border-radius:16px;background:#FFFEFB;padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:10px}
 .dp-stat-v{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ink)}
 .dp-stat-v span{font-size:13px;color:var(--ink3);margin-left:5px;font-weight:600}
@@ -1013,13 +1013,13 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
 .dp-streak .dp-stat-v{font-size:24px;color:var(--fire)}
 .demo-xp-track{height:8px;background:var(--milk3);border-radius:99px;overflow:hidden}
 .demo-xp-fill{height:100%;background:var(--jade);border-radius:99px;width:0;transition:width .5s cubic-bezier(.16,1,.3,1)}
-.dp-dict{flex:1}
+.dp-dict{}
 /* журней в панели — крупнее */
-.demo-journey{display:flex;align-items:center;gap:6px;justify-content:space-between}
-.dj-stage{font-size:22px;opacity:.3;transition:opacity .3s,transform .3s;line-height:1}
+.demo-journey{display:flex;align-items:center;gap:8px;justify-content:space-between}
+.dj-stage{font-size:22px;opacity:.3;transition:opacity .3s,transform .3s;line-height:1;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .dj-stage.on{opacity:1;transform:scale(1.3)}
 .dj-stage.done{opacity:.85}
-.dj-line{flex:1;height:2px;background:var(--milk3);border-radius:2px}
+.dj-line{flex:1;max-width:34px;height:2px;background:var(--milk3);border-radius:2px}
 
 @media(max-width:900px){
   .demo-wrap{grid-template-columns:1fr;gap:20px}
@@ -1033,7 +1033,18 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
 }
 .process-link{display:inline-flex;align-items:center;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;padding:14px 28px;border-radius:999px;background:var(--ink);color:var(--milk);text-decoration:none;transition:transform .2s}
 .process-link:hover{transform:translateY(-2px)}
-</style>
+
+@media(max-width:560px){
+  .case{padding:0 12px}
+  .case .artifact{padding:16px 12px}
+  .case-body{padding:0}
+  .gmap-wrap,.jmap,.rubric-wrap,.cmap-wrap{margin:0 -4px}
+}
+@media(max-width:390px){
+  .case{padding:0 8px}
+  .case .artifact{padding:14px 10px}
+  .s{padding:48px 12px}
+}</style>
 </head>
 <body>
 <div id="progress" aria-hidden="true"></div>
@@ -1048,10 +1059,9 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
     <li><a href="#cases">Кейсы</a></li>
     <li><a href="#process">Процесс</a></li>
     <li><a href="#skills">Навыки</a></li>
-    <li><a href="#contact">Контакт</a></li>
     <li><a href="toolkit.html">Кухня</a></li>
-    <li><a href="toolkit.html">Кухня</a>
-  <a href="resume.html">Резюме</a></li>
+    <li><a href="#contact">Контакт</a></li>
+    <li><a href="resume.html" class="nav-cta">Резюме</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px">
     <button class="nav-ham" id="ham" onclick="toggleMobileNav()" aria-label="Меню"><span></span><span></span><span></span></button>
@@ -1137,7 +1147,7 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
 <section id="demo" class="s">
   <div class="s-ey">— Демо · Lingo Magic</div>
   <h2 class="s-title">Методика в действии</h2>
-  <p class="cases-intro fu">Мини-модуль по стандартам Lingo Magic. Выберите страну — от неё зависит язык урока. Внутри: три типа заданий, адаптивная сложность, объясняющая обратная связь и заметки «как это сделано». Включите режим методиста, чтобы увидеть конструкцию за контентом.</p>
+  <p class="cases-intro fu">Вы выиграли поездку — но язык учить придётся на месте. Выберите страну, и урок подстроится под неё: три типа заданий, подсказки, когда становится трудно, обратная связь, которая объясняет ошибку. Нажмите тумблер «глазами методиста» — и увидите дидактику под капотом: дистракторы, retrieval practice, situated learning.</p>
 
   <div class="demo-wrap fu d1">
     <!-- ЛЕВО: рамка телефона -->
@@ -1294,7 +1304,7 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
   <div class="s-ey">— Кейсы</div>
   <h2 class="s-title">Реальная работа</h2>
   <p class="cases-intro fu">
-    Не описания должностей — процессы, решения и артефакты. Каждый кейс — квест с конкретными наградами.
+    Не строчки из резюме — а процессы, решения и то, что осталось после: схемы, цифры, артефакты. Каждый кейс — квест: от AS-IS к TO-BE, с наградой в конце и видно, как считалась каждая цифра.
   </p>
 
   <!-- CASE 1 -->
@@ -1733,7 +1743,7 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
 <section id="process" class="s">
   <div class="s-ey">— Процесс</div>
   <h2 class="s-title">Как я работаю</h2>
-  <p class="cases-intro fu">Я проектирую по модели SAM с backward design: от измеримого результата назад к контенту, короткими итерациями с проверкой на реальных данных. Весь процесс — шесть этапов от анализа задачи до пилота — с входами, выходами и артефактами разобран отдельно.</p>
+  <p class="cases-intro fu">Сначала — что человек должен уметь. Потом всё остальное. Проектирую от результата назад к контенту, короткими итерациями, проверяю на реальных данных. Шесть этапов — от задачи до пилота, с входами, выходами и артефактами — разобрала в Кухне.</p>
   <div class="fu d1" style="margin-top:8px">
     <a href="toolkit.html" class="process-link">Открыть процесс в Кухне методиста →</a>
   </div>
@@ -2429,7 +2439,7 @@ function demoNext(){
         <div class="demo-badge">★ Первый день в ${demoCity[demoLocale]} · ${demoXP} XP${perfect?' · идеальная серия 🔥':''}</div>
         <div class="demo-skills">
           <div class="ds-row"><span class="ds-ic">✓</span>Пройдено ${demoTypesUsed.size} типа заданий: выбор, сборка фразы, сопоставление</div>
-          <div class="ds-row"><span class="ds-ic">✓</span>${demoDict.length} слов усвоено через situated learning</div>
+          <div class="ds-row"><span class="ds-ic">✓</span>${demoDict.length} слов усвоено через situated learning (обучение в контексте)</div>
           <div class="ds-row"><span class="ds-ic">✓</span>Закрепление через retrieval practice и spacing</div>
           <div class="ds-row"><span class="ds-ic">✓</span>Механики вовлечения: XP, streak, journey map</div>
         </div>
