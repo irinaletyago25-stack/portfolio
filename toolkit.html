@@ -134,8 +134,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);ov
 
 /* связь с кейсом + теория */
 .art-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center}
-.art-case{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--ink);color:var(--milk);text-decoration:none;transition:background .2s}
-.art-case:hover{background:var(--gold);color:var(--ink)}
+
+
 .art-theory{font-size:11px;color:var(--ink3)}
 .art-theory summary{cursor:pointer;font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:.04em;list-style:none;display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:999px;border:1px solid var(--milk3);transition:border-color .2s}
 .art-theory summary::-webkit-details-marker{display:none}
@@ -146,13 +146,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);ov
 
 /* слайдер было/стало */
 .tz-slider{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--milk3);user-select:none;--pos:50%;margin-bottom:4px}
-.tz-side{padding:22px}
+
 .tz-before{background:var(--fire-lt)}
 .tz-after{position:absolute;inset:0;background:var(--jade-lt);clip-path:inset(0 0 0 var(--pos));padding:22px}
-.tz-tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:12px}
+
 .tz-before .tz-tag{background:rgba(224,58,47,.15);color:var(--fire)}
 .tz-after .tz-tag{background:rgba(29,184,122,.18);color:#0d6b3a}
-.tz-txt{font-size:12.5px;line-height:1.6;color:var(--ink2)}
+
 .tz-txt b{font-weight:600;color:var(--ink)}
 .tz-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:var(--ink);cursor:ew-resize;z-index:5;transform:translateX(-50%)}
 .tz-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--milk);display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 10px rgba(14,14,12,.3)}
@@ -160,11 +160,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);ov
 /* кликабельный воркфлоу */
 .wf-step{cursor:pointer}
 .wf-step.wf-open{background:var(--milk2);border-radius:12px;padding-left:14px;padding-right:14px}
-.wf-detail{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1);grid-column:1/-1}
+
 .wf-step.wf-open .wf-detail{max-height:400px}
-.wf-detail-in{padding:14px 0 6px;display:grid;gap:8px}
+
 .wf-d-row{display:grid;grid-template-columns:90px 1fr;gap:12px;font-size:12px;line-height:1.5}
-.wf-d-k{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);padding-top:2px}
+
 .wf-d-v{color:var(--ink2)}
 .wf-d-v.err{color:var(--fire)}
 .wf-hint{font-size:10px;color:var(--ink3);font-style:italic;margin-top:2px}
@@ -172,12 +172,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);ov
 /* матрица компетенций (артефакт 6) */
 .cm-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--milk3);overflow-x:auto}
 .cm{width:100%;border-collapse:collapse;min-width:560px}
-.cm th{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:12px 14px;text-align:left;background:var(--ink);color:var(--milk)}
+
 .cm th:first-child{background:var(--ink2)}
-.cm td{padding:11px 14px;border-bottom:1px solid var(--milk3);font-size:12px;color:var(--ink2);line-height:1.4;vertical-align:top}
+
 .cm td:first-child{font-weight:600;color:var(--ink);background:var(--milk2);font-family:'Space Grotesk',sans-serif;font-size:11px}
 .cm tr:last-child td{border-bottom:none}
-.cm-lvl{display:inline-block;width:100%;height:5px;border-radius:99px;background:var(--milk3);position:relative;margin-top:5px}
+
 .cm-lvl::after{content:'';position:absolute;left:0;top:0;bottom:0;border-radius:99px;width:var(--l);background:var(--jade)}
 .profile-box{border-radius:14px;border:1px solid var(--milk3);overflow:hidden;margin-bottom:14px}
 .pb-hd{padding:14px 18px;background:var(--iris);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700}
@@ -276,6 +276,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);ov
 /* доступность: фокус с клавиатуры */
 a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focus-visible,input:focus-visible,.art-hd:focus-visible,.wf-step:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
 *:focus:not(:focus-visible){outline:none}
+
+@media(max-width:600px){
+  .tz-side{min-height:300px;padding:18px 16px}
+  .tz-q{font-size:10.5px;line-height:1.6}
+  .tz-txt{font-size:12px;line-height:1.5}
+  .tz-grip{width:34px;height:34px;font-size:13px}
+}
 </style>
 </head>
 <body>
@@ -307,7 +314,7 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
     <div class="art-hd" onclick="toggleArt('art1')">
       <span class="art-num">01</span>
       <div class="art-ic">📋</div>
-      <div class="art-tt"><div class="art-name">Бриф на извлечение экспертизы (SME)</div><div class="art-desc">Структурированный elicitation-протокол: снимаю tacit knowledge эксперта, минимизируя число итераций</div></div>
+      <div class="art-tt"><div class="art-name">Бриф на извлечение экспертизы (SME)</div><div class="art-desc">Структурированный elicitation-протокол: снимаю tacit knowledge (неявное экспертное знание) эксперта, минимизируя число итераций</div></div>
       <div class="art-tog">+</div>
     </div>
     <div class="art-body"><div class="art-inner">
@@ -333,7 +340,7 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
         </div>
         <div class="tz-side tz-done">
           <span class="tz-tag">✓ После методиста</span>
-          <div class="tz-txt"><b>Микро-сценарий.</b> Клиент: «Это дорого». <b>Шаг 1 — присоединение:</b> «Понимаю, цена важна». <b>Шаг 2 — вопрос:</b> «С чем сравниваете?». <b>Дистрактор-ловушка:</b> сразу дать скидку → сигнал слабости. <b>Проверка:</b> выбери верный первый ход из 3.</div>
+          <div class="tz-txt"><b>Микро-сценарий.</b> Клиент: «Это дорого». <b>Шаг 1 — присоединение:</b> «Понимаю, цена важна». <b>Шаг 2 — вопрос:</b> «С чем сравниваете?». <b>Дистрактор-ловушка:</b> сразу дать скидку → сигнал слабости. <b>Проверка:</b> выберите верный первый ход из 3.</div>
         </div>
         <div class="tz-h" id="tz1h"><div class="tz-grip">⇔</div></div>
       </div>
@@ -366,7 +373,7 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
         <div class="cl-grp">Валидность оценивания</div>
         <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Дистракторы диагностичны — отражают типовые misconceptions, не случайный шум</div></div>
         <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Задание обладает authentic-контекстом (situated learning), а не абстрактной формулировкой</div></div>
-        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Обратная связь elaborated — объясняет причину ошибки, работает как formative assessment</div></div>
+        <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Обратная связь elaborated — объясняет причину ошибки, работает как formative assessment (формирующее оценивание)</div></div>
         <div class="cl-grp">Cognitive load</div>
         <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Extraneous load снижен: нет split-attention, лишнего декора, жаргона без глоссария</div></div>
         <div class="cl-i" onclick="toggleCheck(this)"><div class="cl-box">✓</div><div class="cl-t">Germane load дозирован — chunking соблюдён, один шаг несёт один смысловой элемент</div></div>
@@ -390,7 +397,7 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
     <div class="art-hd" onclick="toggleArt('art3')">
       <span class="art-num">03</span>
       <div class="art-ic">📊</div>
-      <div class="art-tt"><div class="art-name">Метрический фреймворк модуля</div><div class="art-desc">North star, leading / lagging, guardrail-метрики с порогами и протоколом реакции</div></div>
+      <div class="art-tt"><div class="art-name">Метрический фреймворк модуля</div><div class="art-desc">North star (главная метрика), leading / lagging, guardrail-метрики (контрметрики) с порогами и протоколом реакции</div></div>
       <div class="art-tog">+</div>
     </div>
     <div class="art-body"><div class="art-inner">
