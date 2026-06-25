@@ -130,8 +130,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);ov
 .cs-footer-back{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:12px 24px;background:var(--ink);color:var(--milk);border:2px solid var(--ink);transition:all .2s}
 .cs-footer-back:hover{background:var(--iris);border-color:var(--iris)}
 
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;min-height:auto;padding:80px 20px 48px;gap:40px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding:80px 20px 48px;gap:40px}
   .s{padding:64px 20px}
   .cs-nav{padding:0 20px}
   .tool-cards,.guardrails,.impact-grid{grid-template-columns:1fr}
@@ -154,13 +153,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--milk);color:var(--ink);ov
 .vchain{margin-top:28px;border-radius:18px;overflow:hidden;border:1px solid var(--milk3)}
 .vchain-hd{padding:14px 20px;background:var(--ink);color:var(--milk);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .vchain-row{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;background:var(--milk3);gap:1px}
-.vc-cell{background:#FFFEFB;padding:20px 18px;display:flex;flex-direction:column;gap:6px}
-.vc-k{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.vc-cell{background:#FFFEFB;padding:20px 18px;display:flex;flex-direction:column;gap:6px;min-width:0;overflow-wrap:break-word;word-break:break-word}
+.vc-k{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;overflow-wrap:break-word}
 .vc-k.m{color:var(--iris)}.vc-k.r{color:var(--gold)}.vc-k.b{color:var(--jade)}
-.vc-t{font-size:13px;font-weight:500;color:var(--ink);line-height:1.4}
-.vc-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.55}
+.vc-t{font-size:13px;font-weight:500;color:var(--ink);line-height:1.4;overflow-wrap:break-word}
+.vc-d{font-size:12px;font-weight:300;color:var(--ink3);line-height:1.55;overflow-wrap:break-word}
 .vc-arrow{background:#FFFEFB;display:flex;align-items:center;justify-content:center;padding:0 8px;font-size:18px;color:var(--ink3)}
-@media(max-width:760px){.vchain-row{grid-template-columns:1fr}.vc-arrow{padding:6px;transform:rotate(90deg)}}
+@media(max-width:760px){}
 
 /* доступность: фокус с клавиатуры */
 a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focus-visible,input:focus-visible,.art-hd:focus-visible,.wf-step:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
@@ -196,6 +195,14 @@ a:focus-visible,button:focus-visible,[role="link"]:focus-visible,[tabindex]:focu
 .pe-why{padding:14px 22px;background:var(--gold-lt);border-top:1px solid rgba(232,160,0,.2);font-size:12.5px;line-height:1.6;color:var(--ink2)}
 .pe-why b{font-weight:600;color:var(--ink)}
 @media(max-width:760px){.pe-body{grid-template-columns:1fr}.pe-prompt{border-right:none;border-bottom:1px solid var(--milk3)}}
+
+
+
+@media(max-width:900px){
+  .vchain-row{display:flex!important;flex-direction:column!important;gap:1px!important}
+  .vc-cell{width:100%!important;min-width:0!important}
+  .vc-arrow{display:none!important}
+}
 </style>
 </head>
 <body>
